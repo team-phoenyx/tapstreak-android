@@ -35,12 +35,10 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(loginIntent);
                 finish();
             } else {
-                /*
                 Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
                 friendsIntent.putExtra("user_id", userID);
                 startActivity(friendsIntent);
                 finish();
-                */
             }
         } else {
             Snackbar.make(findViewById(android.R.id.content), "No Connection", Snackbar.LENGTH_LONG).setAction("Retry", new View.OnClickListener() {
