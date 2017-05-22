@@ -62,7 +62,6 @@ public class FriendsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         userID = extras.getString("user_id");
 
-
         Gson gson = new GsonBuilder().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl("").addConverterFactory(GsonConverterFactory.create(gson)).build();
         service = retrofit.create(TapstreakService.class);
@@ -72,7 +71,8 @@ public class FriendsActivity extends AppCompatActivity {
         refreshFriendsAdapter();
 
         friendsListView.setAdapter(friendsAdapter);
-        /*
+
+        //NFC
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) return;  // NFC not available on this device
         try {
@@ -81,8 +81,8 @@ public class FriendsActivity extends AppCompatActivity {
         } catch (FormatException e) {
             e.printStackTrace();
         }
-        */
 
+        //QR
         FloatingActionButton qrFAB = (FloatingActionButton) findViewById(R.id.qrFAB);
 
         qrFAB.setOnClickListener(new View.OnClickListener() {

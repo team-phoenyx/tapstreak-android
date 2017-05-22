@@ -21,8 +21,8 @@ import retrofit2.http.Path;
 public interface TapstreakService {
     String endpoint = "";
 
-    @GET("user/{user_id}")
-    Call<User> getUser(@Path("user_id") String user_id);
+    //@GET("user/{user_id}")
+    //Call<User> getUser(@Path("user_id") String user_id);
 
     @GET("user/{user_id}/friends")
     Call<List<GetFriends>> getFriends(@Path("user_id") String user_id);
