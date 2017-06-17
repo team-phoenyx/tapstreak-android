@@ -7,16 +7,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class SplashActivity extends AppCompatActivity {
     String id;
@@ -55,7 +47,15 @@ public class SplashActivity extends AppCompatActivity {
     }
   
     private boolean isConnected() {
-        //TODO THIS METHOD
-        return true;
+        try{
+            URL myUrl = new URL("http://tapstreak-backend.azurewebsites.net/");
+            URLConnection connection = myUrl.openConnection();
+            connection.setConnectTimeout(2000);
+            connection.connect();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
