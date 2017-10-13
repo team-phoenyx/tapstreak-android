@@ -4,7 +4,7 @@ package io.phoenyx.tapstreak.jsonmodels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginUser {
+public class UserID {
 
     @SerializedName("user_id")
     @Expose

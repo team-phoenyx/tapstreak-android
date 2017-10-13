@@ -4,7 +4,7 @@ package io.phoenyx.tapstreak.jsonmodels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetSalt {
+public class Salt {
 
     @SerializedName("salt")
     @Expose

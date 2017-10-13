@@ -4,28 +4,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.Writer;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -35,13 +29,10 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import io.phoenyx.tapstreak.jsonmodels.GetFriends;
+import io.phoenyx.tapstreak.jsonmodels.Friend;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -50,7 +41,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     TapstreakService service;
     String userID;
-    ArrayList<Friend> friends;
+    ArrayList<io.phoenyx.tapstreak.Friend> friends;
     FriendsAdapter friendsAdapter;
     ListView friendsListView;
 
@@ -174,7 +165,7 @@ public class FriendsActivity extends AppCompatActivity {
         }
     }
 
-    private int getPositionOfFriend(ArrayList<Friend> friends, int friendID) {
+    private int getPositionOfFriend(ArrayList<io.phoenyx.tapstreak.Friend> friends, int friendID) {
         for (int i = 0; i < friends.size(); i++) {
             if (Integer.parseInt(friends.get(i).getId()) == friendID) return i;
         }
@@ -182,12 +173,12 @@ public class FriendsActivity extends AppCompatActivity {
     }
 
     private void refreshFriendsAdapter() {
-        Call<List<GetFriends>> getFriendsCall = service.getFriends(userID);
+        Call<List<Friend>> getFriendsCall = service.getFriends(userID);
         try {
-            List<GetFriends> friendsCallback = getFriendsCall.execute().body();
+            List<Friend> friendsCallback = getFriendsCall.execute().body();
 
-            for (GetFriends friendCallback : friendsCallback) {
-                Friend friend = new Friend(friendCallback.getUserId(), friendCallback.getUsername(), Integer.parseInt(friendCallback.getStreakLength()), Integer.parseInt(friendCallback.getLastStreak()), Integer.parseInt(friendCallback.getFirstStreak()));
+            for (Friend friendCallback : friendsCallback) {
+                io.phoenyx.tapstreak.Friend friend = new io.phoenyx.tapstreak.Friend(friendCallback.getUserId(), friendCallback.getUsername(), Integer.parseInt(friendCallback.getStreakLength()), Integer.parseInt(friendCallback.getLastStreak()), Integer.parseInt(friendCallback.getFirstStreak()));
                 friends.add(friend);
             }
 

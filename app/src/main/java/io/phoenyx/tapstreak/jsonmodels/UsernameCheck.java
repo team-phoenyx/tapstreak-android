@@ -9,7 +9,7 @@ public class UsernameCheck {
     @Expose
     private String alreadyExists;
 
-    public String getAlreadyExists() {
+    public String alreadyExists() {
         return alreadyExists;
     }
 

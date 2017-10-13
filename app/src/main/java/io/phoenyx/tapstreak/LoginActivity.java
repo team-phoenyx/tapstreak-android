@@ -11,8 +11,8 @@ import android.widget.EditText;
 
 import java.io.IOException;
 
-import io.phoenyx.tapstreak.jsonmodels.GetSalt;
-import io.phoenyx.tapstreak.jsonmodels.LoginUser;
+import io.phoenyx.tapstreak.jsonmodels.Salt;
+import io.phoenyx.tapstreak.jsonmodels.UserID;
 import retrofit2.Call;
 
 public class LoginActivity extends AppCompatActivity {
@@ -51,10 +51,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String username, String password) {
-        Call<GetSalt> getSaltCall = tapstreakService.getSalt(username);
+        Call<Salt> getSaltCall = tapstreakService.getSalt(username);
         String saltString = "";
         try {
-            GetSalt salt = getSaltCall.execute().body();
+            Salt salt = getSaltCall.execute().body();
             saltString = salt.getSalt();
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,9 +65,9 @@ public class LoginActivity extends AppCompatActivity {
         String passHashedString = Base64.encodeToString(passHashed, Base64.NO_WRAP);
         passHashedString = passHashedString.replace("/", "-");
 
-        Call<LoginUser> getUserID = tapstreakService.login(username, passHashedString);
+        Call<UserID> getUserID = tapstreakService.login(username, passHashedString);
         try {
-            LoginUser userID = getUserID.execute().body();
+            UserID userID = getUserID.execute().body();
             String id = userID.getUserId();
             if (!id.equals("-1")) {
                 Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);

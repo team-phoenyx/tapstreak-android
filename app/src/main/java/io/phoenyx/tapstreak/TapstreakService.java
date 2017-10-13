@@ -3,10 +3,9 @@ package io.phoenyx.tapstreak;
 
 import java.util.List;
 
-import io.phoenyx.tapstreak.jsonmodels.GetFriends;
-import io.phoenyx.tapstreak.jsonmodels.GetSalt;
-import io.phoenyx.tapstreak.jsonmodels.LoginUser;
-import io.phoenyx.tapstreak.jsonmodels.RegisterUser;
+import io.phoenyx.tapstreak.jsonmodels.Friend;
+import io.phoenyx.tapstreak.jsonmodels.Salt;
+import io.phoenyx.tapstreak.jsonmodels.UserID;
 import io.phoenyx.tapstreak.jsonmodels.UsernameCheck;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -25,16 +24,16 @@ public interface TapstreakService {
     //Call<User> getUser(@Path("user_id") String user_id);
 
     @GET("user/{user_id}/friends")
-    Call<List<GetFriends>> getFriends(@Path("user_id") String user_id);
+    Call<List<Friend>> getFriends(@Path("user_id") String user_id);
 
     @GET("user/{username}/{password_hashed}/{salt}/create")
-    Call<RegisterUser> makeUser(@Path("username") String username, @Path("password_hashed") String password_hashed, @Path("salt") String salt);
+    Call<UserID> makeUser(@Path("username") String username, @Path("password_hashed") String password_hashed, @Path("salt") String salt);
 
     @GET("user/{username}/get-salt")
-    Call<GetSalt> getSalt(@Path("username") String username);
+    Call<Salt> getSalt(@Path("username") String username);
 
     @GET("user/{username}/{password_hashed}")
-    Call<LoginUser> login(@Path("username") String username, @Path("password_hashed") String password_hashed);
+    Call<UserID> login(@Path("username") String username, @Path("password_hashed") String password_hashed);
 
     @GET("user/{username}/check-dupe")
     Call<UsernameCheck> checkDuplicate(@Path("username") String username);

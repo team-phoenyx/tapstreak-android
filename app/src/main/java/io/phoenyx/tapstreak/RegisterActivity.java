@@ -1,7 +1,6 @@
 package io.phoenyx.tapstreak;
 
 import android.content.Intent;
-import android.nfc.NfcAdapter;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,11 +14,9 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
-import io.phoenyx.tapstreak.jsonmodels.RegisterUser;
+import io.phoenyx.tapstreak.jsonmodels.UserID;
 import io.phoenyx.tapstreak.jsonmodels.UsernameCheck;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -85,9 +82,9 @@ public class RegisterActivity extends AppCompatActivity {
         dbSalt = dbSalt.replace('/', '-');
         dbHashedPass.replace('/','-');
 
-        Call<RegisterUser> registerUserCall = service.makeUser(username, dbHashedPass, dbSalt);
+        Call<UserID> registerUserCall = service.makeUser(username, dbHashedPass, dbSalt);
         try {
-            RegisterUser user = registerUserCall.execute().body();
+            UserID user = registerUserCall.execute().body();
             return user.getUserId();
         } catch (IOException e) {
             e.printStackTrace();
