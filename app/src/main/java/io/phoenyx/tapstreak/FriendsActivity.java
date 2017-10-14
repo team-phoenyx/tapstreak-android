@@ -41,7 +41,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     TapstreakService service;
     String userID;
-    ArrayList<io.phoenyx.tapstreak.Friend> friends;
+    ArrayList<Friend> friends;
     FriendsAdapter friendsAdapter;
     ListView friendsListView;
 
@@ -150,7 +150,7 @@ public class FriendsActivity extends AppCompatActivity {
                     refreshFriendsAdapter();
                     friendsListView.setAdapter(friendsAdapter);
                 } else {
-                    int elapsedMillis = (int) (Calendar.getInstance().getTimeInMillis() - friends.get(positionOfFriend).getLast_streak());
+                    int elapsedMillis = (int) (Calendar.getInstance().getTimeInMillis() - friends.get(positionOfFriend).getLastStreak());
                     int elapsedMins = elapsedMillis / 60000;
 
                     if (elapsedMins >= 1080 && elapsedMins <= 1440) {
@@ -165,9 +165,9 @@ public class FriendsActivity extends AppCompatActivity {
         }
     }
 
-    private int getPositionOfFriend(ArrayList<io.phoenyx.tapstreak.Friend> friends, int friendID) {
+    private int getPositionOfFriend(ArrayList<Friend> friends, int friendID) {
         for (int i = 0; i < friends.size(); i++) {
-            if (Integer.parseInt(friends.get(i).getId()) == friendID) return i;
+            if (Integer.parseInt(friends.get(i).getFriendId()) == friendID) return i;
         }
         return -1;
     }
@@ -177,12 +177,7 @@ public class FriendsActivity extends AppCompatActivity {
         try {
             List<Friend> friendsCallback = getFriendsCall.execute().body();
 
-            for (Friend friendCallback : friendsCallback) {
-                io.phoenyx.tapstreak.Friend friend = new io.phoenyx.tapstreak.Friend(friendCallback.getUserId(), friendCallback.getUsername(), Integer.parseInt(friendCallback.getStreakLength()), Integer.parseInt(friendCallback.getLastStreak()), Integer.parseInt(friendCallback.getFirstStreak()));
-                friends.add(friend);
-            }
-
-            friendsAdapter = new FriendsAdapter(this, R.layout.friend_row, friends, userID);
+            friendsAdapter = new FriendsAdapter(this, R.layout.friend_row, friendsCallback, userID);
 
         } catch (IOException e) {
             e.printStackTrace();

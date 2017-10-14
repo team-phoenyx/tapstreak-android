@@ -18,6 +18,7 @@ import com.google.gson.GsonBuilder;
 import java.util.Calendar;
 import java.util.List;
 
+import io.phoenyx.tapstreak.jsonmodels.Friend;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -55,14 +56,14 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
             TextView streakTextView = (TextView) v.findViewById(R.id.friendStreakTextView);
             ProgressBar timeLeftProgressBar = (ProgressBar) v.findViewById(R.id.timeLeftProgressBar);
 
-            usernameTextView.setText(friend.getUsername());
-            streakTextView.setText(friend.getStreak());
+            usernameTextView.setText(friend.getFriendUsername());
+            streakTextView.setText(friend.getStreakLength());
 
-            long timeElapsedMillis = Calendar.getInstance().getTimeInMillis() - friend.getLast_streak();
+            long timeElapsedMillis = Calendar.getInstance().getTimeInMillis() - friend.getLastStreak();
             int timeElapsedMins = (int) (timeElapsedMillis / 60000);
 
             if (timeElapsedMins > 1440) {
-                service.removeStreak(id, friend.getId());
+                service.removeStreak(id, friend.getFriendId());
                 streakTextView.setText("");
                 timeLeftProgressBar.setProgress(0);
             } else {

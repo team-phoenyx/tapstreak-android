@@ -14,52 +14,52 @@ public class Friend {
     private String username;
     @SerializedName("streak_length")
     @Expose
-    private String streakLength;
+    private int streakLength;
     @SerializedName("last_streak")
     @Expose
-    private String lastStreak;
-    @SerializedName("first_streak")
+    private long lastStreak;
+    @SerializedName("streak_start")
     @Expose
-    private String firstStreak;
+    private long streakStart;
 
-    public String getUserId() {
+    public String getFriendId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setFriendId(String userId) {
         this.userId = userId;
     }
 
-    public String getUsername() {
+    public String getFriendUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setFriendUsername(String username) {
         this.username = username;
     }
 
-    public String getStreakLength() {
+    public int getStreakLength() {
         return streakLength;
     }
 
-    public void setStreakLength(String streakLength) {
+    public void setStreakLength(int streakLength) {
         this.streakLength = streakLength;
     }
 
-    public String getLastStreak() {
+    public long getLastStreak() {
         return lastStreak;
     }
 
-    public void setLastStreak(String lastStreak) {
+    public void setLastStreak(long lastStreak) {
         this.lastStreak = lastStreak;
     }
 
-    public String getFirstStreak() {
-        return firstStreak;
+    public long getFirstStreak() {
+        return streakStart;
     }
 
-    public void setFirstStreak(String firstStreak) {
-        this.firstStreak = firstStreak;
+    public void setFirstStreak(long startStreak) {
+        this.streakStart = startStreak;
     }
 
 }

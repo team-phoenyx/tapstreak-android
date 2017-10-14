@@ -97,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
         //final boolean[] dupe = new boolean[1];
         try {
             UsernameCheck usernameCheck = duplicate.execute().body();
-            return usernameCheck.getAlreadyExists().equals("true");
+            return usernameCheck.alreadyExists().equals("true");
         } catch (Exception e) {
             e.printStackTrace();
         }
