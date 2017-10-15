@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String password = passwordEditText.getText().toString();
                 if (!password.equals(confirmPEditText.getText().toString())) {
-                    Snackbar.make(findViewById(android.R.id.content), "Passwords don't match", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(android.R.id.content), "PasswordManager don't match", Snackbar.LENGTH_SHORT).show();
                 } else {
                     if (password.length() < 8 || password.length() > 40) {
                         Snackbar.make(findViewById(android.R.id.content), "Password must be 8-40 long", Snackbar.LENGTH_SHORT).show();
@@ -73,8 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private String registerUser(String username, String password) {
-        byte[] salt = Passwords.getNextSalt();
-        byte[] passHashed = Passwords.hash(password.toCharArray(), salt);
+        byte[] salt = PasswordManager.getNextSalt();
+        byte[] passHashed = PasswordManager.hash(password.toCharArray(), salt);
 
         String dbSalt = Base64.encodeToString(salt, Base64.NO_WRAP);
         String dbHashedPass = Base64.encodeToString(passHashed, Base64.NO_WRAP);

@@ -9,6 +9,9 @@ import io.phoenyx.tapstreak.jsonmodels.UserID;
 import io.phoenyx.tapstreak.jsonmodels.UsernameCheck;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -18,32 +21,43 @@ import retrofit2.http.Path;
  */
 
 public interface TapstreakService {
-    String endpoint = "";
+    @FormUrlEncoded
+    @POST("/user/internal")
+    Call<User> getUserInternal(@Field("user_id") String userID, @Field("access_token") String access_token);
 
-    //@GET("user/{user_id}")
-    //Call<User> getUser(@Path("user_id") String user_id);
+    @FormUrlEncoded
+    @POST("/user/external")
+    Call<User> getUserExternal(@Field("user_id") String userID);
 
-    @GET("user/{user_id}/friends")
-    Call<List<Friend>> getFriends(@Path("user_id") String user_id);
+    @FormUrlEncoded
+    @POST("/user/create")
+    Call<UserID> registerUser(@Field("username") String username, @Field("pass_hashed") String passwordHashed, @Field("salt") String salt);
 
-    @GET("user/{username}/{password_hashed}/{salt}/create")
-    Call<UserID> makeUser(@Path("username") String username, @Path("password_hashed") String password_hashed, @Path("salt") String salt);
+    @FormUrlEncoded
+    @POST("/user/get-salt")
+    Call<Salt> getSalt(@Field("username") String username);
 
-    @GET("user/{username}/get-salt")
-    Call<Salt> getSalt(@Path("username") String username);
+    @FormUrlEncoded
+    @POST("/user/login")
+    Call<UserID> loginUser(@Field("username") String username, @Field("pass_hashed") String passwordHashed);
 
-    @GET("user/{username}/{password_hashed}")
-    Call<UserID> login(@Path("username") String username, @Path("password_hashed") String password_hashed);
+    @FormUrlEncoded
+    @POST("/user/delete")
+    Call<ResponseCode> deleteUser(@Field("user_id") String userID, @Field("access_token") String access_token, @Field("pass_hashed") String passwordHashed);
 
-    @GET("user/{username}/check-dupe")
-    Call<UsernameCheck> checkDuplicate(@Path("username") String username);
+    @FormUrlEncoded
+    @POST("/user/change-pw")
+    Call<ResponseCode> changePassword(@Field("user_id") String userID, @Field("access_token") String access_token); //TODO: LEFT OFF WORK HERE
 
-    @GET("user/{user_id}/{friend_id}/add-friend")
-    Call<ResponseBody> createFriends(@Path("user_id") String user_id, @Path("friend_id") String friend_id);
+    @FormUrlEncoded
+    @POST("/user/internal")
+    Call<User> getUserInternal(@Field("user_id") String userID, @Field("access_token") String access_token);
 
-    @POST("user/{user_id}/{friend_id}/refresh-streak")
-    Call<ResponseBody> refreshStreak(@Path("user_id") String user_id, @Path("friend_id") String friend_id);
+    @FormUrlEncoded
+    @POST("/user/internal")
+    Call<User> getUserInternal(@Field("user_id") String userID, @Field("access_token") String access_token);
 
-    @POST("user/{user_id}/{friend_id}/remove-streak")
-    Call<ResponseBody> removeStreak(@Path("user_id") String user_id, @Path("friend_id") String friend_id);
+    @FormUrlEncoded
+    @POST("/user/internal")
+    Call<User> getUserInternal(@Field("user_id") String userID, @Field("access_token") String access_token);
 }

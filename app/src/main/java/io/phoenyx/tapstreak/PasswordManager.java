@@ -12,7 +12,7 @@ import javax.crypto.spec.PBEKeySpec;
 /**
  * Created by Terrance on 6/12/2016.
  */
-public class Passwords {
+public class PasswordManager {
 
     private static final Random RANDOM = new SecureRandom();
     private static final int ITERATIONS = 10000;
@@ -21,7 +21,7 @@ public class Passwords {
     /**
      * static utility class
      */
-    private Passwords() { }
+    private PasswordManager() { }
 
     /**
      * Returns a random salt to be used to hash a password.

@@ -18,18 +18,22 @@ import retrofit2.Call;
 public class LoginActivity extends AppCompatActivity {
 
     TapstreakService tapstreakService;
+    EditText usernameEditText, passwordEditText;
+    Button signInButton, registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         tapstreakService = RetrofitClient.getClient("http://tapstreak-backend.azurewebsites.net/").create(TapstreakService.class);
 
-        final EditText usernameEditText = (EditText) findViewById(R.id.usernameEditText);
-        final EditText passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-        Button signInButton = (Button) findViewById(R.id.signInButton);
-        Button registerButton = (Button) findViewById(R.id.registerButton);
+        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        signInButton = (Button) findViewById(R.id.signInButton);
+        registerButton = (Button) findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-                loginUser(username, password);
+                loginUser(usernameEditText.getText().toString(),
+                        passwordEditText.getText().toString());
             }
         });
 
@@ -61,14 +64,13 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         byte[] saltBytes = Base64.decode(saltString.replace("-", "/"), Base64.NO_WRAP);
-        byte[] passHashed = Passwords.hash(password.toCharArray(), saltBytes);
+        byte[] passHashed = PasswordManager.hash(password.toCharArray(), saltBytes);
         String passHashedString = Base64.encodeToString(passHashed, Base64.NO_WRAP);
         passHashedString = passHashedString.replace("/", "-");
 
         Call<UserID> getUserID = tapstreakService.login(username, passHashedString);
         try {
-            UserID userID = getUserID.execute().body();
-            String id = userID.getUserId();
+            String id = getUserID.execute().body().getUserId();
             if (!id.equals("-1")) {
                 Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
                 friendsIntent.putExtra("user_id", id);
