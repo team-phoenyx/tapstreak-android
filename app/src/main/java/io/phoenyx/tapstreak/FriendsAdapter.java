@@ -27,16 +27,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class FriendsAdapter extends ArrayAdapter<Friend> {
-    TapstreakService service;
-    String id;
 
-    public FriendsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Friend> objects, String id) {
+    public FriendsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Friend> objects) {
         super(context, resource, objects);
-
-        Gson gson = new GsonBuilder().create();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("").addConverterFactory(GsonConverterFactory.create(gson)).build();
-        service = retrofit.create(TapstreakService.class);
-
     }
 
     @NonNull
@@ -56,19 +49,13 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
             TextView streakTextView = (TextView) v.findViewById(R.id.friendStreakTextView);
             ProgressBar timeLeftProgressBar = (ProgressBar) v.findViewById(R.id.timeLeftProgressBar);
 
-            usernameTextView.setText(friend.getFriendUsername());
+            usernameTextView.setText(friend.getUsername());
             streakTextView.setText(friend.getStreakLength());
 
             long timeElapsedMillis = Calendar.getInstance().getTimeInMillis() - friend.getLastStreak();
             int timeElapsedMins = (int) (timeElapsedMillis / 60000);
 
-            if (timeElapsedMins > 1440) {
-                service.removeStreak(id, friend.getFriendId());
-                streakTextView.setText("");
-                timeLeftProgressBar.setProgress(0);
-            } else {
-                timeLeftProgressBar.setProgress(1440 - timeElapsedMins);
-            }
+            timeLeftProgressBar.setProgress(1440 - timeElapsedMins);
         }
 
         return v;

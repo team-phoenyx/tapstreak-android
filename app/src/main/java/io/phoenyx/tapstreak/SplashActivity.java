@@ -21,14 +21,14 @@ public class SplashActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("io.phoenyx.tapstreak", MODE_PRIVATE);
 
         if (isConnected()) {
-            int userID = sharedPreferences.getInt("user_id", -1);
-            if (userID < 0) {
+            id = sharedPreferences.getString("user_id", "");
+            if (id.equals("")) {
                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginIntent);
                 finish();
             } else {
                 Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                friendsIntent.putExtra("user_id", userID);
+                friendsIntent.putExtra("user_id", id);
                 startActivity(friendsIntent);
                 finish();
             }
@@ -48,9 +48,9 @@ public class SplashActivity extends AppCompatActivity {
   
     private boolean isConnected() {
         try{
-            URL myUrl = new URL("http://tapstreak-backend.azurewebsites.net/");
+            URL myUrl = new URL(getResources().getString(R.string.api_base_url));
             URLConnection connection = myUrl.openConnection();
-            connection.setConnectTimeout(2000);
+            connection.setConnectTimeout(3000);
             connection.connect();
             return true;
         } catch (Exception e) {

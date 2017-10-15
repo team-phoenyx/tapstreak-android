@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tapstreak</string>
+
+    <string name="api_base_url">http://tapstreak-backend.azurewebsites.net/</string>
 </resources>

@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Friend {
 
-    @SerializedName("user_id")
+    @SerializedName("id")
     @Expose
-    private String userId;
+    private String id;
     @SerializedName("username")
     @Expose
     private String username;
@@ -18,23 +18,20 @@ public class Friend {
     @SerializedName("last_streak")
     @Expose
     private long lastStreak;
-    @SerializedName("streak_start")
-    @Expose
-    private long streakStart;
 
-    public String getFriendId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
-    public void setFriendId(String userId) {
-        this.userId = userId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getFriendUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setFriendUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -52,14 +49,6 @@ public class Friend {
 
     public void setLastStreak(long lastStreak) {
         this.lastStreak = lastStreak;
-    }
-
-    public long getFirstStreak() {
-        return streakStart;
-    }
-
-    public void setFirstStreak(long startStreak) {
-        this.streakStart = startStreak;
     }
 
 }

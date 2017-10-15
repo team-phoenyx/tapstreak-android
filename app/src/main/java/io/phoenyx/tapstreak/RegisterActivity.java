@@ -9,34 +9,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.IOException;
-
-import io.phoenyx.tapstreak.jsonmodels.UserID;
-import io.phoenyx.tapstreak.jsonmodels.UsernameCheck;
+import io.phoenyx.tapstreak.jsonmodels.Authentication;
 import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
     TapstreakService service;
+    EditText usernameEditText, passwordEditText, confirmPEditText;
+    Button joinButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Gson gson = new GsonBuilder().create();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("").addConverterFactory(GsonConverterFactory.create(gson)).build();
-        service = retrofit.create(TapstreakService.class);
+        service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
-        final EditText usernameEditText = (EditText) findViewById(R.id.usernameEditText);
-        final EditText passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-        final EditText confirmPEditText = (EditText) findViewById(R.id.confirmPWEditText);
-        Button joinButton = (Button) findViewById(R.id.joinButton);
+        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        confirmPEditText = (EditText) findViewById(R.id.confirmPWEditText);
+        joinButton = (Button) findViewById(R.id.joinButton);
 
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,19 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if (username.length() > 40) {
                             Snackbar.make(findViewById(android.R.id.content), "Username too long", Snackbar.LENGTH_SHORT).show();
                         } else {
-                            if (isDuplicate(username)) {
-                                Snackbar.make(findViewById(android.R.id.content), "Username already taken", Snackbar.LENGTH_SHORT).show();
-                            } else {
-                                String id = registerUser(username, password);
-                                if (!id.equals("-1")) {
-                                    Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                                    friendsIntent.putExtra("user_id", id);
-                                    startActivity(friendsIntent);
-                                    finish();
-                                } else {
-                                    Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
-                                }
-                            }
+                            registerUser(username, password);
                         }
                     }
                 }
@@ -72,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private String registerUser(String username, String password) {
+    private void registerUser(final String username, String password) {
         byte[] salt = PasswordManager.getNextSalt();
         byte[] passHashed = PasswordManager.hash(password.toCharArray(), salt);
 
@@ -82,41 +64,25 @@ public class RegisterActivity extends AppCompatActivity {
         dbSalt = dbSalt.replace('/', '-');
         dbHashedPass.replace('/','-');
 
-        Call<UserID> registerUserCall = service.makeUser(username, dbHashedPass, dbSalt);
-        try {
-            UserID user = registerUserCall.execute().body();
-            return user.getUserId();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "-1";
-    }
-
-    private boolean isDuplicate(String username) {
-        Call<UsernameCheck> duplicate = service.checkDuplicate(username);
-        //final boolean[] dupe = new boolean[1];
-        try {
-            UsernameCheck usernameCheck = duplicate.execute().body();
-            return usernameCheck.alreadyExists().equals("true");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return true;
-
-        /*
-        duplicate.enqueue(new Callback<UsernameCheck>() {
+        service.registerUser(username, dbHashedPass, dbSalt).enqueue(new Callback<Authentication>() {
             @Override
-            public void onFailure(Call<UsernameCheck> call, Throwable t) {
-
+            public void onResponse(Call<Authentication> call, Response<Authentication> response) {
+                Authentication authentication = response.body();
+                if (authentication.getRespCode().equals("100")) {
+                    Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
+                    friendsIntent.putExtra("user_id", authentication.getUserId());
+                    friendsIntent.putExtra("access_token", authentication.getAccessToken());
+                    startActivity(friendsIntent);
+                    finish();
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "Username taken! Please try again", Snackbar.LENGTH_LONG).show();
+                }
             }
 
             @Override
-            public void onResponse(Call<UsernameCheck> call, Response<UsernameCheck> response) {
-                dupe[0] = response.body().equals("true");
+            public void onFailure(Call<Authentication> call, Throwable t) {
+                Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
             }
         });
-        return dupe[0];
-        */
-
     }
 }

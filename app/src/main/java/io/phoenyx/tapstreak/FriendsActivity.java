@@ -9,6 +9,7 @@ import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,14 +34,17 @@ import java.util.Calendar;
 import java.util.List;
 
 import io.phoenyx.tapstreak.jsonmodels.Friend;
+import io.phoenyx.tapstreak.jsonmodels.User;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FriendsActivity extends AppCompatActivity {
 
     TapstreakService service;
-    String userID;
+    String userID, accessToken;
     ArrayList<Friend> friends;
     FriendsAdapter friendsAdapter;
     ListView friendsListView;
@@ -52,10 +56,9 @@ public class FriendsActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         userID = extras.getString("user_id");
+        accessToken = extras.getString("access_token");
 
-        Gson gson = new GsonBuilder().create();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("").addConverterFactory(GsonConverterFactory.create(gson)).build();
-        service = retrofit.create(TapstreakService.class);
+        service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
         friendsListView = (ListView) findViewById(R.id.friendsListView);
 
@@ -63,6 +66,7 @@ public class FriendsActivity extends AppCompatActivity {
 
         friendsListView.setAdapter(friendsAdapter);
 
+        /*
         //NFC
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) return;  // NFC not available on this device
@@ -107,6 +111,7 @@ public class FriendsActivity extends AppCompatActivity {
                 });
             }
         });
+        */
 
     }
 
@@ -117,6 +122,7 @@ public class FriendsActivity extends AppCompatActivity {
                 (byte)(value >>> 8),
                 (byte)value};
     }
+
 
     private Bitmap createBarcodeBitmap(String data) throws WriterException {
         Writer writer = new QRCodeWriter();
@@ -134,6 +140,7 @@ public class FriendsActivity extends AppCompatActivity {
         return ImageBitmap;
     }
 
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -171,16 +178,27 @@ public class FriendsActivity extends AppCompatActivity {
         }
         return -1;
     }
+    */
 
     private void refreshFriendsAdapter() {
-        Call<List<Friend>> getFriendsCall = service.getFriends(userID);
-        try {
-            List<Friend> friendsCallback = getFriendsCall.execute().body();
+        service.getUserInternal(userID, accessToken).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                if (user.getRespCode().equals("100")) {
+                    List<Friend> friends = user.getFriends();
+                    friendsAdapter = new FriendsAdapter(FriendsActivity.this, R.layout.friend_row, friends);
+                } else {
+                    //TODO: sum shit happen, log user out lmao
+                }
 
-            friendsAdapter = new FriendsAdapter(this, R.layout.friend_row, friendsCallback, userID);
+            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

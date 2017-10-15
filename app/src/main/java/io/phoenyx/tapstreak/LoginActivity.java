@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.IOException;
-
 import io.phoenyx.tapstreak.jsonmodels.Salt;
-import io.phoenyx.tapstreak.jsonmodels.UserID;
+import io.phoenyx.tapstreak.jsonmodels.Authentication;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,9 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
-        tapstreakService = RetrofitClient.getClient("http://tapstreak-backend.azurewebsites.net/").create(TapstreakService.class);
+        tapstreakService = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
         usernameEditText = (EditText) findViewById(R.id.usernameEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
@@ -53,36 +51,59 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void loginUser(String username, String password) {
-        Call<Salt> getSaltCall = tapstreakService.getSalt(username);
-        String saltString = "";
-        try {
-            Salt salt = getSaltCall.execute().body();
-            saltString = salt.getSalt();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void loginUser(final String username, final String password) {
+        if (username.isEmpty() || password.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), "Fields empty", Snackbar.LENGTH_SHORT).show();
+            return;
         }
 
-        byte[] saltBytes = Base64.decode(saltString.replace("-", "/"), Base64.NO_WRAP);
-        byte[] passHashed = PasswordManager.hash(password.toCharArray(), saltBytes);
-        String passHashedString = Base64.encodeToString(passHashed, Base64.NO_WRAP);
-        passHashedString = passHashedString.replace("/", "-");
+        tapstreakService.getSalt(username).enqueue(new Callback<Salt>() {
+            @Override
+            public void onResponse(Call<Salt> call, Response<Salt> response) {
+                Salt salt = response.body();
 
-        Call<UserID> getUserID = tapstreakService.login(username, passHashedString);
-        try {
-            String id = getUserID.execute().body().getUserId();
-            if (!id.equals("-1")) {
-                Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                friendsIntent.putExtra("user_id", id);
-                startActivity(friendsIntent);
-                finish();
-            } else {
-                Snackbar.make(findViewById(android.R.id.content), "Login failed", Snackbar.LENGTH_SHORT).show();
+                if (salt.getRespCode().equals("100")) {
+                    String saltString = salt.getSalt();
+                    byte[] saltBytes = Base64.decode(saltString.replace("-", "/"), Base64.NO_WRAP);
+                    byte[] passHashed = PasswordManager.hash(password.toCharArray(), saltBytes);
+                    String passHashedString = Base64.encodeToString(passHashed, Base64.NO_WRAP);
+                    passHashedString = passHashedString.replace("/", "-");
+                    authenticateUser(username, passHashedString);
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "Username/password is incorrect", Snackbar.LENGTH_SHORT).show();
+                }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
+            @Override
+            public void onFailure(Call<Salt> call, Throwable t) {
+                Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+    }
 
+    private void authenticateUser(String username, String passHashedString) {
+        tapstreakService.loginUser(username, passHashedString).enqueue(new Callback<Authentication>() {
+            @Override
+            public void onResponse(Call<Authentication> call, Response<Authentication> response) {
+                Authentication authentication = response.body();
+
+                if (authentication.getRespCode().equals("100")) {
+                    String id = authentication.getUserId();
+                    String accessToken = authentication.getAccessToken();
+                    Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
+                    friendsIntent.putExtra("user_id", id);
+                    friendsIntent.putExtra("access_token", accessToken);
+                    startActivity(friendsIntent);
+                    finish();
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "Username/password is incorrect", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Authentication> call, Throwable t) {
+                Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
+            }
+        });
     }
 }
