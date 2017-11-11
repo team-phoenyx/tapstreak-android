@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import io.phoenyx.tapstreak.jsonmodels.Salt;
-import io.phoenyx.tapstreak.jsonmodels.Authentication;
+import io.phoenyx.tapstreak.json_models.Salt;
+import io.phoenyx.tapstreak.json_models.Authentication;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,10 +28,10 @@ public class LoginActivity extends AppCompatActivity {
 
         tapstreakService = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
-        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-        signInButton = (Button) findViewById(R.id.signInButton);
-        registerButton = (Button) findViewById(R.id.registerButton);
+        usernameEditText = (EditText) findViewById(R.id.username_edittext);
+        passwordEditText = (EditText) findViewById(R.id.password_edittext);
+        signInButton = (Button) findViewById(R.id.sign_in_button);
+        registerButton = (Button) findViewById(R.id.join_button);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

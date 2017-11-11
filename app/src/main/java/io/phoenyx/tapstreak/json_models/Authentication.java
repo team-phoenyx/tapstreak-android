@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak.jsonmodels;
+package io.phoenyx.tapstreak.json_models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

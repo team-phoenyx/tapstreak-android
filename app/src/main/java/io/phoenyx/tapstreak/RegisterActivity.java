@@ -2,23 +2,40 @@ package io.phoenyx.tapstreak;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
-import io.phoenyx.tapstreak.jsonmodels.Authentication;
+import io.phoenyx.tapstreak.json_models.Authentication;
+import io.phoenyx.tapstreak.registration_fragments.RegistrationConfirmPasswordFragment;
+import io.phoenyx.tapstreak.registration_fragments.RegistrationPasswordFragment;
+import io.phoenyx.tapstreak.registration_fragments.RegistrationUsernameFragment;
+import io.phoenyx.tapstreak.registration_fragments.RegistrationWelcomeFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    RegistrationViewPager viewPager;
+    PagerAdapter pagerAdapter;
+    String username, password;
+
     TapstreakService service;
-    EditText usernameEditText, passwordEditText, confirmPEditText;
-    Button joinButton;
+
+    private static final int NUM_PAGES = 4;
+
+    private static final int USERNAME_FRAGMENT_TAG = 0;
+    private static final int PASSWORD_FRAGMENT_TAG = 1;
+    private static final int CONFIRM_PASSWORD_FRAGMENT_TAG = 2;
+    private static final int WELCOME_FRAGMENT_TAG = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,29 +44,40 @@ public class RegisterActivity extends AppCompatActivity {
 
         service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
-        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-        confirmPEditText = (EditText) findViewById(R.id.confirmPWEditText);
-        joinButton = (Button) findViewById(R.id.joinButton);
+        viewPager = (RegistrationViewPager) findViewById(R.id.pager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
+        tabLayout.setupWithViewPager(viewPager, true);
+        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
 
-        joinButton.setOnClickListener(new View.OnClickListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onClick(View v) {
-                String password = passwordEditText.getText().toString();
-                if (!password.equals(confirmPEditText.getText().toString())) {
-                    Snackbar.make(findViewById(android.R.id.content), "PasswordManager don't match", Snackbar.LENGTH_SHORT).show();
-                } else {
-                    if (password.length() < 8 || password.length() > 40) {
-                        Snackbar.make(findViewById(android.R.id.content), "Password must be 8-40 long", Snackbar.LENGTH_SHORT).show();
-                    } else {
-                        String username = usernameEditText.getText().toString();
-                        if (username.length() > 40) {
-                            Snackbar.make(findViewById(android.R.id.content), "Username too long", Snackbar.LENGTH_SHORT).show();
-                        } else {
-                            registerUser(username, password);
-                        }
-                    }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    //TODO: CHECK FOR FIELDS FILLED IN
+                    case USERNAME_FRAGMENT_TAG:
+                        viewPager.setAllowedSwipeDirection(SwipeDirection.right);
+                        break;
+                    case PASSWORD_FRAGMENT_TAG:
+                        viewPager.setAllowedSwipeDirection(SwipeDirection.all);
+                        break;
+                    case CONFIRM_PASSWORD_FRAGMENT_TAG:
+                        viewPager.setAllowedSwipeDirection(SwipeDirection.all);
+                        break;
+                    case WELCOME_FRAGMENT_TAG:
+                        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
+                        break;
                 }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
@@ -84,5 +112,33 @@ public class RegisterActivity extends AppCompatActivity {
                 Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+
+            switch (position) {
+                case USERNAME_FRAGMENT_TAG:
+                    return new RegistrationUsernameFragment();
+                case PASSWORD_FRAGMENT_TAG:
+                    return new RegistrationPasswordFragment();
+                case CONFIRM_PASSWORD_FRAGMENT_TAG:
+                    return new RegistrationConfirmPasswordFragment();
+                case WELCOME_FRAGMENT_TAG:
+                    return new RegistrationWelcomeFragment();
+                default:
+                    return new RegistrationUsernameFragment();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
     }
 }

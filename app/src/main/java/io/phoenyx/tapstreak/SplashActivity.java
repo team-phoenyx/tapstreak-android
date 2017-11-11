@@ -19,7 +19,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         sharedPreferences = getSharedPreferences("io.phoenyx.tapstreak", MODE_PRIVATE);
-
+        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(loginIntent);
+        finish();
+        /*
         if (isConnected()) {
             id = sharedPreferences.getString("user_id", "");
             if (id.equals("")) {
@@ -42,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }).show();
         }
-
+        */
 
     }
   
