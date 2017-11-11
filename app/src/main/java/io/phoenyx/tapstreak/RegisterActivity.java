@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.EditText;
 
 import io.phoenyx.tapstreak.json_models.Authentication;
 import io.phoenyx.tapstreak.registration_fragments.RegistrationConfirmPasswordFragment;
@@ -64,12 +65,23 @@ public class RegisterActivity extends AppCompatActivity {
                         viewPager.setAllowedSwipeDirection(SwipeDirection.right);
                         break;
                     case PASSWORD_FRAGMENT_TAG:
+                        View usernameFragmentView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
+                        if (usernameFragmentView != null) {
+                            EditText usernameEditText = (EditText) usernameFragmentView.findViewById(R.id.username_edittext);
+                            username = usernameEditText.getText().toString();
+                        }
                         viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                         break;
                     case CONFIRM_PASSWORD_FRAGMENT_TAG:
+                        View passwordFragmentView = ((RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG)).getView();
+                        if (passwordFragmentView != null) {
+                            EditText passwordEditText = (EditText) passwordFragmentView.findViewById(R.id.password_edittext);
+                            password = passwordEditText.getText().toString();
+                        }
                         viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                         break;
                     case WELCOME_FRAGMENT_TAG:
+                        registerUser(username, password);
                         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
                         break;
                 }
@@ -112,6 +124,10 @@ public class RegisterActivity extends AppCompatActivity {
                 Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {

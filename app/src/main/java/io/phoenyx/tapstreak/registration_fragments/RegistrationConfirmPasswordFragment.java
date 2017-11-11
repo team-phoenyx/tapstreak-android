@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import io.phoenyx.tapstreak.R;
+import io.phoenyx.tapstreak.RegisterActivity;
 import io.phoenyx.tapstreak.RegistrationViewPager;
 import io.phoenyx.tapstreak.SwipeDirection;
 
@@ -41,7 +42,7 @@ public class RegistrationConfirmPasswordFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
+                if (s.length() > 0 && ((RegisterActivity) getActivity()).getPassword().equals(s.toString())) {
                     parentViewPager.setAllowedSwipeDirection(SwipeDirection.all);
                 } else {
                     parentViewPager.setAllowedSwipeDirection(SwipeDirection.left);
