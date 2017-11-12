@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Friend {
 
-    @SerializedName("id")
+    @SerializedName("user_id")
     @Expose
     private String id;
     @SerializedName("username")

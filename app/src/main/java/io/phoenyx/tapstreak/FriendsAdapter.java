@@ -1,15 +1,19 @@
 package io.phoenyx.tapstreak;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.transition.CircularPropagation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.Calendar;
 import java.util.List;
@@ -41,15 +45,18 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         if (friend != null) {
             TextView usernameTextView = (TextView) v.findViewById(R.id.friendNameTextView);
             TextView streakTextView = (TextView) v.findViewById(R.id.friendStreakTextView);
-            ProgressBar timeLeftProgressBar = (ProgressBar) v.findViewById(R.id.timeLeftProgressBar);
+            CircularProgressBar timeLeftProgressBar = (CircularProgressBar) v.findViewById(R.id.timeLeftProgressBar);
 
             usernameTextView.setText(friend.getUsername());
-            streakTextView.setText(friend.getStreakLength());
+            streakTextView.setText(String.valueOf(friend.getStreakLength()));
 
             long timeElapsedMillis = Calendar.getInstance().getTimeInMillis() - friend.getLastStreak();
-            int timeElapsedMins = (int) (timeElapsedMillis / 60000);
+            double timeElapsedMins = timeElapsedMillis / 60000.0;
+            double timeElapsedHours = timeElapsedMins / 60.0;
 
-            timeLeftProgressBar.setProgress(1440 - timeElapsedMins);
+            if (timeElapsedHours > 8 && timeElapsedHours < 24) timeLeftProgressBar.setColor(Color.GREEN);
+            if (timeElapsedHours >= 24) timeLeftProgressBar.setColor(Color.RED);
+            timeLeftProgressBar.setProgressWithAnimation((float) ((32 - timeElapsedHours) / 32.0 * 100));
         }
 
         return v;

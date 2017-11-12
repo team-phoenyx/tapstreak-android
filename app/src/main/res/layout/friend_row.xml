@@ -2,22 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:foregroundGravity="center_vertical"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="8dp"
     android:weightSum="1">
 
-    <ProgressBar
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/timeLeftProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_weight="0.01"
-        android:backgroundTint="@color/colorPrimaryDark"
         android:foregroundGravity="center"
-        android:max="1440"
-        android:progress="1384"
-        android:progressTint="@color/colorPrimaryDark" />
+        android:indeterminate="false"
+        android:progressTint="@color/colorPrimaryDark"
+        app:cpb_background_progressbar_color="@android:color/transparent"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_progress="0"
+        app:cpb_progressbar_color="@color/colorPrimary"
+        app:cpb_progressbar_width="5dp" />
 
     <TextView
         android:id="@+id/friendNameTextView"

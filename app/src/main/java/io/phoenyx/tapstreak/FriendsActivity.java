@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.phoenyx.tapstreak.json_models.Friend;
+import io.phoenyx.tapstreak.json_models.ResponseCode;
 import io.phoenyx.tapstreak.json_models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +40,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     TapstreakService service;
     String userID, accessToken;
-    ArrayList<Friend> friends;
+    List<Friend> friends;
     FriendsAdapter friendsAdapter;
     ListView friendsListView;
     TextView lonelyTextView;
@@ -86,6 +87,12 @@ public class FriendsActivity extends AppCompatActivity {
                 View qrCodeView = layoutInflater.inflate(R.layout.qr_dialog, null);
                 qrDialogBuilder.setView(qrCodeView);
                 qrDialogBuilder.setCancelable(true);
+                qrDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        refreshFriendsAdapter();
+                    }
+                });
 
                 ImageView qrImageView = (ImageView) qrCodeView.findViewById(R.id.qrImageView);
 
@@ -135,17 +142,49 @@ public class FriendsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                String contents = data.getStringExtra("SCAN_RESULT");
-                Toast.makeText(this, contents, Toast.LENGTH_SHORT).show();
+                String friendID = data.getStringExtra("SCAN_RESULT");
 
+                if (friendExists(friendID)) {
+                    service.refreshStreak(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
+                        @Override
+                        public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                            refreshFriendsAdapter();
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseCode> call, Throwable t) {
+                            refreshFriendsAdapter();
+                        }
+                    });
+                } else {
+                    service.addFriend(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
+                        @Override
+                        public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                            refreshFriendsAdapter();
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseCode> call, Throwable t) {
+                            refreshFriendsAdapter();
+                        }
+                    });
+                }
                 //TODO ADD FRIEND
             } else if (resultCode == RESULT_CANCELED) {
-                // Handle cancel
+                refreshFriendsAdapter();
             }
         }
         refreshFriendsAdapter();
+
     }
 
+    private boolean friendExists(String friendID) {
+        if (friends == null) return false;
+        for (Friend friend : friends) {
+            if (friend.getId().equals(friendID)) return true;
+        }
+        return false;
+    }
 
     private void refreshFriendsAdapter() {
         service.getUserInternal(userID, accessToken).enqueue(new Callback<User>() {
@@ -153,17 +192,15 @@ public class FriendsActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();
                 if (user.getRespCode() == null) {
-                    List<Friend> friends = user.getFriends();
+                    friends = user.getFriends();
                     friendsAdapter = new FriendsAdapter(FriendsActivity.this, R.layout.friend_row, friends);
                     if (friends.size() == 0) {
                         lonelyTextView.setVisibility(View.VISIBLE);
                     } else {
                         lonelyTextView.setVisibility(View.INVISIBLE);
                     }
-                } else {
-                    //TODO: sum shit happen, log user out lmao
+                    friendsListView.setAdapter(friendsAdapter);
                 }
-
             }
 
             @Override
