@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_weight="0.75"
+        android:fontFamily="@font/montserrat"
         android:text="avigloz"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="18sp" />
@@ -34,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
+        android:fontFamily="@font/montserrat"
         android:foregroundGravity="right"
         android:gravity="right"
         android:text="28"

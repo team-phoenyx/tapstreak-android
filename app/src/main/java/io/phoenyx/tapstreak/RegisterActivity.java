@@ -1,6 +1,8 @@
 package io.phoenyx.tapstreak;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,7 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.apache.http.auth.AUTH;
+import org.w3c.dom.Text;
 
 import io.phoenyx.tapstreak.json_models.Authentication;
 import io.phoenyx.tapstreak.registration_fragments.RegistrationConfirmPasswordFragment;
@@ -81,8 +88,11 @@ public class RegisterActivity extends AppCompatActivity {
                         viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                         break;
                     case WELCOME_FRAGMENT_TAG:
-                        registerUser(username, password);
-                        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
+
+                        View welcomeFragmentView = ((RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG)).getView();
+                        Button getStartedButton = (Button) welcomeFragmentView.findViewById(R.id.get_started_button);
+                        TextView statusLabel = (TextView) welcomeFragmentView.findViewById(R.id.status_label);
+                        registerUser(username, password, getStartedButton, statusLabel);
                         break;
                 }
             }
@@ -94,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(final String username, String password) {
+    private void registerUser(final String username, String password, final Button getStartedButton, final TextView statusLabel) {
         byte[] salt = PasswordManager.getNextSalt();
         byte[] passHashed = PasswordManager.hash(password.toCharArray(), salt);
 
@@ -102,20 +112,38 @@ public class RegisterActivity extends AppCompatActivity {
         String dbHashedPass = Base64.encodeToString(passHashed, Base64.NO_WRAP);
 
         dbSalt = dbSalt.replace('/', '-');
-        dbHashedPass.replace('/','-');
+        dbHashedPass = dbHashedPass.replace('/','-');
 
         service.registerUser(username, dbHashedPass, dbSalt).enqueue(new Callback<Authentication>() {
             @Override
             public void onResponse(Call<Authentication> call, Response<Authentication> response) {
-                Authentication authentication = response.body();
-                if (authentication.getRespCode().equals("100")) {
-                    Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                    friendsIntent.putExtra("user_id", authentication.getUserId());
-                    friendsIntent.putExtra("access_token", authentication.getAccessToken());
-                    startActivity(friendsIntent);
-                    finish();
+                final Authentication authentication = response.body();
+
+                if (!authentication.getRespCode().equals("100") || authentication.getUserId().isEmpty() || authentication.getAccessToken().isEmpty()) {
+                    getStartedButton.setVisibility(View.GONE);
+                    statusLabel.setText("Your username is taken :(");
+                    viewPager.setAllowedSwipeDirection(SwipeDirection.left);
                 } else {
-                    Snackbar.make(findViewById(android.R.id.content), "Username taken! Please try again", Snackbar.LENGTH_LONG).show();
+                    viewPager.setAllowedSwipeDirection(SwipeDirection.none);
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("io.phoenyx.tapstreak", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    editor.putString("user_id", authentication.getUserId());
+                    editor.putString("access_token", authentication.getAccessToken());
+                    editor.apply();
+
+                    getStartedButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
+                            friendsIntent.putExtra("user_id", authentication.getUserId());
+                            friendsIntent.putExtra("access_token", authentication.getAccessToken());
+                            startActivity(friendsIntent);
+
+                            finish();
+                        }
+                    });
                 }
             }
 

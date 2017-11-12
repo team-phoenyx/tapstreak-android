@@ -11,7 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class SplashActivity extends AppCompatActivity {
-    String id;
+    String id, accessToken;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -19,34 +19,36 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         sharedPreferences = getSharedPreferences("io.phoenyx.tapstreak", MODE_PRIVATE);
-        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(loginIntent);
-        finish();
-        /*
-        if (isConnected()) {
-            id = sharedPreferences.getString("user_id", "");
-            if (id.equals("")) {
-                Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(loginIntent);
-                finish();
-            } else {
-                Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                friendsIntent.putExtra("user_id", id);
-                startActivity(friendsIntent);
-                finish();
-            }
-        } else {
-            Snackbar.make(findViewById(android.R.id.content), "No Connection", Snackbar.LENGTH_LONG).setAction("Retry", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = getIntent();
-                    finish();
-                    startActivity(intent);
-                }
-            }).show();
-        }
-        */
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (isConnected()) {
+                    id = sharedPreferences.getString("user_id", "");
+                    accessToken = sharedPreferences.getString("access_token", "");
+                    if (id.equals("")) {
+                        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(loginIntent);
+                        finish();
+                    } else {
+                        Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
+                        friendsIntent.putExtra("user_id", id);
+                        friendsIntent.putExtra("access_token", accessToken);
+                        startActivity(friendsIntent);
+                        finish();
+                    }
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "No Connection", Snackbar.LENGTH_LONG).setAction("Retry", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = getIntent();
+                            finish();
+                            startActivity(intent);
+                        }
+                    }).show();
+                }
+            }
+        }).start();
     }
   
     private boolean isConnected() {

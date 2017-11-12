@@ -16,37 +16,37 @@ import retrofit2.http.POST;
 
 public interface TapstreakService {
     @FormUrlEncoded
-    @POST("/user/internal")
+    @POST("/api/user/personal")
     Call<User> getUserInternal(@Field("user_id") String userID,
                                @Field("access_token") String access_token);
 
     @FormUrlEncoded
-    @POST("/user/external")
+    @POST("/api/user/public")
     Call<User> getUserExternal(@Field("user_id") String userID);
 
     @FormUrlEncoded
-    @POST("/user/create")
+    @POST("/api/user/create")
     Call<Authentication> registerUser(@Field("username") String username,
                                       @Field("pass_hashed") String passwordHashed,
                                       @Field("salt") String salt);
 
     @FormUrlEncoded
-    @POST("/user/get-salt")
+    @POST("/api/user/salt")
     Call<Salt> getSalt(@Field("username") String username);
 
     @FormUrlEncoded
-    @POST("/user/login")
+    @POST("/api/user/login")
     Call<Authentication> loginUser(@Field("username") String username,
                                    @Field("pass_hashed") String passwordHashed);
 
     @FormUrlEncoded
-    @POST("/user/delete")
+    @POST("/api/user/delete")
     Call<ResponseCode> deleteUser(@Field("user_id") String userID,
                                   @Field("access_token") String access_token,
                                   @Field("pass_hashed") String passwordHashed);
 
     @FormUrlEncoded
-    @POST("/user/change-pw")
+    @POST("/api/user/change-pw")
     Call<ResponseCode> changePassword(@Field("user_id") String userID,
                                       @Field("access_token") String access_token,
                                       @Field("pass_hashed") String passwordHashed,
@@ -54,19 +54,19 @@ public interface TapstreakService {
                                       @Field("new_salt") String newSalt);
 
     @FormUrlEncoded
-    @POST("/user/add-friend")
+    @POST("/api/user/add-friend")
     Call<ResponseCode> addFriend(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
                                  @Field("friend_id") String friendID);
 
     @FormUrlEncoded
-    @POST("/user/remove-friend")
+    @POST("/api/user/remove-friend")
     Call<ResponseCode> removeFriend(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
                                  @Field("friend_id") String friendID);
 
     @FormUrlEncoded
-    @POST("/user/refresh-streak")
+    @POST("/api/user/refresh-streak")
     Call<ResponseCode> refreshStreak(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
                                  @Field("friend_id") String friendID);

@@ -1,9 +1,13 @@
 package io.phoenyx.tapstreak;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +36,54 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.password_edittext);
         signInButton = (Button) findViewById(R.id.sign_in_button);
         registerButton = (Button) findViewById(R.id.join_button);
+
+        usernameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty() && !passwordEditText.getText().toString().isEmpty()) {
+                    signInButton.setVisibility(View.VISIBLE);
+                    signInButton.setEnabled(true);
+                }
+                else {
+                    signInButton.setVisibility(View.INVISIBLE);
+                    signInButton.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        passwordEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty() && !usernameEditText.getText().toString().isEmpty()) {
+                    signInButton.setVisibility(View.VISIBLE);
+                    signInButton.setEnabled(true);
+                }
+                else {
+                    signInButton.setVisibility(View.INVISIBLE);
+                    signInButton.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Salt> call, Response<Salt> response) {
                 Salt salt = response.body();
 
-                if (salt.getRespCode().equals("100")) {
+                if (!salt.getSalt().isEmpty()) {
                     String saltString = salt.getSalt();
                     byte[] saltBytes = Base64.decode(saltString.replace("-", "/"), Base64.NO_WRAP);
                     byte[] passHashed = PasswordManager.hash(password.toCharArray(), saltBytes);
@@ -90,6 +142,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (authentication.getRespCode().equals("100")) {
                     String id = authentication.getUserId();
                     String accessToken = authentication.getAccessToken();
+
+                    SharedPreferences.Editor editor = getSharedPreferences("io.phoenyx.tapstreak", Context.MODE_PRIVATE).edit();
+                    editor.putString("user_id", id);
+                    editor.putString("access_token", accessToken);
+                    editor.apply();
+
                     Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
                     friendsIntent.putExtra("user_id", id);
                     friendsIntent.putExtra("access_token", accessToken);

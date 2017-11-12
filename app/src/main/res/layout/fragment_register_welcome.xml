@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:id="@+id/query_title"
+        android:id="@+id/status_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.40" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/get_started_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -38,8 +38,8 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/query_title"
-        app:layout_constraintStart_toStartOf="@+id/query_title"
-        app:layout_constraintTop_toBottomOf="@+id/query_title" />
+        app:layout_constraintEnd_toEndOf="@+id/status_label"
+        app:layout_constraintStart_toStartOf="@+id/status_label"
+        app:layout_constraintTop_toBottomOf="@+id/status_label" />
 
 </android.support.constraint.ConstraintLayout>

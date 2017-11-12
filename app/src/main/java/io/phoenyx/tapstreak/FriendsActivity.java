@@ -1,18 +1,30 @@
 package io.phoenyx.tapstreak;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Writer;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.journeyapps.barcodescanner.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +42,7 @@ public class FriendsActivity extends AppCompatActivity {
     ArrayList<Friend> friends;
     FriendsAdapter friendsAdapter;
     ListView friendsListView;
+    TextView lonelyTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +56,7 @@ public class FriendsActivity extends AppCompatActivity {
         service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
         friendsListView = (ListView) findViewById(R.id.friendsListView);
+        lonelyTextView = (TextView) findViewById(R.id.lonely_textview);
 
         refreshFriendsAdapter();
 
@@ -58,9 +72,11 @@ public class FriendsActivity extends AppCompatActivity {
         } catch (FormatException e) {
             e.printStackTrace();
         }
+        */
 
         //QR
         FloatingActionButton qrFAB = (FloatingActionButton) findViewById(R.id.qrFAB);
+        FloatingActionButton cameraFAB = (FloatingActionButton) findViewById(R.id.cameraFAB);
 
         qrFAB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +85,7 @@ public class FriendsActivity extends AppCompatActivity {
                 LayoutInflater layoutInflater = getLayoutInflater();
                 View qrCodeView = layoutInflater.inflate(R.layout.qr_dialog, null);
                 qrDialogBuilder.setView(qrCodeView);
+                qrDialogBuilder.setCancelable(true);
 
                 ImageView qrImageView = (ImageView) qrCodeView.findViewById(R.id.qrImageView);
 
@@ -78,98 +95,71 @@ public class FriendsActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                qrDialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                qrDialogBuilder.setNeutralButton("Scan", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        new IntentIntegrator(FriendsActivity.this).initiateScan();
-                    }
-                });
+                qrDialogBuilder.create().show();
             }
         });
-        */
 
+        cameraFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CaptureActivity.class);
+                intent.setAction("com.google.zxing.client.android.SCAN");
+                intent.putExtra("SAVE_HISTORY", false);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
-
-    public static final byte[] intToByteArray(int value) {
-        return new byte[] {
-                (byte)(value >>> 24),
-                (byte)(value >>> 16),
-                (byte)(value >>> 8),
-                (byte)value};
-    }
-
 
     private Bitmap createBarcodeBitmap(String data) throws WriterException {
-        Writer writer = new QRCodeWriter();
-        String finaldata = Uri.encode(data, "utf-8");
-
-        BitMatrix bm = writer.encode(finaldata, BarcodeFormat.QR_CODE, 150, 150);
-        Bitmap ImageBitmap = Bitmap.createBitmap(150, 150, Bitmap.Config.ARGB_8888);
-
-        for (int i = 0; i < 150; i++) {//width
-            for (int j = 0; j < 150; j++) {//height
-                ImageBitmap.setPixel(i, j, bm.get(i, j) ? Color.BLACK: Color.WHITE);
-            }
-        }
-
-        return ImageBitmap;
-    }
-
-    /*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            if(result.getContents() == null) {
-                //Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                int friendID = Integer.parseInt(result.getContents());
-                int positionOfFriend = getPositionOfFriend(friends, friendID);
-
-
-                if (positionOfFriend == -1) {
-                    service.createFriends(userID, Integer.toString(friendID));
-                    refreshFriendsAdapter();
-                    friendsListView.setAdapter(friendsAdapter);
-                } else {
-                    int elapsedMillis = (int) (Calendar.getInstance().getTimeInMillis() - friends.get(positionOfFriend).getLastStreak());
-                    int elapsedMins = elapsedMillis / 60000;
-
-                    if (elapsedMins >= 1080 && elapsedMins <= 1440) {
-                        service.refreshStreak(userID, Integer.toString(friendID));
-                        refreshFriendsAdapter();
-                        friendsListView.setAdapter(friendsAdapter);
-                    }
+        QRCodeWriter writer = new QRCodeWriter();
+        try {
+            BitMatrix bitMatrix = writer.encode(data, BarcodeFormat.QR_CODE, 512, 512);
+            int width = bitMatrix.getWidth();
+            int height = bitMatrix.getHeight();
+            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
                 }
             }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
+            return bmp;
+
+        } catch (WriterException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
-    private int getPositionOfFriend(ArrayList<Friend> friends, int friendID) {
-        for (int i = 0; i < friends.size(); i++) {
-            if (Integer.parseInt(friends.get(i).getFriendId()) == friendID) return i;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String contents = data.getStringExtra("SCAN_RESULT");
+                Toast.makeText(this, contents, Toast.LENGTH_SHORT).show();
+
+                //TODO ADD FRIEND
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+            }
         }
-        return -1;
+        refreshFriendsAdapter();
     }
-    */
+
 
     private void refreshFriendsAdapter() {
         service.getUserInternal(userID, accessToken).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();
-                if (user.getRespCode().equals("100")) {
+                if (user.getRespCode() == null) {
                     List<Friend> friends = user.getFriends();
                     friendsAdapter = new FriendsAdapter(FriendsActivity.this, R.layout.friend_row, friends);
+                    if (friends.size() == 0) {
+                        lonelyTextView.setVisibility(View.VISIBLE);
+                    } else {
+                        lonelyTextView.setVisibility(View.INVISIBLE);
+                    }
                 } else {
                     //TODO: sum shit happen, log user out lmao
                 }
