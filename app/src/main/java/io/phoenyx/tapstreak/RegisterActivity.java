@@ -89,10 +89,15 @@ public class RegisterActivity extends AppCompatActivity {
                         break;
                     case WELCOME_FRAGMENT_TAG:
 
-                        View welcomeFragmentView = ((RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG)).getView();
-                        Button getStartedButton = (Button) welcomeFragmentView.findViewById(R.id.get_started_button);
-                        TextView statusLabel = (TextView) welcomeFragmentView.findViewById(R.id.status_label);
-                        registerUser(username, password, getStartedButton, statusLabel);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                View welcomeFragmentView = ((RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG)).getView();
+                                Button getStartedButton = (Button) welcomeFragmentView.findViewById(R.id.get_started_button);
+                                TextView statusLabel = (TextView) welcomeFragmentView.findViewById(R.id.status_label);
+                                registerUser(username, password, getStartedButton, statusLabel);
+                            }
+                        }).start();
                         break;
                 }
             }

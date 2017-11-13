@@ -12,6 +12,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import io.phoenyx.tapstreak.json_models.Salt;
 import io.phoenyx.tapstreak.json_models.Authentication;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     TapstreakService tapstreakService;
     EditText usernameEditText, passwordEditText;
     Button signInButton, registerButton;
+    ProgressBar loadingProgressCircle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.password_edittext);
         signInButton = (Button) findViewById(R.id.sign_in_button);
         registerButton = (Button) findViewById(R.id.join_button);
+        loadingProgressCircle = (ProgressBar) findViewById(R.id.loading_progresscircle);
 
         usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,12 +112,16 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        signInButton.setEnabled(false);
+        registerButton.setEnabled(false);
+        loadingProgressCircle.setVisibility(View.VISIBLE);
+
         tapstreakService.getSalt(username).enqueue(new Callback<Salt>() {
             @Override
             public void onResponse(Call<Salt> call, Response<Salt> response) {
                 Salt salt = response.body();
 
-                if (!salt.getSalt().isEmpty()) {
+                if (salt.getRespCode() == null && !salt.getSalt().isEmpty()) {
                     String saltString = salt.getSalt();
                     byte[] saltBytes = Base64.decode(saltString.replace("-", "/"), Base64.NO_WRAP);
                     byte[] passHashed = PasswordManager.hash(password.toCharArray(), saltBytes);
@@ -123,12 +130,18 @@ public class LoginActivity extends AppCompatActivity {
                     authenticateUser(username, passHashedString);
                 } else {
                     Snackbar.make(findViewById(android.R.id.content), "Username/password is incorrect", Snackbar.LENGTH_SHORT).show();
+                    signInButton.setEnabled(true);
+                    registerButton.setEnabled(true);
+                    loadingProgressCircle.setVisibility(View.INVISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<Salt> call, Throwable t) {
                 Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
+                signInButton.setEnabled(true);
+                registerButton.setEnabled(true);
+                loadingProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -156,11 +169,17 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Snackbar.make(findViewById(android.R.id.content), "Username/password is incorrect", Snackbar.LENGTH_SHORT).show();
                 }
+                signInButton.setEnabled(true);
+                registerButton.setEnabled(true);
+                loadingProgressCircle.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onFailure(Call<Authentication> call, Throwable t) {
                 Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
+                signInButton.setEnabled(true);
+                registerButton.setEnabled(true);
+                loadingProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
     }

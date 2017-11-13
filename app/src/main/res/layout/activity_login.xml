@@ -73,10 +73,18 @@
             android:background="@android:color/transparent"
             android:enabled="false"
             android:fontFamily="@font/montserrat"
-            android:text="Sign In"
+            android:text="sign in"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/loading_progresscircle"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
             android:visibility="invisible" />
 
     </LinearLayout>
