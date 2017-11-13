@@ -147,12 +147,14 @@ public class FriendsActivity extends AppCompatActivity {
                 String[] params = qrString.split(":");
                 if (params.length != 2) {
                     refreshFriendsAdapter();
+                    Toast.makeText(FriendsActivity.this, "Params length not 2", Toast.LENGTH_LONG).show();
                     Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 
                 long qrMillis = Long.parseLong(params[0], 16);
                 long currentMillis = System.currentTimeMillis();
+                Toast.makeText(FriendsActivity.this, currentMillis - qrMillis + " " + userID, Toast.LENGTH_LONG).show();
                 if (qrMillis > currentMillis || currentMillis - qrMillis > 60000) {
                     refreshFriendsAdapter();
                     Snackbar.make(findViewById(android.R.id.content), "QR Code expired", Snackbar.LENGTH_SHORT).show();
