@@ -173,25 +173,19 @@ public class FriendsActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    try {
-                        service.addFriend(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
-                            @Override
-                            public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
-                                Toast.makeText(FriendsActivity.this, "onResponse", Toast.LENGTH_LONG).show();
-                                Snackbar.make(findViewById(android.R.id.content), response.body().getRespCode(), Snackbar.LENGTH_SHORT).show();
-                                refreshFriendsAdapter();
-                            }
+                    service.addFriend(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
+                        @Override
+                        public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                            Toast.makeText(FriendsActivity.this, "onResponse", Toast.LENGTH_LONG).show();
+                            refreshFriendsAdapter();
+                        }
     
-                            @Override
-                            public void onFailure(Call<ResponseCode> call, Throwable t) {
-                                Toast.makeText(FriendsActivity.this, "onFailure", Toast.LENGTH_LONG).show();
-                                refreshFriendsAdapter();
-                                Snackbar.make(findViewById(android.R.id.content), "Failed to add friend", Snackbar.LENGTH_SHORT).show();
-                            }
-                        });
-                    } catch (Exception e) {
-                        Toast.makeText(FriendsActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                    }
+                        @Override
+                        public void onFailure(Call<ResponseCode> call, Throwable t) {
+                            Toast.makeText(FriendsActivity.this, "onFailure", Toast.LENGTH_LONG).show();
+                            refreshFriendsAdapter();
+                        }
+                    });
                     
                 }
                 //TODO ADD FRIEND
