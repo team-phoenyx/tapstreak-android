@@ -61,8 +61,6 @@ public class FriendsActivity extends AppCompatActivity {
 
         refreshFriendsAdapter();
 
-        friendsListView.setAdapter(friendsAdapter);
-
         /*
         //NFC
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -154,15 +152,15 @@ public class FriendsActivity extends AppCompatActivity {
                 
                 long qrMillis = Long.parseLong(params[0], 16);
                 long currentMillis = System.currentTimeMillis();
-                Toast.makeText(FriendsActivity.this, qrMillis + ":" + currentMillis  + ":" + params[1], Toast.LENGTH_LONG).show();
                 if (qrMillis > currentMillis || currentMillis - qrMillis > 60000) {
                     refreshFriendsAdapter();
                     Snackbar.make(findViewById(android.R.id.content), "QR Code expired", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 String friendID = params[1];
-
+                Toast.makeText(FriendsActivity.this, "Friend ID: " + friendID, Toast.LENGTH_LONG).show();
                 if (friendExists(friendID)) {
+                    Toast.makeText(FriendsActivity.this, "Friend Exists", Toast.LENGTH_LONG).show();
                     service.refreshStreak(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
@@ -177,6 +175,7 @@ public class FriendsActivity extends AppCompatActivity {
                         }
                     });
                 } else {
+                    Toast.makeText(FriendsActivity.this, "Friend does not exist", Toast.LENGTH_LONG).show();
                     service.addFriend(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
@@ -223,6 +222,7 @@ public class FriendsActivity extends AppCompatActivity {
                     }
                     friendsListView.setAdapter(friendsAdapter);
                 }
+                Toast.makeText(FriendsActivity.this, friends.size() + " friends", Toast.LENGTH_LONG).show();
             }
 
             @Override
