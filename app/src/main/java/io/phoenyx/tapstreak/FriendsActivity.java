@@ -145,7 +145,6 @@ public class FriendsActivity extends AppCompatActivity {
                 String[] params = qrString.split(":");
                 if (params.length != 2) {
                     refreshFriendsAdapter();
-                    Toast.makeText(FriendsActivity.this, "Params length not 2", Toast.LENGTH_LONG).show();
                     Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
@@ -158,7 +157,7 @@ public class FriendsActivity extends AppCompatActivity {
                     return;
                 }
                 String friendID = params[1];
-                Toast.makeText(FriendsActivity.this, "Friend ID: " + friendID, Toast.LENGTH_LONG).show();
+
                 if (friendExists(friendID)) {
                     Toast.makeText(FriendsActivity.this, "Friend Exists", Toast.LENGTH_LONG).show();
                     service.refreshStreak(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
@@ -200,8 +199,10 @@ public class FriendsActivity extends AppCompatActivity {
     }
 
     private boolean friendExists(String friendID) {
-        if (friends == null) return false;
+        if (friends == null || friends.size() == 0) return false;
+        Toast.makeText(FriendsActivity.this, friends.size(), Toast.LENGTH_LONG).show();
         for (Friend friend : friends) {
+            Toast.makeText(FriendsActivity.this, "Friend iterate", Toast.LENGTH_LONG).show();
             if (friend.getId().equals(friendID)) return true;
         }
         return false;

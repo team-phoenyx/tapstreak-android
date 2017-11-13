@@ -12,12 +12,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable/abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_list_focused_holo.9.png"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable_notification_tile_bg.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_list_focused_holo.9.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_light.xml.flat",
@@ -72,28 +72,28 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_dark.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/color/abc_hint_foreground_material_dark.xml"
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-hdpi-v4/abc_ic_star_black_36dp.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_dark.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/color/abc_hint_foreground_material_dark.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-hdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_notification_template_big_media_custom.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/30b9d9d9afac91c02563f69b4580f96c/res/layout/notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -120,20 +120,20 @@
         "source": "/projects/tapstreak-android/app/src/main/res/layout/fragment_register_confirm_password.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_friend_row.xml.flat",
         "source": "/projects/tapstreak-android/app/src/main/res/layout/friend_row.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_fragment_register_username.xml.flat",
-        "source": "/projects/tapstreak-android/app/src/main/res/layout/fragment_register_username.xml"
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_design_navigation_item_header.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_fragment_register_username.xml.flat",
+        "source": "/projects/tapstreak-android/app/src/main/res/layout/fragment_register_username.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable_abc_cab_background_internal_bg.xml.flat",
@@ -156,12 +156,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable/abc_textfield_search_material.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -200,12 +200,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable/abc_ic_search_api_material.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_select_dialog_multichoice_material.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/select_dialog_multichoice_material.xml"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_btn_colored_text_material.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/color/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_select_dialog_multichoice_material.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/select_dialog_multichoice_material.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -228,12 +228,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/color-v23/abc_tint_edittext.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_design_ic_visibility_off.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/drawable-mdpi-v4/design_ic_visibility_off.png"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_tint_default.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/color/abc_tint_default.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_design_ic_visibility_off.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/drawable-mdpi-v4/design_ic_visibility_off.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_dark.xml.flat",
@@ -288,12 +288,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-hdpi-v4/abc_ic_star_black_48dp.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable_notification_bg.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/drawable/notification_bg.xml"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_design_bottom_navigation_item.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/layout/design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable_notification_bg.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/drawable/notification_bg.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -320,12 +320,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout-v21_notification_template_icon_group.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/layout-v21/notification_template_icon_group.xml"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_tick_mark_material.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable/abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout-v21_notification_template_icon_group.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/layout-v21/notification_template_icon_group.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable_navigation_empty_icon.xml.flat",
@@ -400,20 +400,20 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_ic_star_half_black_36dp.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xxhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/anim_design_snackbar_in.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/anim/design_snackbar_in.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_abc_action_mode_bar.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/abc_action_mode_bar.xml"
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xxhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable_abc_ic_clear_material.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable/abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_abc_action_mode_bar.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/abc_action_mode_bar.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
@@ -440,12 +440,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/640a0e60170f50135885de28d15ff076/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_notification_template_media.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/30b9d9d9afac91c02563f69b4580f96c/res/layout/notification_template_media.xml"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_notification_template_media_custom.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/30b9d9d9afac91c02563f69b4580f96c/res/layout/notification_template_media_custom.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_notification_template_media.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/30b9d9d9afac91c02563f69b4580f96c/res/layout/notification_template_media.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_icon.xml.flat",
@@ -504,12 +504,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-mdpi-v4/abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_tooltip.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/tooltip.xml"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_design_error.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/color/design_error.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_tooltip.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/tooltip.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -560,12 +560,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/drawable-xxxhdpi-v4/design_ic_visibility.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_abc_screen_simple.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/abc_screen_simple.xml"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_notification_media_action.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/30b9d9d9afac91c02563f69b4580f96c/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/layout_abc_screen_simple.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/layout/abc_screen_simple.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
@@ -636,12 +636,12 @@
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xhdpi-v4/abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-mdpi-v4/abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-mdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -652,16 +652,16 @@
         "source": "/projects/tapstreak-android/app/src/main/res/layout/fragment_register_password.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-mdpi-v4/abc_popup_background_mtrl_mult.9.png"
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_tint_seek_thumb.xml.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/color/abc_tint_seek_thumb.xml"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/animator-v21_design_appbar_state_list_animator.xml.flat",
         "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/animator-v21/design_appbar_state_list_animator.xml"
     },
     {
-        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/color_abc_tint_seek_thumb.xml.flat",
-        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/color/abc_tint_seek_thumb.xml"
+        "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
+        "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/drawable-mdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
     {
         "merged": "/projects/tapstreak-android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
