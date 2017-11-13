@@ -1,4 +1,4 @@
-#Mon Nov 13 21:10:21 UTC 2017
+#Mon Nov 13 21:19:14 UTC 2017
 base.0=/projects/tapstreak-android/app/build/intermediates/transforms/dexMerger/debug/0
 renamed.0=classes.dex
 file.0=/projects/tapstreak-android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

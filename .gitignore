@@ -1,6 +1,12 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Android template
 
+.app/build/intermediates
+.app/build/generated
+.app/build/tmp
+
+.build
+
 # Files for the ART/Dalvik VM
 *.dex
 

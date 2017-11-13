@@ -166,11 +166,13 @@ public class FriendsActivity extends AppCompatActivity {
                     service.refreshStreak(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                            Snackbar.make(findViewById(android.R.id.content), response.body().getRespCode(), Snackbar.LENGTH_SHORT).show();
                             refreshFriendsAdapter();
                         }
 
                         @Override
                         public void onFailure(Call<ResponseCode> call, Throwable t) {
+                            Snackbar.make(findViewById(android.R.id.content), "Failed to refresh streak", Snackbar.LENGTH_SHORT).show();
                             refreshFriendsAdapter();
                         }
                     });
@@ -178,12 +180,14 @@ public class FriendsActivity extends AppCompatActivity {
                     service.addFriend(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                            Snackbar.make(findViewById(android.R.id.content), response.body().getRespCode(), Snackbar.LENGTH_SHORT).show();
                             refreshFriendsAdapter();
                         }
 
                         @Override
                         public void onFailure(Call<ResponseCode> call, Throwable t) {
                             refreshFriendsAdapter();
+                            Snackbar.make(findViewById(android.R.id.content), "Failed to add friend", Snackbar.LENGTH_SHORT).show();
                         }
                     });
                 }
