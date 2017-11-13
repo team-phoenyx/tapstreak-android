@@ -154,7 +154,7 @@ public class FriendsActivity extends AppCompatActivity {
                 
                 long qrMillis = Long.parseLong(params[0], 16);
                 long currentMillis = System.currentTimeMillis();
-                Toast.makeText(FriendsActivity.this, currentMillis - qrMillis + " " + userID, Toast.LENGTH_LONG).show();
+                Toast.makeText(FriendsActivity.this, qrMillis + ":" + currentMillis  + ":" + params[1], Toast.LENGTH_LONG).show();
                 if (qrMillis > currentMillis || currentMillis - qrMillis > 60000) {
                     refreshFriendsAdapter();
                     Snackbar.make(findViewById(android.R.id.content), "QR Code expired", Snackbar.LENGTH_SHORT).show();
