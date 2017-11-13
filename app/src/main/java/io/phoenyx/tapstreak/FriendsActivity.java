@@ -159,7 +159,6 @@ public class FriendsActivity extends AppCompatActivity {
                 String friendID = params[1];
 
                 if (friendExists(friendID)) {
-                    Toast.makeText(FriendsActivity.this, "Friend Exists", Toast.LENGTH_LONG).show();
                     service.refreshStreak(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
@@ -174,16 +173,18 @@ public class FriendsActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    Toast.makeText(FriendsActivity.this, "Friend does not exist", Toast.LENGTH_LONG).show();
+                    Toast.makeText(FriendsActivity.this, "about to add friend", Toast.LENGTH_LONG).show();
                     service.addFriend(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                            Toast.makeText(FriendsActivity.this, "onResponse", Toast.LENGTH_LONG).show();
                             Snackbar.make(findViewById(android.R.id.content), response.body().getRespCode(), Snackbar.LENGTH_SHORT).show();
                             refreshFriendsAdapter();
                         }
 
                         @Override
                         public void onFailure(Call<ResponseCode> call, Throwable t) {
+                            Toast.makeText(FriendsActivity.this, "onFailure", Toast.LENGTH_LONG).show();
                             refreshFriendsAdapter();
                             Snackbar.make(findViewById(android.R.id.content), "Failed to add friend", Snackbar.LENGTH_SHORT).show();
                         }
