@@ -97,7 +97,8 @@ public class FriendsActivity extends AppCompatActivity {
                 ImageView qrImageView = (ImageView) qrCodeView.findViewById(R.id.qrImageView);
 
                 try {
-                    qrImageView.setImageBitmap(createBarcodeBitmap(userID));
+                    //Appends the millis since epoch in hexadecimal to the userID
+                    qrImageView.setImageBitmap(createBarcodeBitmap(Long.toString(System.currentTimeMillis(), 16) + ":" + userID));
                 } catch (WriterException e) {
                     e.printStackTrace();
                 }
@@ -142,7 +143,22 @@ public class FriendsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                String friendID = data.getStringExtra("SCAN_RESULT");
+                String qrString = data.getStringExtra("SCAN_RESULT");
+                String[] params = friendID.split(":");
+                if (params.length != 2) {
+                    refreshFriendsAdapter();
+                    Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                
+                long qrMillis = Long.parseLong(params[0], 16);
+                long currentMillis = System.currentTimeMillis();
+                if (qrMillis > currentTimeMillis || currentTimeMillis - qrMillis > 60000) {
+                    refreshFriendsAdapter();
+                    Snackbar.make(findViewById(android.R.id.content), "QR Code expired", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                String friendID = params[1];
 
                 if (friendExists(friendID)) {
                     service.refreshStreak(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
