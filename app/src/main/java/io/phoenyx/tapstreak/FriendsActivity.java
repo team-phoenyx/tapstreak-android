@@ -144,7 +144,7 @@ public class FriendsActivity extends AppCompatActivity {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
                 String qrString = data.getStringExtra("SCAN_RESULT");
-                String[] params = friendID.split(":");
+                String[] params = qrString.split(":");
                 if (params.length != 2) {
                     refreshFriendsAdapter();
                     Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
@@ -153,7 +153,7 @@ public class FriendsActivity extends AppCompatActivity {
                 
                 long qrMillis = Long.parseLong(params[0], 16);
                 long currentMillis = System.currentTimeMillis();
-                if (qrMillis > currentTimeMillis || currentTimeMillis - qrMillis > 60000) {
+                if (qrMillis > currentMillis || currentMillis - qrMillis > 60000) {
                     refreshFriendsAdapter();
                     Snackbar.make(findViewById(android.R.id.content), "QR Code expired", Snackbar.LENGTH_SHORT).show();
                     return;
