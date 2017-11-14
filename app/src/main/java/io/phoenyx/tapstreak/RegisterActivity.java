@@ -82,6 +82,11 @@ public class RegisterActivity extends AppCompatActivity {
                 switch (position) {
                     //TODO: CHECK FOR FIELDS FILLED IN
                     case USERNAME_FRAGMENT_TAG:
+                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
+                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
+                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
+                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
+                        
                         registrationUsernameFragment.isActive = true;
                         registrationPasswordFragment.isActive = false;
                         registrationConfirmPasswordFragment.isActive = false;
@@ -95,6 +100,11 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         break;
                     case PASSWORD_FRAGMENT_TAG:
+                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
+                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
+                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
+                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
+                    
                         registrationUsernameFragment.isActive = false;
                         registrationPasswordFragment.isActive = true;
                         registrationConfirmPasswordFragment.isActive = false;
@@ -112,6 +122,11 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         break;
                     case CONFIRM_PASSWORD_FRAGMENT_TAG:
+                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
+                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
+                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
+                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
+                        
                         registrationUsernameFragment.isActive = false;
                         registrationPasswordFragment.isActive = false;
                         registrationConfirmPasswordFragment.isActive = true;
@@ -129,6 +144,11 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         break;
                     case WELCOME_FRAGMENT_TAG:
+                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
+                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
+                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
+                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
+                    
                         registrationUsernameFragment.isActive = false;
                         registrationPasswordFragment.isActive = false;
                         registrationConfirmPasswordFragment.isActive = false;
