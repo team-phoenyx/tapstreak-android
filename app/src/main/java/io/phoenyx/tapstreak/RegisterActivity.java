@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.text.TextWatcher;
+import android.text.Editable;
 
 import org.apache.http.auth.AUTH;
 import org.w3c.dom.Text;
@@ -69,8 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
         registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
         registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
 
-        registrationUsernameFragment.isActive = true;
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -82,78 +82,109 @@ public class RegisterActivity extends AppCompatActivity {
                 switch (position) {
                     //TODO: CHECK FOR FIELDS FILLED IN
                     case USERNAME_FRAGMENT_TAG:
-                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
-                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
-                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
-                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
-                        
-                        registrationUsernameFragment.isActive = true;
-                        registrationPasswordFragment.isActive = false;
-                        registrationConfirmPasswordFragment.isActive = false;
-                        registrationWelcomeFragment.isActive = false;
-
+                        View usernameView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
                         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
-                        if (registrationUsernameFragment.getView() != null) {
-                            if (!((EditText) registrationUsernameFragment.getView().findViewById(R.id.username_edittext)).getText().toString().isEmpty()) {
+                        if (usernameView != null) {
+                            EditText usernameEditText = (EditText) usernameView.findViewById(R.id.username_edittext);
+                            if (!usernameEditText.getText().toString().isEmpty()) {
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.right);
                             }
+                            usernameEditText.addTextChangedListener(new TextWatcher() {
+                                @Override
+                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    
+                                }
+                    
+                                @Override
+                                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                    if (s.length() > 0) {
+                                        viewPager.setAllowedSwipeDirection(SwipeDirection.right);
+                                    } else {
+                                        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
+                                    }
+                                }
+                    
+                                @Override
+                                public void afterTextChanged(Editable s) {
+                    
+                                }
+                            });
+                            
                         }
                         break;
                     case PASSWORD_FRAGMENT_TAG:
-                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
-                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
-                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
-                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
-                    
-                        registrationUsernameFragment.isActive = false;
-                        registrationPasswordFragment.isActive = true;
-                        registrationConfirmPasswordFragment.isActive = false;
-                        registrationWelcomeFragment.isActive = false;
-
+                        usernameView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
+                        View passwordView = ((RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG)).getView();
+                        
                         viewPager.setAllowedSwipeDirection(SwipeDirection.left);
-                        if (registrationUsernameFragment.getView() != null) {
-                            EditText usernameEditText = (EditText) registrationUsernameFragment.getView().findViewById(R.id.username_edittext);
+                        if (usernameView != null) {
+                            EditText usernameEditText = (EditText) usernameView.findViewById(R.id.username_edittext);
                             username = usernameEditText.getText().toString();
                         }
-                        if (registrationPasswordFragment.getView() != null) {
-                            if (!((EditText) registrationPasswordFragment.getView().findViewById(R.id.password_edittext)).getText().toString().isEmpty()) {
+                        if (passwordView != null) {
+                            EditText passwordEditText = (EditText) passwordView.findViewById(R.id.password_edittext);
+                            if (!passwordEditText.getText().toString().isEmpty()) {
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                             }
+                            passwordEditText.addTextChangedListener(new TextWatcher() {
+                                @Override
+                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    
+                                }
+                    
+                                @Override
+                                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                    if (s.length() > 0) {
+                                        viewPager.setAllowedSwipeDirection(SwipeDirection.all);
+                                    } else {
+                                        viewPager.setAllowedSwipeDirection(SwipeDirection.left);
+                                    }
+                                }
+                    
+                                @Override
+                                public void afterTextChanged(Editable s) {
+                    
+                                }
+                            });
                         }
                         break;
                     case CONFIRM_PASSWORD_FRAGMENT_TAG:
-                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
-                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
-                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
-                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
+                        passwordView = ((RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG)).getView();
+                        View confirmPasswordView = ((RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG)).getView();
                         
-                        registrationUsernameFragment.isActive = false;
-                        registrationPasswordFragment.isActive = false;
-                        registrationConfirmPasswordFragment.isActive = true;
-                        registrationWelcomeFragment.isActive = false;
-
                         viewPager.setAllowedSwipeDirection(SwipeDirection.left);
-                        if (registrationPasswordFragment.getView() != null) {
-                            EditText passwordEditText = (EditText) registrationPasswordFragment.getView().findViewById(R.id.password_edittext);
+                        if (passwordView != null) {
+                            EditText passwordEditText = (EditText) passwordView.findViewById(R.id.password_edittext);
                             password = passwordEditText.getText().toString();
                         }
-                        if (registrationConfirmPasswordFragment.getView() != null) {
-                            if (((EditText) registrationConfirmPasswordFragment.getView().findViewById(R.id.confirm_password_edittext)).getText().toString().equals(password)) {
+                        if (confirmPasswordView != null) {
+                            EditText confirmPasswordEditText = (EditText) confirmPasswordView.findViewById(R.id.confirm_password_edittext);
+                            if (confirmPasswordEditText.getText().toString().equals(password)) {
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                             }
+                            confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
+                                @Override
+                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    
+                                }
+                    
+                                @Override
+                                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                    if (s.length() > 0 && password.equals(s.toString())) {
+                                        viewPager.setAllowedSwipeDirection(SwipeDirection.all);
+                                    } else {
+                                        viewPager.setAllowedSwipeDirection(SwipeDirection.left);
+                                    }
+                                }
+                    
+                                @Override
+                                public void afterTextChanged(Editable s) {
+                    
+                                }
+                            });
                         }
                         break;
                     case WELCOME_FRAGMENT_TAG:
-                        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
-                        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
-                        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
-                        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
-                    
-                        registrationUsernameFragment.isActive = false;
-                        registrationPasswordFragment.isActive = false;
-                        registrationConfirmPasswordFragment.isActive = false;
-                        registrationWelcomeFragment.isActive = true;
-
                         new Thread(new Runnable() {
                             @Override
                             public void run() {

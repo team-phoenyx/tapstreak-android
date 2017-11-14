@@ -27,27 +27,12 @@ import io.phoenyx.tapstreak.json_models.Authentication;
 
 public class RegistrationWelcomeFragment extends Fragment {
 
-    Button getStartedButton;
-    TextView statusTextView;
-    RegistrationViewPager parentViewPager;
-    public boolean isActive;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_register_welcome, container, false);
 
-        getStartedButton = (Button) viewGroup.findViewById(R.id.get_started_button);
-        statusTextView = (TextView) viewGroup.findViewById(R.id.status_label);
-
         return viewGroup;
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
 
     }
 }

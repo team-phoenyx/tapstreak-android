@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Nov 14 17:32:58 UTC 2017
+#Tue Nov 14 17:57:37 UTC 2017
 20.base=/projects/tapstreak-android/app/build/intermediates/res/debug/resources-debug.ap_
 143.base=/projects/tapstreak-android/app/build/intermediates/res/debug/resources-debug.ap_
 439.set=ANDROID_RESOURCE

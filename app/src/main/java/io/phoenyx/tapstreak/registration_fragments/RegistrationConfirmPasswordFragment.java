@@ -21,40 +21,10 @@ import io.phoenyx.tapstreak.SwipeDirection;
 
 public class RegistrationConfirmPasswordFragment extends Fragment {
 
-    EditText confirmPasswordEditText;
-    RegistrationViewPager parentViewPager;
-    public boolean isActive;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_register_confirm_password, container, false);
-
-        confirmPasswordEditText = (EditText) viewGroup.findViewById(R.id.confirm_password_edittext);
-
-        parentViewPager = (RegistrationViewPager) getActivity().findViewById(R.id.pager);
-
-        confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!isActive) return;
-                if (s.length() > 0 && ((RegisterActivity) getActivity()).getPassword().equals(s.toString())) {
-                    parentViewPager.setAllowedSwipeDirection(SwipeDirection.all);
-                } else {
-                    parentViewPager.setAllowedSwipeDirection(SwipeDirection.left);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         return viewGroup;
     }

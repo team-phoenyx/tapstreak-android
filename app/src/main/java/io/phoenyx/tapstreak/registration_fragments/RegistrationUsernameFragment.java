@@ -21,40 +21,10 @@ import io.phoenyx.tapstreak.RegistrationViewPager;
 
 public class RegistrationUsernameFragment extends Fragment {
 
-    EditText usernameEditText;
-    RegistrationViewPager parentViewPager;
-    public boolean isActive;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_register_username, container, false);
-
-        usernameEditText = (EditText) viewGroup.findViewById(R.id.username_edittext);
-
-        parentViewPager = (RegistrationViewPager) getActivity().findViewById(R.id.pager);
-
-        usernameEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!isActive) return;
-                if (s.length() > 0) {
-                    parentViewPager.setAllowedSwipeDirection(SwipeDirection.right);
-                } else {
-                    parentViewPager.setAllowedSwipeDirection(SwipeDirection.none);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         return viewGroup;
     }
