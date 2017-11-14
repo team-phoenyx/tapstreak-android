@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.text.TextWatcher;
 import android.text.Editable;
 
@@ -122,8 +123,10 @@ public class RegisterActivity extends AppCompatActivity {
                             username = usernameEditText.getText().toString();
                         }
                         if (passwordView != null) {
+                            Toast.makeText(RegisterActivity.this, "password view not null", Toast.LENGTH_SHORT).show();
                             EditText passwordEditText = (EditText) passwordView.findViewById(R.id.password_edittext);
                             if (!passwordEditText.getText().toString().isEmpty()) {
+                                Toast.makeText(RegisterActivity.this, "password text not empty", Toast.LENGTH_SHORT).show();
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                             }
                             passwordEditText.addTextChangedListener(new TextWatcher() {
