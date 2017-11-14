@@ -19,7 +19,6 @@ import io.phoenyx.tapstreak.FriendsActivity;
 import io.phoenyx.tapstreak.R;
 import io.phoenyx.tapstreak.RegisterActivity;
 import io.phoenyx.tapstreak.RegistrationViewPager;
-import io.phoenyx.tapstreak.SwipeDirection;
 import io.phoenyx.tapstreak.json_models.Authentication;
 
 /**
@@ -31,6 +30,7 @@ public class RegistrationWelcomeFragment extends Fragment {
     Button getStartedButton;
     TextView statusTextView;
     RegistrationViewPager parentViewPager;
+    public boolean isActive;
 
     @Nullable
     @Override

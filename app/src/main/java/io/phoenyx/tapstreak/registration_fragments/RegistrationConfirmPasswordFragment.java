@@ -23,6 +23,7 @@ public class RegistrationConfirmPasswordFragment extends Fragment {
 
     EditText confirmPasswordEditText;
     RegistrationViewPager parentViewPager;
+    public boolean isActive;
 
     @Nullable
     @Override
@@ -32,7 +33,6 @@ public class RegistrationConfirmPasswordFragment extends Fragment {
         confirmPasswordEditText = (EditText) viewGroup.findViewById(R.id.confirm_password_edittext);
 
         parentViewPager = (RegistrationViewPager) getActivity().findViewById(R.id.pager);
-        parentViewPager.setAllowedSwipeDirection(SwipeDirection.left);
 
         confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -42,6 +42,7 @@ public class RegistrationConfirmPasswordFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!isActive) return;
                 if (s.length() > 0 && ((RegisterActivity) getActivity()).getPassword().equals(s.toString())) {
                     parentViewPager.setAllowedSwipeDirection(SwipeDirection.all);
                 } else {

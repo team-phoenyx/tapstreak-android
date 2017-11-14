@@ -23,6 +23,7 @@ public class RegistrationUsernameFragment extends Fragment {
 
     EditText usernameEditText;
     RegistrationViewPager parentViewPager;
+    public boolean isActive;
 
     @Nullable
     @Override
@@ -32,7 +33,6 @@ public class RegistrationUsernameFragment extends Fragment {
         usernameEditText = (EditText) viewGroup.findViewById(R.id.username_edittext);
 
         parentViewPager = (RegistrationViewPager) getActivity().findViewById(R.id.pager);
-        parentViewPager.setAllowedSwipeDirection(SwipeDirection.none);
 
         usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -42,6 +42,7 @@ public class RegistrationUsernameFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!isActive) return;
                 if (s.length() > 0) {
                     parentViewPager.setAllowedSwipeDirection(SwipeDirection.right);
                 } else {
