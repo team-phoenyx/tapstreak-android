@@ -46,7 +46,7 @@ public interface TapstreakService {
                                   @Field("pass_hashed") String passwordHashed);
 
     @FormUrlEncoded
-    @POST("/api/user/change-pw")
+    @POST("/api/user/cpw")
     Call<ResponseCode> changePassword(@Field("user_id") String userID,
                                       @Field("access_token") String access_token,
                                       @Field("pass_hashed") String passwordHashed,
@@ -54,19 +54,19 @@ public interface TapstreakService {
                                       @Field("new_salt") String newSalt);
 
     @FormUrlEncoded
-    @POST("/api/user/add-friend")
+    @POST("/api/user/afriend")
     Call<ResponseCode> addFriend(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
                                  @Field("friend_id") String friendID);
 
     @FormUrlEncoded
-    @POST("/api/user/remove-friend")
+    @POST("/api/user/rfriend")
     Call<ResponseCode> removeFriend(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
                                  @Field("friend_id") String friendID);
 
     @FormUrlEncoded
-    @POST("/api/user/refresh-streak")
+    @POST("/api/user/rfstreak")
     Call<ResponseCode> refreshStreak(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
                                  @Field("friend_id") String friendID);

@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Writer;
@@ -176,13 +175,12 @@ public class FriendsActivity extends AppCompatActivity {
                     service.addFriend(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
-                            Toast.makeText(FriendsActivity.this, "onResponse", Toast.LENGTH_LONG).show();
                             refreshFriendsAdapter();
                         }
     
                         @Override
                         public void onFailure(Call<ResponseCode> call, Throwable t) {
-                            Toast.makeText(FriendsActivity.this, "onFailure", Toast.LENGTH_LONG).show();
+                            Snackbar.make(findViewById(android.R.id.content), "Failed to add friend", Snackbar.LENGTH_SHORT).show();
                             refreshFriendsAdapter();
                         }
                     });
@@ -199,9 +197,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     private boolean friendExists(String friendID) {
         if (friends == null || friends.size() == 0) return false;
-        Toast.makeText(FriendsActivity.this, friends.size(), Toast.LENGTH_LONG).show();
         for (Friend friend : friends) {
-            Toast.makeText(FriendsActivity.this, "Friend iterate", Toast.LENGTH_LONG).show();
             if (friend.getId().equals(friendID)) return true;
         }
         return false;
@@ -222,7 +218,6 @@ public class FriendsActivity extends AppCompatActivity {
                     }
                     friendsListView.setAdapter(friendsAdapter);
                 }
-                Toast.makeText(FriendsActivity.this, friends.size() + " friends", Toast.LENGTH_LONG).show();
             }
 
             @Override
