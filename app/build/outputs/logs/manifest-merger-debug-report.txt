@@ -1,278 +1,278 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-MERGED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /Users/terrance/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/9679c7be6e78409256e896b57e4fa6bc/AndroidManifest.xml:2:1-11:12
-MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:17:1-55:12
-MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] /Users/terrance/.gradle/caches/transforms-1/files-1.1/circularprogressbar-1.1.1.aar/5dbb2adf1545615601bd6876327060e9/AndroidManifest.xml:2:1-14:12
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/b07ac9b4c64f354f65516e073aa04576/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/195cade3fc467895dbe17d478b6c5a02/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/50a1e78dbb4ebf555df6bd7a5a7a1e51/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:transition:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/1d333da1a379dc14b97fdc84216c8583/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/725724d9b5de7c3a8ce2be90f1b0741c/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-fragment:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/4f8ab5ffae4d24366b1acdbae09752b9/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-core-ui:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/da1ae228ac9a06d885213f809798d96a/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-media-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/606cfd3b64cf04af6750365da89345f6/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-core-utils:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/e1a3cfaee6f0db7d916e0519c309ec70/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/9813a2302313df4d71425c02cf0a9bd8/AndroidManifest.xml:17:1-31:12
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:17:1-30:12
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+MERGED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c866f4b61896bca5318cc4f5623a4500\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0-beta3.aar\0cacc1d26461050c82d6f25eccfbf8af\AndroidManifest.xml:2:1-11:12
+MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:17:1-55:12
+MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\circularprogressbar-1.1.1.aar\8a1c349a2f624ce5446f80fb7c754593\AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4ec8307e68d86bc84cf4508bee263aa0\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\20cae7bb0db6ae80426b34dfdcb26774\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\6f1456a61334a051d29b376965b6c50f\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\b571cbf2d5d86d835ec82a26641759a8\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\3de285e8b2028b86bbdf165e5c172d05\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3abf8be62a5e554ea993b8c4431397c3\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\c8ff6f90f0c7c9a68072c1e38c86f53d\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\079dc2f7c26e389225df4cd24f0d8791\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\840e84bed231c5372f956aa8dd60b0af\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653e0f12e8fb07541011f14d2c35daa1\AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:17:1-30:12
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
 	package
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:4:5-35
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:4:5-35
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:1-52:12
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:1-52:12
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:6:5-67
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:6:5-67
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:6:22-64
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:6:22-64
 uses-permission#android.permission.NFC
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:7:5-62
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:7:5-62
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:7:22-59
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:7:22-59
 application
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:9:5-50:19
-MERGED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /Users/terrance/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/9679c7be6e78409256e896b57e4fa6bc/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /Users/terrance/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/9679c7be6e78409256e896b57e4fa6bc/AndroidManifest.xml:9:5-20
-MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:45:5-53:19
-MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:45:5-53:19
-MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] /Users/terrance/.gradle/caches/transforms-1/files-1.1/circularprogressbar-1.1.1.aar/5dbb2adf1545615601bd6876327060e9/AndroidManifest.xml:12:5-20
-MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] /Users/terrance/.gradle/caches/transforms-1/files-1.1/circularprogressbar-1.1.1.aar/5dbb2adf1545615601bd6876327060e9/AndroidManifest.xml:12:5-20
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/b07ac9b4c64f354f65516e073aa04576/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/b07ac9b4c64f354f65516e073aa04576/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/195cade3fc467895dbe17d478b6c5a02/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/195cade3fc467895dbe17d478b6c5a02/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/50a1e78dbb4ebf555df6bd7a5a7a1e51/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/50a1e78dbb4ebf555df6bd7a5a7a1e51/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:transition:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/1d333da1a379dc14b97fdc84216c8583/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:transition:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/1d333da1a379dc14b97fdc84216c8583/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-v4:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/725724d9b5de7c3a8ce2be90f1b0741c/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-v4:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/725724d9b5de7c3a8ce2be90f1b0741c/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/4f8ab5ffae4d24366b1acdbae09752b9/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/4f8ab5ffae4d24366b1acdbae09752b9/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-ui:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/da1ae228ac9a06d885213f809798d96a/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-ui:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/da1ae228ac9a06d885213f809798d96a/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-media-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/606cfd3b64cf04af6750365da89345f6/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-media-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/606cfd3b64cf04af6750365da89345f6/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/e1a3cfaee6f0db7d916e0519c309ec70/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/e1a3cfaee6f0db7d916e0519c309ec70/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/9813a2302313df4d71425c02cf0a9bd8/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/9813a2302313df4d71425c02cf0a9bd8/AndroidManifest.xml:25:5-29:19
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:24:5-28:19
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:24:5-28:19
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:9:5-50:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c866f4b61896bca5318cc4f5623a4500\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c866f4b61896bca5318cc4f5623a4500\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0-beta3.aar\0cacc1d26461050c82d6f25eccfbf8af\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0-beta3.aar\0cacc1d26461050c82d6f25eccfbf8af\AndroidManifest.xml:9:5-20
+MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:45:5-53:19
+MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:45:5-53:19
+MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\circularprogressbar-1.1.1.aar\8a1c349a2f624ce5446f80fb7c754593\AndroidManifest.xml:12:5-20
+MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\circularprogressbar-1.1.1.aar\8a1c349a2f624ce5446f80fb7c754593\AndroidManifest.xml:12:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4ec8307e68d86bc84cf4508bee263aa0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4ec8307e68d86bc84cf4508bee263aa0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\20cae7bb0db6ae80426b34dfdcb26774\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\20cae7bb0db6ae80426b34dfdcb26774\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\6f1456a61334a051d29b376965b6c50f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\6f1456a61334a051d29b376965b6c50f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\b571cbf2d5d86d835ec82a26641759a8\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\b571cbf2d5d86d835ec82a26641759a8\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\3de285e8b2028b86bbdf165e5c172d05\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\3de285e8b2028b86bbdf165e5c172d05\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3abf8be62a5e554ea993b8c4431397c3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3abf8be62a5e554ea993b8c4431397c3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\c8ff6f90f0c7c9a68072c1e38c86f53d\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\c8ff6f90f0c7c9a68072c1e38c86f53d\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\079dc2f7c26e389225df4cd24f0d8791\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\079dc2f7c26e389225df4cd24f0d8791\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\840e84bed231c5372f956aa8dd60b0af\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\840e84bed231c5372f956aa8dd60b0af\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653e0f12e8fb07541011f14d2c35daa1\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653e0f12e8fb07541011f14d2c35daa1\AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:12:9-41
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:12:9-41
 	android:icon
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:14:9-40
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:14:9-40
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:15:9-18:49
-MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:46:9-52:63
-MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:46:9-52:63
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:15:9-18:49
+MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:46:9-52:63
+MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:46:9-52:63
 	android:clearTaskOnLaunch
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:48:13-45
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:48:13-45
 	android:screenOrientation
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:17:13-51
-		REJECTED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:49:13-56
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:17:13-51
+		REJECTED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:49:13-56
 	android:stateNotNeeded
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:50:13-42
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:50:13-42
 	android:windowSoftInputMode
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:52:13-60
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:52:13-60
 	android:theme
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:51:13-54
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:51:13-54
 	tools:replace
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:18:13-46
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:18:13-46
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:16:13-74
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:16:13-74
 activity#io.phoenyx.tapstreak.LoginActivity
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:19:9-27:20
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:19:9-27:20
 	android:theme
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:21:13-56
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:21:13-56
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:20:13-42
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:20:13-42
 intent-filter#android.intent.action.MAIN+android.intent.category.DEFAULT
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:22:13-26:29
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:23:17-69
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:23:25-66
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.DEFAULT
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:25:17-76
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:25:17-76
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:25:27-73
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:25:27-73
 activity#io.phoenyx.tapstreak.SplashActivity
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:28:9-36:20
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:28:9-36:20
 	android:theme
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:30:13-47
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:30:13-47
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:29:13-43
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:29:13-43
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:31:13-35:29
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:31:13-35:29
 category#android.intent.category.LAUNCHER
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:34:17-77
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:34:27-74
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:34:27-74
 activity#io.phoenyx.tapstreak.RegisterActivity
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:37:9-44:20
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:37:9-44:20
 	android:theme
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:38:13-56
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:38:13-56
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:37:19-51
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:37:19-51
 activity#io.phoenyx.tapstreak.FriendsActivity
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:45:9-62
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:45:9-62
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:45:19-50
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:45:19-50
 meta-data#preloaded_fonts
-ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:47:9-49:57
+ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:47:9-49:57
 	android:resource
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:49:13-54
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:49:13-54
 	android:name
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:48:13-43
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml:48:13-43
 uses-sdk
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-MERGED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /Users/terrance/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/9679c7be6e78409256e896b57e4fa6bc/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /Users/terrance/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/9679c7be6e78409256e896b57e4fa6bc/AndroidManifest.xml:5:5-7:41
-MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:19:5-43
-MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:19:5-43
-MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] /Users/terrance/.gradle/caches/transforms-1/files-1.1/circularprogressbar-1.1.1.aar/5dbb2adf1545615601bd6876327060e9/AndroidManifest.xml:8:5-10:41
-MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] /Users/terrance/.gradle/caches/transforms-1/files-1.1/circularprogressbar-1.1.1.aar/5dbb2adf1545615601bd6876327060e9/AndroidManifest.xml:8:5-10:41
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/b07ac9b4c64f354f65516e073aa04576/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/b07ac9b4c64f354f65516e073aa04576/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/195cade3fc467895dbe17d478b6c5a02/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/195cade3fc467895dbe17d478b6c5a02/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/50a1e78dbb4ebf555df6bd7a5a7a1e51/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/50a1e78dbb4ebf555df6bd7a5a7a1e51/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/1d333da1a379dc14b97fdc84216c8583/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/1d333da1a379dc14b97fdc84216c8583/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/725724d9b5de7c3a8ce2be90f1b0741c/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/725724d9b5de7c3a8ce2be90f1b0741c/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/4f8ab5ffae4d24366b1acdbae09752b9/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-fragment:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/4f8ab5ffae4d24366b1acdbae09752b9/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-core-ui:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/da1ae228ac9a06d885213f809798d96a/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-ui:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/da1ae228ac9a06d885213f809798d96a/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-media-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/606cfd3b64cf04af6750365da89345f6/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-media-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/606cfd3b64cf04af6750365da89345f6/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/e1a3cfaee6f0db7d916e0519c309ec70/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-utils:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/e1a3cfaee6f0db7d916e0519c309ec70/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/9813a2302313df4d71425c02cf0a9bd8/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/9813a2302313df4d71425c02cf0a9bd8/AndroidManifest.xml:21:5-23:58
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:20:5-22:41
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c866f4b61896bca5318cc4f5623a4500\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c866f4b61896bca5318cc4f5623a4500\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0-beta3.aar\0cacc1d26461050c82d6f25eccfbf8af\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0-beta3.aar\0cacc1d26461050c82d6f25eccfbf8af\AndroidManifest.xml:5:5-7:41
+MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:19:5-43
+MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:19:5-43
+MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\circularprogressbar-1.1.1.aar\8a1c349a2f624ce5446f80fb7c754593\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikhaellopez:circularprogressbar:1.1.1] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\circularprogressbar-1.1.1.aar\8a1c349a2f624ce5446f80fb7c754593\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4ec8307e68d86bc84cf4508bee263aa0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4ec8307e68d86bc84cf4508bee263aa0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\20cae7bb0db6ae80426b34dfdcb26774\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\20cae7bb0db6ae80426b34dfdcb26774\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\6f1456a61334a051d29b376965b6c50f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\6f1456a61334a051d29b376965b6c50f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\b571cbf2d5d86d835ec82a26641759a8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\b571cbf2d5d86d835ec82a26641759a8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\3de285e8b2028b86bbdf165e5c172d05\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\3de285e8b2028b86bbdf165e5c172d05\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3abf8be62a5e554ea993b8c4431397c3\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3abf8be62a5e554ea993b8c4431397c3\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\c8ff6f90f0c7c9a68072c1e38c86f53d\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\c8ff6f90f0c7c9a68072c1e38c86f53d\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\079dc2f7c26e389225df4cd24f0d8791\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\079dc2f7c26e389225df4cd24f0d8791\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\840e84bed231c5372f956aa8dd60b0af\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\840e84bed231c5372f956aa8dd60b0af\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653e0f12e8fb07541011f14d2c35daa1\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653e0f12e8fb07541011f14d2c35daa1\AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Terrance\phoenyx\tapstreak-android\app\src\main\AndroidManifest.xml
 meta-data#android.support.VERSION
-ADDED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/b07ac9b4c64f354f65516e073aa04576/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/b07ac9b4c64f354f65516e073aa04576/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/195cade3fc467895dbe17d478b6c5a02/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/195cade3fc467895dbe17d478b6c5a02/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/50a1e78dbb4ebf555df6bd7a5a7a1e51/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/50a1e78dbb4ebf555df6bd7a5a7a1e51/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/1d333da1a379dc14b97fdc84216c8583/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/1d333da1a379dc14b97fdc84216c8583/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-v4:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/725724d9b5de7c3a8ce2be90f1b0741c/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-v4:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/725724d9b5de7c3a8ce2be90f1b0741c/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/4f8ab5ffae4d24366b1acdbae09752b9/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/4f8ab5ffae4d24366b1acdbae09752b9/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-ui:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/da1ae228ac9a06d885213f809798d96a/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-ui:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/da1ae228ac9a06d885213f809798d96a/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-media-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/606cfd3b64cf04af6750365da89345f6/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-media-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/606cfd3b64cf04af6750365da89345f6/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/e1a3cfaee6f0db7d916e0519c309ec70/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/e1a3cfaee6f0db7d916e0519c309ec70/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/9813a2302313df4d71425c02cf0a9bd8/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-compat:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/9813a2302313df4d71425c02cf0a9bd8/AndroidManifest.xml:26:9-28:38
+ADDED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c866f4b61896bca5318cc4f5623a4500\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c866f4b61896bca5318cc4f5623a4500\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4ec8307e68d86bc84cf4508bee263aa0\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4ec8307e68d86bc84cf4508bee263aa0\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\20cae7bb0db6ae80426b34dfdcb26774\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\20cae7bb0db6ae80426b34dfdcb26774\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\6f1456a61334a051d29b376965b6c50f\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\6f1456a61334a051d29b376965b6c50f\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\b571cbf2d5d86d835ec82a26641759a8\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\b571cbf2d5d86d835ec82a26641759a8\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\3de285e8b2028b86bbdf165e5c172d05\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\3de285e8b2028b86bbdf165e5c172d05\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3abf8be62a5e554ea993b8c4431397c3\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\3abf8be62a5e554ea993b8c4431397c3\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\c8ff6f90f0c7c9a68072c1e38c86f53d\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\c8ff6f90f0c7c9a68072c1e38c86f53d\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\079dc2f7c26e389225df4cd24f0d8791\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\079dc2f7c26e389225df4cd24f0d8791\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\840e84bed231c5372f956aa8dd60b0af\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\840e84bed231c5372f956aa8dd60b0af\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653e0f12e8fb07541011f14d2c35daa1\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\653e0f12e8fb07541011f14d2c35daa1\AndroidManifest.xml:26:9-28:38
 	android:value
-		ADDED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:28:13-35
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:28:13-35
 	android:name
-		ADDED from [com.android.support:design:26.1.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/AndroidManifest.xml:27:13-51
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\fff461140cd4fcdd565533dc645bb2d9\AndroidManifest.xml:27:13-51
 uses-permission#android.permission.CAMERA
-ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:21:5-65
+ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:21:5-65
 	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:21:22-62
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:21:22-62
 uses-feature#android.hardware.camera
-ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:24:5-26:36
+ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:24:5-26:36
 	android:required
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:26:9-33
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:26:9-33
 	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:25:9-47
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:25:9-47
 uses-feature#android.hardware.camera.front
-ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:27:5-29:36
+ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:27:5-29:36
 	android:required
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:29:9-33
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:29:9-33
 	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:28:9-53
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:28:9-53
 uses-feature#android.hardware.camera.autofocus
-ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:32:5-34:36
+ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:32:5-34:36
 	android:required
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:34:9-33
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:34:9-33
 	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:33:9-57
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:33:9-57
 uses-feature#android.hardware.camera.flash
-ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:35:5-37:36
+ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:35:5-37:36
 	android:required
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:37:9-33
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:37:9-33
 	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:36:9-53
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:36:9-53
 uses-feature#android.hardware.screen.landscape
-ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:38:5-40:36
+ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:38:5-40:36
 	android:required
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:40:9-33
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:40:9-33
 	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:39:9-57
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:39:9-57
 uses-feature#android.hardware.wifi
-ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:41:5-43:36
+ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:41:5-43:36
 	android:required
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:43:9-33
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:43:9-33
 	android:name
-		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:42:9-45
+		ADDED from [com.journeyapps:zxing-android-embedded:3.5.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.5.0.aar\16fd624b1c28dc9a285c58865524c694\AndroidManifest.xml:42:9-45
 meta-data#android.arch.lifecycle.VERSION
-ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:25:9-27:47
+ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:25:9-27:47
 	android:value
-		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:27:13-44
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:27:13-44
 	android:name
-		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4b5b882e5f77b4070c64273ad38c2797/AndroidManifest.xml:26:13-58
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Terrance\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\0eecace011def0e5c35d31394c0b2063\AndroidManifest.xml:26:13-58

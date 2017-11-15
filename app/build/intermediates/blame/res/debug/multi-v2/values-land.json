@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/projects/tapstreak-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "C:\\Users\\Terrance\\phoenyx\\tapstreak-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "/home/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c1599db5ede7d6bf2f2b28e4270c233c/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\Terrance\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\c866f4b61896bca5318cc4f5623a4500\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/user/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/6d1c972e83dceca5e5ae6f86d021777d/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\Terrance\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\fff461140cd4fcdd565533dc645bb2d9\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,40 +30,6 @@
                         "endLines": "9",
                         "endColumns": "12",
                         "endOffsets": "505"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/terrance/Documents/phoenyx/tapstreak-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
-            "map": [
-                {
-                    "source": "/Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/res/values-land/values-land.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "232"
-                    },
-                    "to": {
-                        "startLines": "6",
-                        "startColumns": "4",
-                        "startOffsets": "328",
-                        "endLines": "9",
-                        "endColumns": "12",
-                        "endOffsets": "505"
-                    }
-                },
-                {
-                    "source": "/Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/res/values-land/values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
                     }
                 }
             ]

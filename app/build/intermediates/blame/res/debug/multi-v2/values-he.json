@@ -1,25 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/terrance/Documents/phoenyx/tapstreak-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-he/values-he.xml",
+            "outputFile": "C:\\Users\\Terrance\\phoenyx\\tapstreak-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-he\\values-he.xml",
             "map": [
                 {
-                    "source": "/Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/res/values-he/values-he.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,111,161,296",
-                        "endColumns": "55,49,134,89",
-                        "endOffsets": "106,156,291,381"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/projects/tapstreak-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-he/values-he.xml",
-            "map": [
-                {
-                    "source": "/home/user/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/0b08838ad3b42212e9a17980581ac5df/res/values-he/values-he.xml",
+                    "source": "C:\\Users\\Terrance\\.gradle\\caches\\transforms-1\\files-1.1\\zxing-android-embedded-3.5.0.aar\\16fd624b1c28dc9a285c58865524c694\\res\\values-he\\values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
