@@ -25,6 +25,10 @@ public interface TapstreakService {
     Call<User> getUserExternal(@Field("user_id") String userID);
 
     @FormUrlEncoded
+    @POST("/api/user/unexists")
+    Call<ResponseCode> checkUsernameExists(@Field("username") String username);
+
+    @FormUrlEncoded
     @POST("/api/user/create")
     Call<Authentication> registerUser(@Field("username") String username,
                                       @Field("pass_hashed") String passwordHashed,

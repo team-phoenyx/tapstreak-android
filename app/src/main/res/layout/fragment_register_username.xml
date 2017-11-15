@@ -63,4 +63,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/query_title" />
+
+    <TextView
+        android:id="@+id/username_taken_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Username taken"
+        android:textColor="@color/edittext_error"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/username_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/username_edittext" />
 </android.support.constraint.ConstraintLayout>
