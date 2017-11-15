@@ -55,8 +55,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
-        viewPager = (RegistrationViewPager) findViewById(R.id.pager);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
+        viewPager = findViewById(R.id.pager);
+        TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager, true);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                         View usernameView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
                         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
                         if (usernameView != null) {
-                            EditText usernameEditText = (EditText) usernameView.findViewById(R.id.username_edittext);
+                            EditText usernameEditText = usernameView.findViewById(R.id.username_edittext);
                             if (!usernameEditText.getText().toString().isEmpty()) {
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.right);
                             }
@@ -109,12 +109,12 @@ public class RegisterActivity extends AppCompatActivity {
                         
                         viewPager.setAllowedSwipeDirection(SwipeDirection.left);
                         if (usernameView != null) {
-                            EditText usernameEditText = (EditText) usernameView.findViewById(R.id.username_edittext);
+                            EditText usernameEditText = usernameView.findViewById(R.id.username_edittext);
                             username = usernameEditText.getText().toString();
                         }
                         if (passwordView != null) {
                             Toast.makeText(RegisterActivity.this, "password view not null", Toast.LENGTH_SHORT).show();
-                            EditText passwordEditText = (EditText) passwordView.findViewById(R.id.password_edittext);
+                            EditText passwordEditText = passwordView.findViewById(R.id.password_edittext);
                             if (!passwordEditText.getText().toString().isEmpty()) {
                                 Toast.makeText(RegisterActivity.this, "password text not empty", Toast.LENGTH_SHORT).show();
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.all);
@@ -147,11 +147,11 @@ public class RegisterActivity extends AppCompatActivity {
                         
                         viewPager.setAllowedSwipeDirection(SwipeDirection.left);
                         if (passwordView != null) {
-                            EditText passwordEditText = (EditText) passwordView.findViewById(R.id.password_edittext);
+                            EditText passwordEditText = passwordView.findViewById(R.id.password_edittext);
                             password = passwordEditText.getText().toString();
                         }
                         if (confirmPasswordView != null) {
-                            EditText confirmPasswordEditText = (EditText) confirmPasswordView.findViewById(R.id.confirm_password_edittext);
+                            EditText confirmPasswordEditText = confirmPasswordView.findViewById(R.id.confirm_password_edittext);
                             if (confirmPasswordEditText.getText().toString().equals(password)) {
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                             }
@@ -182,8 +182,8 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 View welcomeView = ((RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG)).getView();
-                                Button getStartedButton = (Button) welcomeView.findViewById(R.id.get_started_button);
-                                TextView statusLabel = (TextView) welcomeView.findViewById(R.id.status_label);
+                                Button getStartedButton = welcomeView.findViewById(R.id.get_started_button);
+                                TextView statusLabel = welcomeView.findViewById(R.id.status_label);
                                 registerUser(username, password, getStartedButton, statusLabel);
                             }
                         }).start();
@@ -250,7 +250,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void initUsernameFragment(View usernameView) {
         if (usernameView != null) {
-            EditText usernameEditText = (EditText) usernameView.findViewById(R.id.username_edittext);
+            EditText usernameEditText = usernameView.findViewById(R.id.username_edittext);
             if (!usernameEditText.getText().toString().isEmpty()) {
                 viewPager.setAllowedSwipeDirection(SwipeDirection.right);
             }

@@ -34,11 +34,11 @@ public class LoginActivity extends AppCompatActivity {
 
         tapstreakService = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
-        usernameEditText = (EditText) findViewById(R.id.username_edittext);
-        passwordEditText = (EditText) findViewById(R.id.password_edittext);
-        signInButton = (Button) findViewById(R.id.sign_in_button);
-        registerButton = (Button) findViewById(R.id.join_button);
-        loadingProgressCircle = (ProgressBar) findViewById(R.id.loading_progresscircle);
+        usernameEditText = findViewById(R.id.username_edittext);
+        passwordEditText = findViewById(R.id.password_edittext);
+        signInButton = findViewById(R.id.sign_in_button);
+        registerButton = findViewById(R.id.join_button);
+        loadingProgressCircle = findViewById(R.id.loading_progresscircle);
 
         usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override

@@ -5,5 +5,5 @@ package io.phoenyx.tapstreak;
  */
 
 public enum SwipeDirection {
-    all, left, right, none;
+    all, left, right, none
 }

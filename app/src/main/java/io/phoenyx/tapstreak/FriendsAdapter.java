@@ -43,9 +43,9 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         Friend friend = getItem(position);
 
         if (friend != null) {
-            TextView usernameTextView = (TextView) v.findViewById(R.id.friendNameTextView);
-            TextView streakTextView = (TextView) v.findViewById(R.id.friendStreakTextView);
-            CircularProgressBar timeLeftProgressBar = (CircularProgressBar) v.findViewById(R.id.timeLeftProgressBar);
+            TextView usernameTextView = v.findViewById(R.id.friendNameTextView);
+            TextView streakTextView = v.findViewById(R.id.friendStreakTextView);
+            CircularProgressBar timeLeftProgressBar = v.findViewById(R.id.timeLeftProgressBar);
 
             usernameTextView.setText(friend.getUsername());
             streakTextView.setText(String.valueOf(friend.getStreakLength()));

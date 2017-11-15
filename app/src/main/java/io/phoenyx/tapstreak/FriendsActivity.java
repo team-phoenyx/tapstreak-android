@@ -2,6 +2,7 @@ package io.phoenyx.tapstreak;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -14,18 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.Writer;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.journeyapps.barcodescanner.CaptureActivity;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import io.phoenyx.tapstreak.json_models.Friend;
@@ -43,6 +40,9 @@ public class FriendsActivity extends AppCompatActivity {
     FriendsAdapter friendsAdapter;
     ListView friendsListView;
     TextView lonelyTextView;
+    FloatingActionButton qrFAB;
+    FloatingActionButton cameraFAB;
+    ProgressBar qrLoadingProgressCircle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +55,8 @@ public class FriendsActivity extends AppCompatActivity {
 
         service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
-        friendsListView = (ListView) findViewById(R.id.friendsListView);
-        lonelyTextView = (TextView) findViewById(R.id.lonely_textview);
+        friendsListView = findViewById(R.id.friendsListView);
+        lonelyTextView = findViewById(R.id.lonely_textview);
 
         refreshFriendsAdapter();
 
@@ -73,34 +73,47 @@ public class FriendsActivity extends AppCompatActivity {
         */
 
         //QR
-        FloatingActionButton qrFAB = (FloatingActionButton) findViewById(R.id.qrFAB);
-        FloatingActionButton cameraFAB = (FloatingActionButton) findViewById(R.id.cameraFAB);
+        qrFAB = findViewById(R.id.qrFAB);
+        cameraFAB = findViewById(R.id.cameraFAB);
+        qrLoadingProgressCircle = findViewById(R.id.qr_loading_progresscircle);
 
         qrFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder qrDialogBuilder = new AlertDialog.Builder(FriendsActivity.this);
-                LayoutInflater layoutInflater = getLayoutInflater();
-                View qrCodeView = layoutInflater.inflate(R.layout.qr_dialog, null);
-                qrDialogBuilder.setView(qrCodeView);
-                qrDialogBuilder.setCancelable(true);
-                qrDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                qrLoadingProgressCircle.setVisibility(View.VISIBLE);
+                new Thread(new Runnable() {
                     @Override
-                    public void onCancel(DialogInterface dialog) {
-                        refreshFriendsAdapter();
+                    public void run() {
+                        final AlertDialog.Builder qrDialogBuilder = new AlertDialog.Builder(FriendsActivity.this);
+                        LayoutInflater layoutInflater = getLayoutInflater();
+                        View qrCodeView = layoutInflater.inflate(R.layout.qr_dialog, null);
+                        qrDialogBuilder.setView(qrCodeView);
+                        qrDialogBuilder.setCancelable(true);
+                        qrDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                refreshFriendsAdapter();
+                            }
+                        });
+
+                        ImageView qrImageView = qrCodeView.findViewById(R.id.qrImageView);
+
+                        try {
+                            //Appends the millis since epoch in hexadecimal to the userID
+                            qrImageView.setImageBitmap(createBarcodeBitmap(Long.toString(System.currentTimeMillis(), 16) + ":" + userID));
+                        } catch (WriterException e) {
+                            e.printStackTrace();
+                        }
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                qrDialogBuilder.create().show();
+                                qrLoadingProgressCircle.setVisibility(View.INVISIBLE);
+                            }
+                        });
                     }
-                });
-
-                ImageView qrImageView = (ImageView) qrCodeView.findViewById(R.id.qrImageView);
-
-                try {
-                    //Appends the millis since epoch in hexadecimal to the userID
-                    qrImageView.setImageBitmap(createBarcodeBitmap(Long.toString(System.currentTimeMillis(), 16) + ":" + userID));
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
-
-                qrDialogBuilder.create().show();
+                }).start();
             }
         });
 
@@ -118,7 +131,8 @@ public class FriendsActivity extends AppCompatActivity {
     private Bitmap createBarcodeBitmap(String data) throws WriterException {
         QRCodeWriter writer = new QRCodeWriter();
         try {
-            BitMatrix bitMatrix = writer.encode(data, BarcodeFormat.QR_CODE, 512, 512);
+            int size = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.6);
+            BitMatrix bitMatrix = writer.encode(data, BarcodeFormat.QR_CODE, size, size);
             int width = bitMatrix.getWidth();
             int height = bitMatrix.getHeight();
             Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
@@ -161,7 +175,6 @@ public class FriendsActivity extends AppCompatActivity {
                     service.refreshStreak(userID, accessToken, friendID).enqueue(new Callback<ResponseCode>() {
                         @Override
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
-                            Snackbar.make(findViewById(android.R.id.content), response.body().getRespCode(), Snackbar.LENGTH_SHORT).show();
                             refreshFriendsAdapter();
                         }
 

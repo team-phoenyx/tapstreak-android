@@ -57,4 +57,18 @@
         app:layout_constraintBottom_toTopOf="@id/qrFAB"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/camera" />
+
+    <ProgressBar
+        android:id="@+id/qr_loading_progresscircle"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:indeterminateTint="@color/colorAccent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/qrFAB"
+        app:layout_constraintEnd_toEndOf="@+id/qrFAB"
+        app:layout_constraintStart_toStartOf="@+id/qrFAB"
+        app:layout_constraintTop_toTopOf="@id/qrFAB" />
 </android.support.constraint.ConstraintLayout>
