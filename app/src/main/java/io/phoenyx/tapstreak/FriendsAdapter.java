@@ -54,7 +54,7 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
             double timeElapsedMins = timeElapsedMillis / 60000.0;
             double timeElapsedHours = timeElapsedMins / 60.0;
 
-            if (timeElapsedHours > 8 && timeElapsedHours < 24) timeLeftProgressBar.setColor(Color.GREEN);
+            if (timeElapsedHours > 8 && timeElapsedHours < 24) timeLeftProgressBar.setColor(Color.rgb(34, 139, 34));
             if (timeElapsedHours >= 24) timeLeftProgressBar.setColor(Color.RED);
             timeLeftProgressBar.setProgressWithAnimation((float) ((32 - timeElapsedHours) / 32.0 * 100));
         }

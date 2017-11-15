@@ -48,6 +48,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="io.phoenyx.tapstreak.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,6 +58,7 @@
         </activity>
         <activity
             android:name="io.phoenyx.tapstreak.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,6 +68,7 @@
         </activity>
         <activity
             android:name="io.phoenyx.tapstreak.RegisterActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,7 +76,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="io.phoenyx.tapstreak.FriendsActivity" />
+        <activity
+            android:name="io.phoenyx.tapstreak.FriendsActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

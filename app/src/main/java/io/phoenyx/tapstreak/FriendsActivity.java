@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.journeyapps.barcodescanner.CaptureActivity;
 import java.util.List;
@@ -57,8 +58,6 @@ public class FriendsActivity extends AppCompatActivity {
 
         friendsListView = findViewById(R.id.friendsListView);
         lonelyTextView = findViewById(R.id.lonely_textview);
-
-        refreshFriendsAdapter();
 
         /*
         //NFC
@@ -120,12 +119,22 @@ public class FriendsActivity extends AppCompatActivity {
         cameraFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Intent intent = new Intent(getApplicationContext(), CaptureActivity.class);
                 intent.setAction("com.google.zxing.client.android.SCAN");
                 intent.putExtra("SAVE_HISTORY", false);
                 startActivityForResult(intent, 0);
+                */
+
+                new IntentIntegrator(FriendsActivity.this).setBeepEnabled(false).initiateScan();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshFriendsAdapter();
     }
 
     private Bitmap createBarcodeBitmap(String data) throws WriterException {
