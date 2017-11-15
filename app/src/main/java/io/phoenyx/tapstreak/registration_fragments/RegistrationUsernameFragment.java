@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import io.phoenyx.tapstreak.R;
+import io.phoenyx.tapstreak.RegisterActivity;
 import io.phoenyx.tapstreak.SwipeDirection;
 import io.phoenyx.tapstreak.RegistrationViewPager;
 
@@ -24,8 +25,15 @@ public class RegistrationUsernameFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_register_username, container, false);
+        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_register_username, container, false);
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RegisterActivity parent = (RegisterActivity) getActivity();
+                parent.initUsernameFragment(viewGroup);
+            }
+        }).start();
         return viewGroup;
     }
 }

@@ -60,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager, true);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setAllowedSwipeDirection(SwipeDirection.all);
+        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -248,8 +248,34 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    public String getPassword() {
-        return password;
+    public void initUsernameFragment(View usernameView) {
+        if (usernameView != null) {
+            EditText usernameEditText = (EditText) usernameView.findViewById(R.id.username_edittext);
+            if (!usernameEditText.getText().toString().isEmpty()) {
+                viewPager.setAllowedSwipeDirection(SwipeDirection.right);
+            }
+            usernameEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (s.length() > 0) {
+                        viewPager.setAllowedSwipeDirection(SwipeDirection.right);
+                    } else {
+                        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
+        }
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
