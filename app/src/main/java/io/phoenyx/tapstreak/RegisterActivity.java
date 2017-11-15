@@ -48,11 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
     private static final int CONFIRM_PASSWORD_FRAGMENT_TAG = 2;
     private static final int WELCOME_FRAGMENT_TAG = 3;
 
-    RegistrationUsernameFragment registrationUsernameFragment;
-    RegistrationPasswordFragment registrationPasswordFragment;
-    RegistrationConfirmPasswordFragment registrationConfirmPasswordFragment;
-    RegistrationWelcomeFragment registrationWelcomeFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager, true);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
-
-        registrationUsernameFragment = (RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG);
-        registrationPasswordFragment = (RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG);
-        registrationConfirmPasswordFragment = (RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG);
-        registrationWelcomeFragment = (RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG);
+        viewPager.setAllowedSwipeDirection(SwipeDirection.all);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -191,8 +181,9 @@ public class RegisterActivity extends AppCompatActivity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                Button getStartedButton = (Button) registrationWelcomeFragment.getView().findViewById(R.id.get_started_button);
-                                TextView statusLabel = (TextView) registrationWelcomeFragment.getView().findViewById(R.id.status_label);
+                                View welcomeView = ((RegistrationWelcomeFragment) pagerAdapter.instantiateItem(viewPager, WELCOME_FRAGMENT_TAG)).getView();
+                                Button getStartedButton = (Button) welcomeView.findViewById(R.id.get_started_button);
+                                TextView statusLabel = (TextView) welcomeView.findViewById(R.id.status_label);
                                 registerUser(username, password, getStartedButton, statusLabel);
                             }
                         }).start();
