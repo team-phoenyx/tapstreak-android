@@ -3,7 +3,11 @@
     <color name="colorPrimary">#657afb</color>
     <color name="colorPrimaryDark">#4857b3</color>
     <color name="colorAccent">#8898ff</color>
+    <color name="colorError">#FA8094</color>
+    <color name="colorDisabledLight">#D7D7D9</color>
+    <color name="colorIcon">#777472</color>
+
     <color name="white">#ffffff</color>
-    <color name="white_hint">#cfcfcf</color>
     <color name="edittext_error">#cd1c1c</color>
+    <color name="background">#f2f2f2</color>
 </resources>

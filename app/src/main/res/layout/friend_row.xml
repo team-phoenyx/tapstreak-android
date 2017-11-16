@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foregroundGravity="center_vertical"
@@ -9,40 +11,48 @@
     android:padding="12dp"
     android:weightSum="1">
 
-    <com.mikhaellopez.circularprogressbar.CircularProgressBar
-        android:id="@+id/timeLeftProgressBar"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_weight="0.01"
-        android:foregroundGravity="center"
-        android:indeterminate="false"
-        android:progressTint="@color/colorPrimaryDark"
-        app:cpb_background_progressbar_color="@android:color/transparent"
-        app:cpb_background_progressbar_width="5dp"
-        app:cpb_progress="0"
-        app:cpb_progressbar_color="@color/colorPrimary"
-        app:cpb_progressbar_width="5dp" />
-
     <TextView
         android:id="@+id/friendNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_weight="0.75"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat"
         android:text="avigloz"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/timer_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/timer_ready" />
 
     <TextView
         android:id="@+id/friendStreakTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.2"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
         android:fontFamily="@font/montserrat"
         android:foregroundGravity="right"
         android:gravity="right"
         android:text="28"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
-</LinearLayout>
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timer_imageview"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

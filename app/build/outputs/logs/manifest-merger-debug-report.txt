@@ -90,7 +90,7 @@ MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/terrance/.gradle/cache
 	android:allowBackup
 		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:14:9-40
+		ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:14:9-52
 activity#com.journeyapps.barcodescanner.CaptureActivity
 ADDED from /Users/terrance/Documents/phoenyx/tapstreak-android/app/src/main/AndroidManifest.xml:15:9-18:49
 MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/terrance/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/1209143c63c78dd613bd5d533b177fb3/AndroidManifest.xml:46:9-52:63
