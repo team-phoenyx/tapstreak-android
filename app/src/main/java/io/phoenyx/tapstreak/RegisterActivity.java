@@ -46,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     RegistrationViewPager viewPager;
     PagerAdapter pagerAdapter;
     String username, password;
+    boolean isPasswordFragmentSelected;
 
     private Timer timer;
     private final long DELAY = 500; // in ms
@@ -84,13 +85,9 @@ public class RegisterActivity extends AppCompatActivity {
                 switch (position) {
                     //TODO: CHECK FOR FIELDS FILLED IN
                     case USERNAME_FRAGMENT_TAG:
+                        isPasswordFragmentSelected = false;
                         View usernameView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
-                        if (usernameView != null) {
-                            EditText usernameEditText = usernameView.findViewById(R.id.username_edittext);
-                            if (!usernameEditText.getText().toString().isEmpty()) {
-                                viewPager.setAllowedSwipeDirection(SwipeDirection.right);
-                            }
-                        }
+                        initUsernameFragment(usernameView);
                         /*
                         View usernameView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
                         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
@@ -124,6 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
                         */
                         break;
                     case PASSWORD_FRAGMENT_TAG:
+                        isPasswordFragmentSelected = true;
                         usernameView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
                         View passwordView = ((RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG)).getView();
                         
@@ -160,6 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         break;
                     case CONFIRM_PASSWORD_FRAGMENT_TAG:
+                        isPasswordFragmentSelected = false;
                         passwordView = ((RegistrationPasswordFragment) pagerAdapter.instantiateItem(viewPager, PASSWORD_FRAGMENT_TAG)).getView();
                         View confirmPasswordView = ((RegistrationConfirmPasswordFragment) pagerAdapter.instantiateItem(viewPager, CONFIRM_PASSWORD_FRAGMENT_TAG)).getView();
                         
@@ -196,6 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         break;
                     case WELCOME_FRAGMENT_TAG:
+                        isPasswordFragmentSelected = false;
                         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
                         //Hide soft keyboard
                         View view = getCurrentFocus();
@@ -312,6 +312,8 @@ public class RegisterActivity extends AppCompatActivity {
             if (!usernameEditText.getText().toString().isEmpty()) {
                 viewPager.setAllowedSwipeDirection(SwipeDirection.all);
             }
+
+            if (isPasswordFragmentSelected) return;
             usernameEditText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -352,7 +354,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         public void run() {
                                             if (response.body().getRespCode().equals("100")) {
                                                 uniqueUNImageView.setVisibility(View.VISIBLE);
-                                                viewPager.setAllowedSwipeDirection(SwipeDirection.right);
+                                                viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                                             } else if (response.body().getRespCode().equals("2")) {
                                                 usernameTakenLabel.setVisibility(View.VISIBLE);
                                                 usernameEditText.getBackground().setColorFilter(getResources().getColor(R.color.edittext_error), PorterDuff.Mode.SRC_ATOP);
