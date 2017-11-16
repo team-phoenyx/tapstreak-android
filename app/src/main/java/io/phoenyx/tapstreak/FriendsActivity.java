@@ -161,7 +161,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 0) {
+        if (requestCode == 49374) {
             if (resultCode == RESULT_OK) {
                 String qrString = data.getStringExtra("SCAN_RESULT");
                 String[] params = qrString.split(":");
@@ -170,7 +170,7 @@ public class FriendsActivity extends AppCompatActivity {
                     Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                
+
                 long qrMillis = Long.parseLong(params[0], 16);
                 long currentMillis = System.currentTimeMillis();
                 if (qrMillis > currentMillis || currentMillis - qrMillis > 60000) {
@@ -199,21 +199,22 @@ public class FriendsActivity extends AppCompatActivity {
                         public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
                             refreshFriendsAdapter();
                         }
-    
+
                         @Override
                         public void onFailure(Call<ResponseCode> call, Throwable t) {
                             Snackbar.make(findViewById(android.R.id.content), "Failed to add friend", Snackbar.LENGTH_SHORT).show();
                             refreshFriendsAdapter();
                         }
                     });
-                    
+
                 }
                 //TODO ADD FRIEND
             } else if (resultCode == RESULT_CANCELED) {
                 refreshFriendsAdapter();
             }
+            refreshFriendsAdapter();
         }
-        refreshFriendsAdapter();
+
 
     }
 
