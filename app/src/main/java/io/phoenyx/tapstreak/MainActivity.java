@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(STREAKS_FRAGMENT_TAG);
         viewPager.setAllowedSwipeDirection(SwipeDirection.all);
 
-        refreshFriendsAndStreaks();
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -278,6 +276,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshFriendsAndStreaks();
     }
 
     private class MainPagerAdapter extends FragmentStatePagerAdapter {
