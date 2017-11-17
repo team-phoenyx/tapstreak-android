@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,17 +47,23 @@ public class MainActivity extends AppCompatActivity {
     PagerAdapter pagerAdapter;
     String userID, accessToken;
     List<Friend> friends;
+    Bitmap qrBitmap;
+    Handler qrHandler;
 
     TapstreakService service;
 
     ListView streaksListView;
     TextView lonelyTextView;
+    ImageView qrImageView;
+    ProgressBar qrNFCLoadingProgressCircle;
 
     private static final int NUM_PAGES = 3;
 
     private static final int QR_NFC_FRAGMENT_TAG = 0;
     private static final int STREAKS_FRAGMENT_TAG = 1;
     private static final int FRIENDS_FRAGMENT_TAG = 2;
+    
+    private static final int QR_INTERVAL = 60000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +81,22 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         viewPager.setCurrentItem(STREAKS_FRAGMENT_TAG);
         viewPager.setAllowedSwipeDirection(SwipeDirection.all);
+        
+        qrHandler = new Handler();
+        
+        Thread generateQRThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis(), 16) + ":" + userID);
+                if (qrImageView != null) {
+                    qrImageView.setImageBitmap(qrBitmap);
+                    if (qrNFCLoadingProgressCircle != null) {
+                        qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
+                    }
+                }
+                qrHandler.postDelayed(this, QR_INTERVAL);
+            }
+        });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -86,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case QR_NFC_FRAGMENT_TAG:
                         View qrnfcView = ((QRNFCFragment) pagerAdapter.instantiateItem(viewPager, QR_NFC_FRAGMENT_TAG)).getView();
-                        final ImageView qrImageView = qrnfcView.findViewById(R.id.qr_imageview);
-                        final ProgressBar qrNFCLoadingProgressCircle = qrnfcView.findViewById(R.id.qr_nfc_loading_progresscircle);
+                        qrImageView = qrnfcView.findViewById(R.id.qr_imageview);
+                        qrNFCLoadingProgressCircle = qrnfcView.findViewById(R.id.qr_nfc_loading_progresscircle);
                         qrImageView.setImageBitmap(null);
 
                         qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
@@ -107,15 +130,16 @@ public class MainActivity extends AppCompatActivity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                final Bitmap bitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis(), 16) + ":" + userID);
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        qrImageView.setImageBitmap(bitmap);
-                                        qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
-                                    }
-                                });
+                                
+                                if (qrBitmap != null){
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            qrImageView.setImageBitmap(qrBitmap);
+                                            qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
+                                        }
+                                    });
+                                }
                             }
                         }).start();
                     case STREAKS_FRAGMENT_TAG:
