@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                         View qrnfcView = ((QRNFCFragment) pagerAdapter.instantiateItem(viewPager, QR_NFC_FRAGMENT_TAG)).getView();
                         qrImageView = qrnfcView.findViewById(R.id.qr_imageview);
                         qrNFCLoadingProgressCircle = qrnfcView.findViewById(R.id.qr_nfc_loading_progresscircle);
-                        qrImageView.setImageBitmap(null);
+                        
+                        if (qrBitmap == null) qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
 
-                        qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
 
                         /* PUT IN ANOTHER THREAD
                         //NFC
