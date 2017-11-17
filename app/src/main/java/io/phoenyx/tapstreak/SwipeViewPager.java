@@ -9,21 +9,21 @@ import android.view.MotionEvent;
  * Created by Terrance on 7/13/2017.
  */
 
-public class RegistrationViewPager extends ViewPager {
+public class SwipeViewPager extends ViewPager {
     private float initialXValue;
     private SwipeDirection direction;
 
-    public RegistrationViewPager(Context context) {
+    public SwipeViewPager(Context context) {
         super(context);
     }
 
-    public RegistrationViewPager(Context context, AttributeSet attrs) {
+    public SwipeViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (this.IsSwipeAllowed(event)) {
+        if (this.isSwipeAllowed(event)) {
             return super.onTouchEvent(event);
         }
 
@@ -32,14 +32,14 @@ public class RegistrationViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (this.IsSwipeAllowed(event)) {
+        if (this.isSwipeAllowed(event)) {
             return super.onInterceptTouchEvent(event);
         }
 
         return false;
     }
 
-    private boolean IsSwipeAllowed(MotionEvent event) {
+    private boolean isSwipeAllowed(MotionEvent event) {
         if(this.direction == SwipeDirection.all) return true;
 
         if(this.direction == SwipeDirection.none) return false;

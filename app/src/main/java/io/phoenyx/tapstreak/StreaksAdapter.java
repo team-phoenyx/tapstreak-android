@@ -25,10 +25,10 @@ import io.phoenyx.tapstreak.json_models.Friend;
  * Created by terrance on 5/20/17.
  */
 
-public class FriendsAdapter extends ArrayAdapter<Friend> {
+public class StreaksAdapter extends ArrayAdapter<Friend> {
     Context context;
 
-    public FriendsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Friend> objects) {
+    public StreaksAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Friend> objects) {
         super(context, resource, objects);
         this.context = context;
     }

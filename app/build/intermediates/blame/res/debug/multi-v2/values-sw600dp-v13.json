@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/terrance/Documents/phoenyx/tapstreak-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "C:\\Users\\Terrance\\phoenyx\\tapstreak-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/terrance/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/a750e059ed13a258a4a6c235df378578/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Terrance\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.1.0.aar\\fff461140cd4fcdd565533dc645bb2d9\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/terrance/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/d984d1fe493ec29c7fdd8a2117e55860/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Terrance\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\c866f4b61896bca5318cc4f5623a4500\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

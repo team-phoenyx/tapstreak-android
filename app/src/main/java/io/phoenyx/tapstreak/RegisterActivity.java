@@ -9,7 +9,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.INotificationSideChannel;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -24,9 +23,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.text.TextWatcher;
 import android.text.Editable;
-
-import org.apache.http.auth.AUTH;
-import org.w3c.dom.Text;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,7 +39,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    RegistrationViewPager viewPager;
+    SwipeViewPager viewPager;
     PagerAdapter pagerAdapter;
     String username, password;
     boolean isPasswordFragmentSelected;
@@ -70,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         TabLayout tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager, true);
-        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new RegisterPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
 
@@ -83,7 +79,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
-                    //TODO: CHECK FOR FIELDS FILLED IN
                     case USERNAME_FRAGMENT_TAG:
                         isPasswordFragmentSelected = false;
                         View usernameView = ((RegistrationUsernameFragment) pagerAdapter.instantiateItem(viewPager, USERNAME_FRAGMENT_TAG)).getView();
@@ -271,10 +266,10 @@ public class RegisterActivity extends AppCompatActivity {
                     getStartedButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                            friendsIntent.putExtra("user_id", authentication.getUserId());
-                            friendsIntent.putExtra("access_token", authentication.getAccessToken());
-                            startActivity(friendsIntent);
+                            Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                            mainIntent.putExtra("user_id", authentication.getUserId());
+                            mainIntent.putExtra("access_token", authentication.getAccessToken());
+                            startActivity(mainIntent);
 
                             finish();
                         }
@@ -387,8 +382,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
+    private class RegisterPagerAdapter extends FragmentStatePagerAdapter {
+        public RegisterPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 

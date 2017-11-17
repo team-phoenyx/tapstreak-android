@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:backgroundTint="@color/background"
-    tools:context="io.phoenyx.tapstreak.FriendsActivity">
+    tools:context="io.phoenyx.tapstreak.main_fragments.StreaksFragment">
 
     <TextView
         android:id="@+id/lonely_textview"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/friendsListView"
+        android:id="@+id/streaks_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
         tools:layout_constraintTop_creator="1" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/qrFAB"
+        android:id="@+id/scanner_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -50,32 +50,7 @@
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/qrcode" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/cameraFAB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toTopOf="@id/qrFAB"
-        app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/camera" />
-
-    <ProgressBar
-        android:id="@+id/qr_loading_progresscircle"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:indeterminateTint="@color/colorAccent"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/qrFAB"
-        app:layout_constraintEnd_toEndOf="@+id/qrFAB"
-        app:layout_constraintStart_toStartOf="@+id/qrFAB"
-        app:layout_constraintTop_toTopOf="@id/qrFAB" />
 
     <TextView
         android:id="@+id/app_label"
@@ -94,17 +69,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
-        android:background="@color/background"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintBottom_toBottomOf="@+id/app_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/app_label"
         app:layout_constraintTop_toTopOf="@+id/app_label"
         app:srcCompat="@drawable/settings" />
 </android.support.constraint.ConstraintLayout>

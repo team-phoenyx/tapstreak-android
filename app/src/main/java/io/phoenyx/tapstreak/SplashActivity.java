@@ -31,10 +31,10 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(loginIntent);
                         finish();
                     } else {
-                        Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                        friendsIntent.putExtra("user_id", id);
-                        friendsIntent.putExtra("access_token", accessToken);
-                        startActivity(friendsIntent);
+                        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        mainIntent.putExtra("user_id", id);
+                        mainIntent.putExtra("access_token", accessToken);
+                        startActivity(mainIntent);
                         finish();
                     }
                 } else {

@@ -161,10 +161,10 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("access_token", accessToken);
                     editor.apply();
 
-                    Intent friendsIntent = new Intent(getApplicationContext(), FriendsActivity.class);
-                    friendsIntent.putExtra("user_id", id);
-                    friendsIntent.putExtra("access_token", accessToken);
-                    startActivity(friendsIntent);
+                    Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    mainIntent.putExtra("user_id", id);
+                    mainIntent.putExtra("access_token", accessToken);
+                    startActivity(mainIntent);
                     finish();
                 } else {
                     Snackbar.make(findViewById(android.R.id.content), "Username/password is incorrect", Snackbar.LENGTH_SHORT).show();
