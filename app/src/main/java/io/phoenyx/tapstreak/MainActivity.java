@@ -231,13 +231,23 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
+
+    /**
+     * In this case, handles response from QR scanner activity
+     * @param requestCode Request identifier from calling Intent
+     * @param resultCode Result of the separate activity
+     * @param data Data sent by separate activity
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 49374) {
-            if (resultCode == RESULT_OK) {
-                String qrString = data.getStringExtra("SCAN_RESULT");
+        if (requestCode == 49374) { //Specific requestCode of ZXing scanner
+            if (resultCode == RESULT_OK) { //Check that result was OK
+                String qrString = data.getStringExtra("SCAN_RESULT"); //Gets raw string data from scan
+
+                //Parse data to timestamp + userID
                 String[] params = qrString.split(":");
-                if (params.length != 2) {
+
+                if (params.length != 2) { //Terminate if there are more than 2 parameters
                     refreshFriendsAndStreaks();
                     Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
                     return;
@@ -245,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
 
                 long qrMillis = Long.parseLong(params[0], 16);
                 long currentMillis = System.currentTimeMillis();
-                if (qrMillis > currentMillis || currentMillis - qrMillis > 60000) {
+                if (qrMillis > currentMillis || currentMillis - qrMillis > 60000) { //Terminate if QR code is expired
                     refreshFriendsAndStreaks();
                     Snackbar.make(findViewById(android.R.id.content), "QR Code expired", Snackbar.LENGTH_SHORT).show();
                     return;
@@ -290,6 +300,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Checks if another user with id = friendID already exists in the user's friend list
+     * @param friendID
+     * @return true if another user with id = friendID exists in user's friend list, false if not
+     */
     private boolean friendExists(String friendID) {
         if (friends == null || friends.size() == 0) return false;
         for (Friend friend : friends) {
@@ -298,14 +313,19 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Pulls new user information from API, and updates the streaks and friends fragment listviews
+     */
     private void refreshFriendsAndStreaks() {
         service.getUserInternal(userID, accessToken).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                //while (lonelyTextView == null) {}
                 User user = response.body();
-                if (user.getRespCode() == null) {
+                if (user.getRespCode() == null) { //Checks if response is successful; resp_code should be null
                     friends = user.getFriends();
+                    //TODO SORT FRIENDS BY URGENCY, THEN STREAK COUNT DESC
+
+                    //Update streaksListView with new user streak data
                     StreaksAdapter streaksAdapter = new StreaksAdapter(MainActivity.this, R.layout.friend_row, friends);
                     if (friends.size() == 0) {
                         lonelyTextView.setVisibility(View.VISIBLE);
@@ -327,26 +347,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        isQRGenerationRunning = true;
-        refreshFriendsAndStreaks();
+        isQRGenerationRunning = true; //Activate generateQRThread
+        refreshFriendsAndStreaks(); //Update user streaks and friends
+
+        //If last QR code is expired, restart generateQRThread to generate a new one immediately
         if (QR_INTERVAL - (System.currentTimeMillis() - lastRefreshTime) < 1 && lastRefreshTime != 0) {
+            //Reset qrBitmap, lastQRBitmap, and qrImageView
             qrBitmap = null;
             lastQRBitmap = null;
             qrImageView.setImageBitmap(null);
             qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
+
+            //Restart generateQRThread, start new instance of generateQRThread without delay
             qrHandler.removeCallbacks(generateQRThread);
             qrHandler.post(generateQRThread);
         }
-        //qrHandler.removeCallbacks(generateQRThread);
-        //qrHandler.postDelayed(generateQRThread, QR_INTERVAL);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        isQRGenerationRunning = false;
+        isQRGenerationRunning = false; //Deactivate generateQRThread as to not waste system resources
     }
 
+    /**
+     * PagerAdapter to facilitate the page changes between QR/NFC, Streaks, and Friends fragments
+     */
     private class MainPagerAdapter extends FragmentStatePagerAdapter {
 
         public MainPagerAdapter(FragmentManager fm) {
