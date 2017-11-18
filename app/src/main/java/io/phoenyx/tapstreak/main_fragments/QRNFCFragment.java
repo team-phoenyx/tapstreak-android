@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import io.phoenyx.tapstreak.MainActivity;
 import io.phoenyx.tapstreak.R;
 
 /**
@@ -19,6 +20,14 @@ public class QRNFCFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_qr_nfc, container, false);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MainActivity parent = (MainActivity) getActivity();
+                parent.initQRNFCView(viewGroup);
+            }
+        }).start();
 
         return viewGroup;
     }

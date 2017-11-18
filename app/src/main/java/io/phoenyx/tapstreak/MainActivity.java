@@ -1,5 +1,6 @@
 package io.phoenyx.tapstreak;
 
+import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     List<Friend> friends;
     Bitmap qrBitmap;
     Handler qrHandler;
+    Thread generateQRThread;
 
     TapstreakService service;
 
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     TextView lonelyTextView;
     ImageView qrImageView;
     ProgressBar qrNFCLoadingProgressCircle;
+    ProgressBar qrRefreshProgressBar;
 
     private static final int NUM_PAGES = 3;
 
@@ -84,16 +88,27 @@ public class MainActivity extends AppCompatActivity {
         
         qrHandler = new Handler();
         
-        Thread generateQRThread = new Thread(new Runnable() {
+        generateQRThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis(), 16) + ":" + userID);
                 if (qrImageView != null) {
-                    qrImageView.setImageBitmap(qrBitmap);
-                    if (qrNFCLoadingProgressCircle != null) {
-                        qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
-                    }
+                    if (qrBitmap == null) qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            qrRefreshProgressBar.setProgress(100);
+                            qrImageView.setImageBitmap(qrBitmap);
+                            if (qrNFCLoadingProgressCircle != null) {
+                                qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
+                            }
+                            ObjectAnimator animation = ObjectAnimator.ofInt(qrRefreshProgressBar, "progress", 0);
+                            animation.setDuration(QR_INTERVAL); // 0.5 second
+                            animation.setInterpolator(new LinearInterpolator());
+                            animation.start();
+                        }
+                    });
                 }
+                qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
                 qrHandler.postDelayed(this, QR_INTERVAL);
             }
         });
@@ -111,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         View qrnfcView = ((QRNFCFragment) pagerAdapter.instantiateItem(viewPager, QR_NFC_FRAGMENT_TAG)).getView();
                         qrImageView = qrnfcView.findViewById(R.id.qr_imageview);
                         qrNFCLoadingProgressCircle = qrnfcView.findViewById(R.id.qr_nfc_loading_progresscircle);
+                        qrRefreshProgressBar = qrnfcView.findViewById(R.id.qr_refresh_progressbar);
                         
                         if (qrBitmap == null) qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
 
@@ -127,6 +143,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                         */
 
+                        if (qrBitmap != null) {
+                            qrImageView.setImageBitmap(qrBitmap);
+                            qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
+                        } else {
+                            qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
+                        }
+
+                        /*
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -142,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         }).start();
+                        */
                     case STREAKS_FRAGMENT_TAG:
                         View streaksView = ((StreaksFragment) pagerAdapter.instantiateItem(viewPager, STREAKS_FRAGMENT_TAG)).getView();
                         initStreaksView(streaksView);
@@ -171,6 +196,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void initQRNFCView(View qrNFCView) {
+        qrImageView = qrNFCView.findViewById(R.id.qr_imageview);
+        qrNFCLoadingProgressCircle = qrNFCView.findViewById(R.id.qr_nfc_loading_progresscircle);
+        qrRefreshProgressBar = qrNFCView.findViewById(R.id.qr_refresh_progressbar);
     }
 
     public void initStreaksView(View streaksView) {
@@ -306,6 +337,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         refreshFriendsAndStreaks();
+        generateQRThread.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        generateQRThread.interrupt();
     }
 
     private class MainPagerAdapter extends FragmentStatePagerAdapter {
