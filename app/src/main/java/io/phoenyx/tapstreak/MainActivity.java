@@ -49,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
     PagerAdapter pagerAdapter;
     String userID, accessToken;
     List<Friend> friends;
-    Bitmap qrBitmap;
     Handler qrHandler;
     Thread generateQRThread;
+    Bitmap qrBitmap, lastQRBitmap;
+    long lastRefreshTime;
+    boolean isQRGenerationRunning = true;
 
     TapstreakService service;
 
@@ -89,29 +91,43 @@ public class MainActivity extends AppCompatActivity {
         qrHandler = new Handler();
         
         generateQRThread = new Thread(new Runnable() {
+
             @Override
             public void run() {
-                if (qrImageView != null) {
-                    if (qrBitmap == null) qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            qrRefreshProgressBar.setProgress(100);
-                            qrImageView.setImageBitmap(qrBitmap);
-                            if (qrNFCLoadingProgressCircle != null) {
-                                qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
-                            }
-                            ObjectAnimator animation = ObjectAnimator.ofInt(qrRefreshProgressBar, "progress", 0);
-                            animation.setDuration(QR_INTERVAL); // 0.5 second
-                            animation.setInterpolator(new LinearInterpolator());
-                            animation.start();
-                        }
-                    });
+                if (!isQRGenerationRunning) return;
+                while (qrImageView == null) {
+                    //waits until qrImageView is populated
                 }
-                qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
+                if (qrBitmap == null) {
+                    qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        qrRefreshProgressBar.setProgress(100);
+                        qrImageView.setImageBitmap(qrBitmap);
+                        lastQRBitmap = qrBitmap.copy(Bitmap.Config.ARGB_8888, true);
+                        if (qrNFCLoadingProgressCircle != null) {
+                            qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
+                        }
+                        ObjectAnimator animation = ObjectAnimator.ofInt(qrRefreshProgressBar, "progress", 0);
+                        animation.setDuration(QR_INTERVAL); // 0.5 second
+                        animation.setInterpolator(new LinearInterpolator());
+                        lastRefreshTime = System.currentTimeMillis();
+                        animation.start();
+                    }
+                });
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
+                    }
+                }).start();
                 qrHandler.postDelayed(this, QR_INTERVAL);
             }
         });
+
+        generateQRThread.start();
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -130,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
                         
                         if (qrBitmap == null) qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
 
-
                         /* PUT IN ANOTHER THREAD
                         //NFC
                         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -143,47 +158,22 @@ public class MainActivity extends AppCompatActivity {
                         }
                         */
 
-                        if (qrBitmap != null) {
-                            qrImageView.setImageBitmap(qrBitmap);
+                        if (lastQRBitmap != null) {
+                            qrRefreshProgressBar.setProgress(((int) (QR_INTERVAL - (System.currentTimeMillis() - lastRefreshTime))) / 600);
+                            qrImageView.setImageBitmap(lastQRBitmap);
                             qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
+                            ObjectAnimator animation = ObjectAnimator.ofInt(qrRefreshProgressBar, "progress", 0);
+                            animation.setDuration(QR_INTERVAL - (System.currentTimeMillis() - lastRefreshTime)); // However much time is left in the cycle
+                            animation.setInterpolator(new LinearInterpolator());
+                            animation.start();
                         } else {
                             qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
                         }
-
-                        /*
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                
-                                if (qrBitmap != null){
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            qrImageView.setImageBitmap(qrBitmap);
-                                            qrNFCLoadingProgressCircle.setVisibility(View.INVISIBLE);
-                                        }
-                                    });
-                                }
-                            }
-                        }).start();
-                        */
+                        break;
                     case STREAKS_FRAGMENT_TAG:
                         View streaksView = ((StreaksFragment) pagerAdapter.instantiateItem(viewPager, STREAKS_FRAGMENT_TAG)).getView();
                         initStreaksView(streaksView);
-                        /*
-                        View streaksView = ((StreaksFragment) pagerAdapter.instantiateItem(viewPager, STREAKS_FRAGMENT_TAG)).getView();
-                        streaksListView = streaksView.findViewById(R.id.streaks_listview);
-                        lonelyTextView = streaksView.findViewById(R.id.lonely_textview);
-                        FloatingActionButton cameraFAB = streaksView.findViewById(R.id.scanner_fab);
 
-                        cameraFAB.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                new IntentIntegrator(MainActivity.this).setBeepEnabled(false).initiateScan();
-                            }
-                        });
-
-                        refreshFriendsAndStreaks();*/
                         break;
                     case FRIENDS_FRAGMENT_TAG:
 
@@ -312,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
         service.getUserInternal(userID, accessToken).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                //while (lonelyTextView == null) {}
                 User user = response.body();
                 if (user.getRespCode() == null) {
                     friends = user.getFriends();
@@ -336,14 +327,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        isQRGenerationRunning = true;
         refreshFriendsAndStreaks();
-        generateQRThread.start();
+        if (QR_INTERVAL - (System.currentTimeMillis() - lastRefreshTime) < 1 && lastRefreshTime != 0) {
+            qrBitmap = null;
+            lastQRBitmap = null;
+            qrImageView.setImageBitmap(null);
+            qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
+            qrHandler.removeCallbacks(generateQRThread);
+            qrHandler.post(generateQRThread);
+        }
+        //qrHandler.removeCallbacks(generateQRThread);
+        //qrHandler.postDelayed(generateQRThread, QR_INTERVAL);
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        generateQRThread.interrupt();
+    protected void onPause() {
+        super.onPause();
+        isQRGenerationRunning = false;
     }
 
     private class MainPagerAdapter extends FragmentStatePagerAdapter {
