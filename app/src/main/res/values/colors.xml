@@ -3,8 +3,8 @@
     <color name="colorPrimary">#657afb</color>
     <color name="colorPrimaryDark">#4857b3</color>
     <color name="colorAccent">#8898ff</color>
-    <color name="colorError">#FA8094</color>
-    <color name="colorDisabledLight">#D7D7D9</color>
+    <color name="colorError">#fa8094</color>
+    <color name="colorDisabledLight">#d7d7d9</color>
     <color name="colorIcon">#777472</color>
 
     <color name="white">#ffffff</color>

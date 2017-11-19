@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -20,6 +21,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -198,6 +200,16 @@ public class MainActivity extends AppCompatActivity {
         streaksListView = streaksView.findViewById(R.id.streaks_listview);
         lonelyTextView = streaksView.findViewById(R.id.lonely_textview);
         FloatingActionButton cameraFAB = streaksView.findViewById(R.id.scanner_fab);
+        ImageButton settingsButton = streaksView.findViewById(R.id.settings_button);
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                settingsIntent.putExtras(getIntent().getExtras());
+                startActivity(settingsIntent);
+            }
+        });
 
         cameraFAB.setOnClickListener(new View.OnClickListener() {
             @Override
