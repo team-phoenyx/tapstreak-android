@@ -305,10 +305,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 //TODO ADD FRIEND
-            } else if (resultCode == RESULT_CANCELED) {
-                refreshFriendsAndStreaks();
             }
-            refreshFriendsAndStreaks();
         }
 
 
