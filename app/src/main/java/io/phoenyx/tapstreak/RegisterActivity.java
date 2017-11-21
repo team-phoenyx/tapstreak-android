@@ -261,6 +261,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     editor.putString("user_id", authentication.getUserId());
                     editor.putString("access_token", authentication.getAccessToken());
+                    editor.putString("username", username);
                     editor.apply();
 
                     getStartedButton.setOnClickListener(new View.OnClickListener() {
@@ -269,6 +270,8 @@ public class RegisterActivity extends AppCompatActivity {
                             Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                             mainIntent.putExtra("user_id", authentication.getUserId());
                             mainIntent.putExtra("access_token", authentication.getAccessToken());
+                            mainIntent.putExtra("username", username);
+                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(mainIntent);
 
                             finish();

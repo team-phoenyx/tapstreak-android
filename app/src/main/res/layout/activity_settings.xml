@@ -25,6 +25,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintBottom_toBottomOf="@+id/title_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_label"
+        app:srcCompat="@drawable/logout" />
+
+    <ImageButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,7 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp">
+            android:layout_marginRight="32dp"
+            android:paddingBottom="32dp">
 
             <TextView
                 android:id="@+id/username_label"
@@ -159,8 +173,7 @@
                 android:checked="false"
                 app:layout_constraintBottom_toBottomOf="@+id/notifications_label"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/notifications_label"
-                tools:checked="true" />
+                app:layout_constraintTop_toTopOf="@+id/notifications_label" />
 
             <TextView
                 android:id="@+id/notification_explanation"
@@ -194,8 +207,7 @@
                 android:checked="false"
                 app:layout_constraintBottom_toBottomOf="@+id/nfc_label"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/nfc_label"
-                tools:checked="true" />
+                app:layout_constraintTop_toTopOf="@+id/nfc_label" />
 
             <TextView
                 android:id="@+id/nfc_explanation"

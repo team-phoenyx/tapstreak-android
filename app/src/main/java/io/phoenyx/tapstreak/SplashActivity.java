@@ -11,7 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class SplashActivity extends AppCompatActivity {
-    String id, accessToken;
+    String id, accessToken, username;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -26,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (isConnected()) {
                     id = sharedPreferences.getString("user_id", "");
                     accessToken = sharedPreferences.getString("access_token", "");
+                    username = sharedPreferences.getString("username", "");
                     if (id.equals("")) {
                         Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(loginIntent);
@@ -34,6 +35,7 @@ public class SplashActivity extends AppCompatActivity {
                         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                         mainIntent.putExtra("user_id", id);
                         mainIntent.putExtra("access_token", accessToken);
+                        mainIntent.putExtra("username", username);
                         startActivity(mainIntent);
                         finish();
                     }

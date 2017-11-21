@@ -146,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void authenticateUser(String username, String passHashedString) {
+    private void authenticateUser(final String username, String passHashedString) {
         tapstreakService.loginUser(username, passHashedString).enqueue(new Callback<Authentication>() {
             @Override
             public void onResponse(Call<Authentication> call, Response<Authentication> response) {
@@ -159,11 +159,14 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = getSharedPreferences("io.phoenyx.tapstreak", Context.MODE_PRIVATE).edit();
                     editor.putString("user_id", id);
                     editor.putString("access_token", accessToken);
+                    editor.putString("username", username);
                     editor.apply();
 
                     Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     mainIntent.putExtra("user_id", id);
                     mainIntent.putExtra("access_token", accessToken);
+                    mainIntent.putExtra("username", username);
                     startActivity(mainIntent);
                     finish();
                 } else {

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     SwipeViewPager viewPager;
     PagerAdapter pagerAdapter;
-    String userID, accessToken;
+    String userID, accessToken, username;
     List<Friend> friends;
     Handler qrHandler;
     Thread generateQRThread;
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         userID = extras.getString("user_id");
         accessToken = extras.getString("access_token");
+        username = extras.getString("username");
 
         service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
@@ -206,7 +207,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                settingsIntent.putExtras(getIntent().getExtras());
+                Bundle settingsBundle = getIntent().getExtras();
+                settingsIntent.putExtras(settingsBundle);
                 startActivity(settingsIntent);
             }
         });
