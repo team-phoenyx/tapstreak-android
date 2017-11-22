@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak.registration_fragments;
+package io.tapstreak.registration_fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.phoenyx.tapstreak.R;
+import io.tapstreak.R;
 
 /**
  * Created by Terrance on 7/12/2017.

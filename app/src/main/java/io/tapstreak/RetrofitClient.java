@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

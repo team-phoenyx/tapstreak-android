@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import io.phoenyx.tapstreak.json_models.Salt;
-import io.phoenyx.tapstreak.json_models.Authentication;
+import io.tapstreak.json_models.Salt;
+import io.tapstreak.json_models.Authentication;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                     String id = authentication.getUserId();
                     String accessToken = authentication.getAccessToken();
 
-                    SharedPreferences.Editor editor = getSharedPreferences("io.phoenyx.tapstreak", Context.MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor = getSharedPreferences("io.tapstreak", Context.MODE_PRIVATE).edit();
                     editor.putString("user_id", id);
                     editor.putString("access_token", accessToken);
                     editor.putString("username", username);

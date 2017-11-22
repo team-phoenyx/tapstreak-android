@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak.registration_fragments;
+package io.tapstreak.main_fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,27 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.phoenyx.tapstreak.R;
-import io.phoenyx.tapstreak.RegisterActivity;
+import io.tapstreak.MainActivity;
+import io.tapstreak.R;
 
 /**
  * Created by Terrance on 7/12/2017.
  */
 
-public class RegistrationUsernameFragment extends Fragment {
+public class QRNFCFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_register_username, container, false);
+        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_qr_nfc, container, false);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                RegisterActivity parent = (RegisterActivity) getActivity();
-                parent.initUsernameFragment(viewGroup);
+                MainActivity parent = (MainActivity) getActivity();
+                parent.initQRNFCView(viewGroup);
             }
         }).start();
+
         return viewGroup;
     }
 }

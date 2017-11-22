@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/colorPrimary"
     android:foregroundGravity="center_horizontal"
-    tools:context="io.phoenyx.tapstreak.LoginActivity">
+    tools:context="io.tapstreak.LoginActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"

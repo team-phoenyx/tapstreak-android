@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

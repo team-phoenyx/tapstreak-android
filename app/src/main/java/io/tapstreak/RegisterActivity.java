@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,12 +27,12 @@ import android.text.Editable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import io.phoenyx.tapstreak.json_models.Authentication;
-import io.phoenyx.tapstreak.json_models.ResponseCode;
-import io.phoenyx.tapstreak.registration_fragments.RegistrationConfirmPasswordFragment;
-import io.phoenyx.tapstreak.registration_fragments.RegistrationPasswordFragment;
-import io.phoenyx.tapstreak.registration_fragments.RegistrationUsernameFragment;
-import io.phoenyx.tapstreak.registration_fragments.RegistrationWelcomeFragment;
+import io.tapstreak.json_models.Authentication;
+import io.tapstreak.json_models.ResponseCode;
+import io.tapstreak.registration_fragments.RegistrationConfirmPasswordFragment;
+import io.tapstreak.registration_fragments.RegistrationPasswordFragment;
+import io.tapstreak.registration_fragments.RegistrationUsernameFragment;
+import io.tapstreak.registration_fragments.RegistrationWelcomeFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -256,7 +256,7 @@ public class RegisterActivity extends AppCompatActivity {
                     getStartedButton.setVisibility(View.VISIBLE);
                     statusLabel.setVisibility(View.VISIBLE);
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("io.phoenyx.tapstreak", Context.MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = getSharedPreferences("io.tapstreak", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
                     editor.putString("user_id", authentication.getUserId());

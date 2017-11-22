@@ -1,25 +1,20 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.transition.CircularPropagation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.Calendar;
 import java.util.List;
 
-import io.phoenyx.tapstreak.json_models.Friend;
+import io.tapstreak.json_models.Friend;
 
 /**
  * Created by terrance on 5/20/17.

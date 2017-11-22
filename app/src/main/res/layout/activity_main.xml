@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.phoenyx.tapstreak.MainActivity">
+    tools:context="io.tapstreak.MainActivity">
 
-    <io.phoenyx.tapstreak.SwipeViewPager
+    <io.tapstreak.SwipeViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </io.phoenyx.tapstreak.SwipeViewPager>
+    </io.tapstreak.SwipeViewPager>
 
 </android.support.constraint.ConstraintLayout>

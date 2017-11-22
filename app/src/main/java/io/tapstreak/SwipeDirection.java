@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 /**
  * Created by Terrance on 7/13/2017.

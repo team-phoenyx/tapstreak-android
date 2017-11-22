@@ -1,11 +1,9 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
@@ -18,8 +16,8 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import io.phoenyx.tapstreak.json_models.ResponseCode;
-import io.phoenyx.tapstreak.json_models.Salt;
+import io.tapstreak.json_models.ResponseCode;
+import io.tapstreak.json_models.Salt;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -64,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         accessToken = extras.getString("access_token");
 
         service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
-        preferences = getSharedPreferences("io.phoenyx.tapstreak", MODE_PRIVATE);
+        preferences = getSharedPreferences("io.tapstreak", MODE_PRIVATE);
         editor = preferences.edit();
 
         usernameEditText.setText(username);

@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak.main_fragments;
+package io.tapstreak.registration_fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,25 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.phoenyx.tapstreak.MainActivity;
-import io.phoenyx.tapstreak.R;
-import io.phoenyx.tapstreak.RegisterActivity;
+import io.tapstreak.R;
+import io.tapstreak.RegisterActivity;
 
-public class StreaksFragment extends Fragment {
+/**
+ * Created by Terrance on 7/12/2017.
+ */
+
+public class RegistrationUsernameFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_streaks, container, false);
+        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_register_username, container, false);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                MainActivity parent = (MainActivity) getActivity();
-                parent.initStreaksView(viewGroup);
+                RegisterActivity parent = (RegisterActivity) getActivity();
+                parent.initUsernameFragment(viewGroup);
             }
         }).start();
-
         return viewGroup;
     }
 }

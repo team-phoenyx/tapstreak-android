@@ -1,10 +1,10 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 
-import io.phoenyx.tapstreak.json_models.ResponseCode;
-import io.phoenyx.tapstreak.json_models.Salt;
-import io.phoenyx.tapstreak.json_models.User;
-import io.phoenyx.tapstreak.json_models.Authentication;
+import io.tapstreak.json_models.ResponseCode;
+import io.tapstreak.json_models.Salt;
+import io.tapstreak.json_models.User;
+import io.tapstreak.json_models.Authentication;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

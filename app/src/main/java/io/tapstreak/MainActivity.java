@@ -1,7 +1,6 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 import android.animation.ObjectAnimator;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -9,16 +8,13 @@ import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
@@ -35,12 +31,12 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 import java.util.List;
 
-import io.phoenyx.tapstreak.json_models.Friend;
-import io.phoenyx.tapstreak.json_models.ResponseCode;
-import io.phoenyx.tapstreak.json_models.User;
-import io.phoenyx.tapstreak.main_fragments.FriendsFragment;
-import io.phoenyx.tapstreak.main_fragments.QRNFCFragment;
-import io.phoenyx.tapstreak.main_fragments.StreaksFragment;
+import io.tapstreak.json_models.Friend;
+import io.tapstreak.json_models.ResponseCode;
+import io.tapstreak.json_models.User;
+import io.tapstreak.main_fragments.FriendsFragment;
+import io.tapstreak.main_fragments.QRNFCFragment;
+import io.tapstreak.main_fragments.StreaksFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

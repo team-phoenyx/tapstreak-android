@@ -1,4 +1,4 @@
-package io.phoenyx.tapstreak;
+package io.tapstreak;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
