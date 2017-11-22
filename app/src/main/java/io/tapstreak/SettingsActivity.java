@@ -69,6 +69,31 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (preferences.getBoolean("notifications_enabled", true)) notificationsSwitch.setChecked(true);
         if (preferences.getBoolean("nfc_enabled", true)) nfcSwitch.setChecked(true);
+        
+        changeUsernameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (changeUsernameButton.getText().toString().equals("change")) {
+                    changeUsernameButton.setText("save");
+                    usernameEditText.setEnabled(true);
+                } else {
+                    changeUsernameButton.setText("save");
+                    usernameEditText.setEnabled(true);
+                    String newUsername = usernameEditText.getText().toString();
+                    //TODO update server with username
+                }
+            }
+        });
+        
+        //TODO usernameedittext addontextchangedlistener, do same thing to check for duplicate
+        //circular progressbar, make exception for the users old username
+        
+        changePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
