@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     //waits until qrImageView is populated
                 }
                 if (qrBitmap == null) {
-                    qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
+                    qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis(), 16) + ":" + userID);
                 }
                 runOnUiThread(new Runnable() {
                     @Override

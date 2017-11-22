@@ -7,8 +7,8 @@ android {
         applicationId "io.tapstreak"
         minSdkVersion 23
         targetSdkVersion 26
-        versionCode 3
-        versionName "0.1"
+        versionCode 4
+        versionName "0.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
