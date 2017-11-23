@@ -29,6 +29,8 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.qrcode.QRCodeWriter;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import io.tapstreak.json_models.Friend;
@@ -68,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRIENDS_FRAGMENT_TAG = 2;
     
     private static final int QR_INTERVAL = 60000;
+
+    private static final int SETTINGS_REQUEST_CODE = 27834;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,9 +207,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                Bundle settingsBundle = getIntent().getExtras();
+                Bundle settingsBundle = new Bundle();
+                settingsBundle.putString("username", username);
+                settingsBundle.putString("user_id", userID);
+                settingsBundle.putString("access_token", accessToken);
                 settingsIntent.putExtras(settingsBundle);
-                startActivity(settingsIntent);
+                startActivityForResult(settingsIntent, SETTINGS_REQUEST_CODE);
             }
         });
 
@@ -302,6 +309,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //TODO ADD FRIEND
             }
+        } else if (requestCode == SETTINGS_REQUEST_CODE) {
+            accessToken = data.getStringExtra("access_token");
+            username = data.getStringExtra("username");
         }
 
 
@@ -330,7 +340,14 @@ public class MainActivity extends AppCompatActivity {
                 User user = response.body();
                 if (user.getRespCode() == null) { //Checks if response is successful; resp_code should be null
                     friends = user.getFriends();
-                    //TODO SORT FRIENDS BY URGENCY, THEN STREAK COUNT DESC
+
+                    //Sorts by urgency; streaks that have not been renewed for a long time come first
+                    Collections.sort(friends, new Comparator<Friend>() {
+                        @Override
+                        public int compare(Friend o1, Friend o2) {
+                            return (o1.getLastStreak() > o2.getLastStreak()) ? 1 : -1;
+                        }
+                    });
 
                     //Update streaksListView with new user streak data
                     StreaksAdapter streaksAdapter = new StreaksAdapter(MainActivity.this, R.layout.friend_row, friends);

@@ -127,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         if (passwordView != null) {
                             EditText passwordEditText = passwordView.findViewById(R.id.password_edittext);
-                            if (!passwordEditText.getText().toString().isEmpty()) {
+                            if (passwordEditText.getText().toString().length() >= 8) {
                                 viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                             }
                             passwordEditText.addTextChangedListener(new TextWatcher() {
@@ -138,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity {
                     
                                 @Override
                                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                    if (s.length() > 0) {
+                                    if (s.length() >= 8) {
                                         viewPager.setAllowedSwipeDirection(SwipeDirection.all);
                                     } else {
                                         viewPager.setAllowedSwipeDirection(SwipeDirection.left);

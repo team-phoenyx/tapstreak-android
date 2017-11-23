@@ -13,6 +13,10 @@ public class ResponseCode {
     @Expose
     private String respCode;
 
+    @SerializedName("resp_msg")
+    @Expose
+    private String respMsg;
+
     public String getRespCode() {
         return respCode;
     }
@@ -21,4 +25,11 @@ public class ResponseCode {
         this.respCode = respCode;
     }
 
+    public String getRespMsg() {
+        return respMsg;
+    }
+
+    public void setRespMsg(String respMsg) {
+        this.respMsg = respMsg;
+    }
 }

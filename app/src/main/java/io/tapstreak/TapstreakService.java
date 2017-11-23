@@ -58,6 +58,12 @@ public interface TapstreakService {
                                       @Field("new_salt") String newSalt);
 
     @FormUrlEncoded
+    @POST("/api/user/cun")
+    Call<ResponseCode> changeUsername(@Field("user_id") String userID,
+                                      @Field("access_token") String access_token,
+                                      @Field("new_username") String newUsername);
+
+    @FormUrlEncoded
     @POST("/api/user/afriend")
     Call<ResponseCode> addFriend(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
