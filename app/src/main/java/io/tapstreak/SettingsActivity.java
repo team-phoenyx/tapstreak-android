@@ -391,7 +391,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                 //Start login activity
                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); //Clears the backstack of activities/fragments
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK); //Clears the backstack of activities/fragments
                 startActivity(loginIntent);
                 finish();
             }
@@ -458,7 +458,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                                                         //Start login activity
                                                         Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-                                                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); //Clears the backstack of activities/fragments
+                                                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK); //Clears the backstack of activities/fragments
                                                         startActivity(loginIntent);
                                                         finish();
                                                     }
