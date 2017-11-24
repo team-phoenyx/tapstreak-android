@@ -1,20 +1,31 @@
 package io.tapstreak;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
@@ -45,6 +56,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final long MIN_TIME_BETWEEN_LOC_UPDDATE = 10000;
+    private static final float MIN_DX_BETWEEN_LOC_UPDATE = 25;
+
     SwipeViewPager viewPager;
     PagerAdapter pagerAdapter;
     String userID, accessToken, username;
@@ -54,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     Bitmap qrBitmap, lastQRBitmap;
     long lastRefreshTime;
     boolean isQRGenerationRunning = true;
+    LocationManager locationManager;
 
     TapstreakService service;
 
@@ -68,10 +83,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int QR_NFC_FRAGMENT_TAG = 0;
     private static final int STREAKS_FRAGMENT_TAG = 1;
     private static final int FRIENDS_FRAGMENT_TAG = 2;
-    
+
     private static final int QR_INTERVAL = 60000;
 
     private static final int SETTINGS_REQUEST_CODE = 27834;
+    private static final int GPS_ENABLE_REQUEST = 59642;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,14 +101,45 @@ public class MainActivity extends AppCompatActivity {
 
         service = RetrofitClient.getClient(getResources().getString(R.string.api_base_url)).create(TapstreakService.class);
 
+        if (getSharedPreferences("io.tapstreak", MODE_PRIVATE).getBoolean("location_enabled", false)) {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+            //Check if permissions are granted
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                getSharedPreferences("io.tapstreak", MODE_PRIVATE).edit().putBoolean("location_enabled", false).apply();
+            } else {
+                //Check if GPS is enabled
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("GPS isn't enabled");  // GPS not found
+                    builder.setMessage("Would you like to enable your GPS so your friends can see where you are?"); // Want to enable?
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), GPS_ENABLE_REQUEST);
+                        }
+                    });
+                    builder.setNegativeButton("No", null);
+                    builder.create().show();
+                } else {
+                    startLocationUpdates();
+                }
+            }
+        }
+
         viewPager = findViewById(R.id.pager);
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setCurrentItem(STREAKS_FRAGMENT_TAG);
         viewPager.setAllowedSwipeDirection(SwipeDirection.all);
-        
+
         qrHandler = new Handler();
-        
+
         generateQRThread = new Thread(new Runnable() {
 
             @Override
@@ -146,8 +193,9 @@ public class MainActivity extends AppCompatActivity {
                         qrImageView = qrnfcView.findViewById(R.id.qr_imageview);
                         qrNFCLoadingProgressCircle = qrnfcView.findViewById(R.id.qr_nfc_loading_progresscircle);
                         qrRefreshProgressBar = qrnfcView.findViewById(R.id.qr_refresh_progressbar);
-                        
-                        if (qrBitmap == null) qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
+
+                        if (qrBitmap == null)
+                            qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
 
                         /* PUT IN ANOTHER THREAD
                         //NFC
@@ -312,9 +360,99 @@ public class MainActivity extends AppCompatActivity {
         } else if (requestCode == SETTINGS_REQUEST_CODE) {
             accessToken = data.getStringExtra("access_token");
             username = data.getStringExtra("username");
+
+            if (getSharedPreferences("io.tapstreak", MODE_PRIVATE).getBoolean("location_enabled", false)) {
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+                //Check if permissions are granted
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    getSharedPreferences("io.tapstreak", MODE_PRIVATE).edit().putBoolean("location_enabled", false).apply();
+                    return;
+                }
+
+                //Check if GPS is enabled
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("GPS isn't enabled");  // GPS not found
+                    builder.setMessage("Would you like to enable your GPS so your friends can see where you are?"); // Want to enable?
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), GPS_ENABLE_REQUEST);
+                        }
+                    });
+                    builder.setNegativeButton("No", null);
+                    builder.create().show();
+                } else {
+                    startLocationUpdates();
+                }
+            }
+        } else if (requestCode == GPS_ENABLE_REQUEST) {
+            if (locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) startLocationUpdates();
         }
 
 
+    }
+
+    private void startLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        LocationListener locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                Log.d("LOCATION", "Updated location");
+                service.setLocation(userID, accessToken, Long.toString(System.currentTimeMillis()), Double.toString(location.getLatitude()), Double.toString(location.getLongitude())).enqueue(new Callback<ResponseCode>() {
+                    @Override
+                    public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseCode> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+
+        Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (lastKnownLocation != null) {
+            Log.d("LOCATION", "Got last known location");
+            service.setLocation(userID, accessToken, Long.toString(System.currentTimeMillis()), Double.toString(lastKnownLocation.getLatitude()), Double.toString(lastKnownLocation.getLongitude())).enqueue(new Callback<ResponseCode>() {
+                @Override
+                public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseCode> call, Throwable t) {
+
+                }
+            });
+        }
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BETWEEN_LOC_UPDDATE, MIN_DX_BETWEEN_LOC_UPDATE, locationListener);
     }
 
     /**
@@ -350,13 +488,39 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                     //Update streaksListView with new user streak data
-                    StreaksAdapter streaksAdapter = new StreaksAdapter(MainActivity.this, R.layout.friend_row, friends);
-                    if (friends.size() == 0) {
-                        lonelyTextView.setVisibility(View.VISIBLE);
-                    } else {
-                        lonelyTextView.setVisibility(View.INVISIBLE);
-                    }
-                    streaksListView.setAdapter(streaksAdapter);
+                    final StreaksAdapter streaksAdapter = new StreaksAdapter(MainActivity.this, R.layout.friend_row, friends);
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while (lonelyTextView == null) {}
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (friends.size() == 0) {
+                                        lonelyTextView.setVisibility(View.VISIBLE);
+                                    } else {
+                                        lonelyTextView.setVisibility(View.INVISIBLE);
+                                    }
+                                }
+                            });
+                        }
+                    }).start();
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while (streaksListView == null) {}
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    streaksListView.setAdapter(streaksAdapter);
+                                }
+                            });
+
+                        }
+                    }).start();
+
                 }
             }
 
@@ -365,6 +529,10 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    public void updateLocation() {
 
     }
 

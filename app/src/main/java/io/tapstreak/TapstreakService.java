@@ -64,6 +64,12 @@ public interface TapstreakService {
                                       @Field("new_username") String newUsername);
 
     @FormUrlEncoded
+    @POST("/api/user/setloc")
+    Call<ResponseCode> setLocation(@Field("user_id") String userID,
+                                      @Field("access_token") String access_token,
+                                      @Field("time") String timestamp, @Field("lat") String latitude, @Field("lon") String longitude);
+
+    @FormUrlEncoded
     @POST("/api/user/afriend")
     Call<ResponseCode> addFriend(@Field("user_id") String userID,
                                  @Field("access_token") String access_token,
