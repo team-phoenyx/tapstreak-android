@@ -17,6 +17,9 @@ public class User {
     @SerializedName("username")
     @Expose
     private String username;
+    @SerializedName("streaks")
+    @Expose
+    private List<Streak> streaks = null;
     @SerializedName("friends")
     @Expose
     private List<Friend> friends = null;
@@ -37,6 +40,14 @@ public class User {
         this.username = username;
     }
 
+    public List<Streak> getStreaks() {
+        return streaks;
+    }
+
+    public void setStreaks(List<Streak> streaks) {
+        this.streaks = streaks;
+    }
+
     public List<Friend> getFriends() {
         return friends;
     }
@@ -44,5 +55,4 @@ public class User {
     public void setFriends(List<Friend> friends) {
         this.friends = friends;
     }
-
 }

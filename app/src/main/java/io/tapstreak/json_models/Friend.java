@@ -8,23 +8,30 @@ public class Friend {
 
     @SerializedName("user_id")
     @Expose
-    private String id;
+    private String userId;
+
     @SerializedName("username")
     @Expose
     private String username;
-    @SerializedName("streak_length")
-    @Expose
-    private int streakLength;
-    @SerializedName("last_streak")
-    @Expose
-    private long lastStreak;
 
-    public String getId() {
-        return id;
+    @SerializedName("last_seen_time")
+    @Expose
+    private long lastSeenTime;
+
+    @SerializedName("last_seen_lat")
+    @Expose
+    private double lat;
+
+    @SerializedName("last_seen_lon")
+    @Expose
+    private double lon;
+
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -35,20 +42,27 @@ public class Friend {
         this.username = username;
     }
 
-    public int getStreakLength() {
-        return streakLength;
+    public long getLastSeenTime() {
+        return lastSeenTime;
     }
 
-    public void setStreakLength(int streakLength) {
-        this.streakLength = streakLength;
+    public void setLastSeenTime(long lastSeenTime) {
+        this.lastSeenTime = lastSeenTime;
     }
 
-    public long getLastStreak() {
-        return lastStreak;
+    public double getLat() {
+        return lat;
     }
 
-    public void setLastStreak(long lastStreak) {
-        this.lastStreak = lastStreak;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
 }

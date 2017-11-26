@@ -15,15 +15,16 @@ import java.util.Calendar;
 import java.util.List;
 
 import io.tapstreak.json_models.Friend;
+import io.tapstreak.json_models.Streak;
 
 /**
  * Created by terrance on 5/20/17.
  */
 
-public class StreaksAdapter extends ArrayAdapter<Friend> {
+public class StreaksAdapter extends ArrayAdapter<Streak> {
     Context context;
 
-    public StreaksAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Friend> objects) {
+    public StreaksAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Streak> objects) {
         super(context, resource, objects);
         this.context = context;
     }
@@ -35,20 +36,20 @@ public class StreaksAdapter extends ArrayAdapter<Friend> {
 
         if (v == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-            v = layoutInflater.inflate(R.layout.friend_row, null);
+            v = layoutInflater.inflate(R.layout.streak_row, null);
         }
 
-        Friend friend = getItem(position);
+        Streak streak = getItem(position);
 
-        if (friend != null) {
+        if (streak != null) {
             TextView usernameTextView = v.findViewById(R.id.friendNameTextView);
             TextView streakTextView = v.findViewById(R.id.friendStreakTextView);
             ImageView timerImageView = v.findViewById(R.id.timer_imageview);
 
-            usernameTextView.setText(friend.getUsername());
-            streakTextView.setText(String.valueOf(friend.getStreakLength()));
+            usernameTextView.setText(streak.getUsername());
+            streakTextView.setText(String.valueOf(streak.getStreakLength()));
 
-            long timeElapsedMillis = Calendar.getInstance().getTimeInMillis() - friend.getLastStreak();
+            long timeElapsedMillis = Calendar.getInstance().getTimeInMillis() - streak.getLastStreak();
             double timeElapsedMins = timeElapsedMillis / 60000.0;
             double timeElapsedHours = timeElapsedMins / 60.0;
 

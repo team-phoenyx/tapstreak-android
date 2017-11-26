@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -46,6 +45,7 @@ import java.util.List;
 
 import io.tapstreak.json_models.Friend;
 import io.tapstreak.json_models.ResponseCode;
+import io.tapstreak.json_models.Streak;
 import io.tapstreak.json_models.User;
 import io.tapstreak.main_fragments.FriendsFragment;
 import io.tapstreak.main_fragments.QRNFCFragment;
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     PagerAdapter pagerAdapter;
     String userID, accessToken, username;
     List<Friend> friends;
+    List<Streak> streaks;
     Handler qrHandler;
     Thread generateQRThread;
     Bitmap qrBitmap, lastQRBitmap;
@@ -463,7 +464,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean friendExists(String friendID) {
         if (friends == null || friends.size() == 0) return false;
         for (Friend friend : friends) {
-            if (friend.getId().equals(friendID)) return true;
+            if (friend.getUserId().equals(friendID)) return true;
         }
         return false;
     }
@@ -478,17 +479,18 @@ public class MainActivity extends AppCompatActivity {
                 User user = response.body();
                 if (user.getRespCode() == null) { //Checks if response is successful; resp_code should be null
                     friends = user.getFriends();
+                    streaks = user.getStreaks();
 
                     //Sorts by urgency; streaks that have not been renewed for a long time come first
-                    Collections.sort(friends, new Comparator<Friend>() {
+                    Collections.sort(streaks, new Comparator<Streak>() {
                         @Override
-                        public int compare(Friend o1, Friend o2) {
+                        public int compare(Streak o1, Streak o2) {
                             return (o1.getLastStreak() > o2.getLastStreak()) ? 1 : -1;
                         }
                     });
 
                     //Update streaksListView with new user streak data
-                    final StreaksAdapter streaksAdapter = new StreaksAdapter(MainActivity.this, R.layout.friend_row, friends);
+                    final StreaksAdapter streaksAdapter = new StreaksAdapter(MainActivity.this, R.layout.streak_row, streaks);
 
                     new Thread(new Runnable() {
                         @Override
@@ -529,10 +531,6 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(findViewById(android.R.id.content), "Something went wrong :(", Snackbar.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-    public void updateLocation() {
 
     }
 
