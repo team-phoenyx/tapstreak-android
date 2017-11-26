@@ -70,11 +70,14 @@ public class MainActivity extends AppCompatActivity {
     long lastRefreshTime;
     boolean isQRGenerationRunning = true;
     LocationManager locationManager;
+    Location currentLocation;
 
     TapstreakService service;
 
     ListView streaksListView;
-    TextView lonelyTextView;
+    ListView friendsListView;
+    TextView streaksLonelyTextView;
+    TextView friendsLonelyTextView;
     ImageView qrImageView;
     ProgressBar qrNFCLoadingProgressCircle;
     ProgressBar qrRefreshProgressBar;
@@ -246,9 +249,16 @@ public class MainActivity extends AppCompatActivity {
         qrRefreshProgressBar = qrNFCView.findViewById(R.id.qr_refresh_progressbar);
     }
 
+    public void initFriendsView(View friendsView) {
+        friendsListView = friendsView.findViewById(R.id.friends_listview);
+        friendsLonelyTextView = friendsView.findViewById(R.id.lonely_textview);
+
+        refreshFriendsAndStreaks();
+    }
+
     public void initStreaksView(View streaksView) {
         streaksListView = streaksView.findViewById(R.id.streaks_listview);
-        lonelyTextView = streaksView.findViewById(R.id.lonely_textview);
+        streaksLonelyTextView = streaksView.findViewById(R.id.lonely_textview);
         FloatingActionButton cameraFAB = streaksView.findViewById(R.id.scanner_fab);
         ImageButton settingsButton = streaksView.findViewById(R.id.settings_button);
 
@@ -408,6 +418,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 Log.d("LOCATION", "Updated location");
+                currentLocation = location;
                 service.setLocation(userID, accessToken, Long.toString(System.currentTimeMillis()), Double.toString(location.getLatitude()), Double.toString(location.getLongitude())).enqueue(new Callback<ResponseCode>() {
                     @Override
                     public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
@@ -485,44 +496,58 @@ public class MainActivity extends AppCompatActivity {
                     Collections.sort(streaks, new Comparator<Streak>() {
                         @Override
                         public int compare(Streak o1, Streak o2) {
-                            return (o1.getLastStreak() > o2.getLastStreak()) ? 1 : -1;
+                            return (o1.getLastStreak() > o2.getLastStreak()) ? 1 : -1; //return 1 if o2 should come first
+                        }
+                    });
+                    Collections.sort(friends, new Comparator<Friend>() {
+                        @Override
+                        public int compare(Friend o1, Friend o2) {
+                            if (o1.getLastSeenTime() == null && o2.getLastSeenTime() == null) return -1;
+                            if (o1.getLastSeenTime() == null) return 1;
+                            if (o2.getLastSeenTime() == null) return -1;
+                            return (int) (Double.parseDouble(o2.getLastSeenTime()) - Double.parseDouble(o1.getLastSeenTime()));
                         }
                     });
 
                     //Update streaksListView with new user streak data
                     final StreaksAdapter streaksAdapter = new StreaksAdapter(MainActivity.this, R.layout.streak_row, streaks);
+                    final FriendsAdapter friendsAdapter = new FriendsAdapter(MainActivity.this, R.layout.friend_row, friends, currentLocation);
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            while (lonelyTextView == null) {}
+                            while (streaksLonelyTextView == null || streaksListView == null) {}
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (streaks.size() == 0) {
+                                        streaksLonelyTextView.setVisibility(View.VISIBLE);
+                                    } else {
+                                        streaksLonelyTextView.setVisibility(View.INVISIBLE);
+                                    }
+                                    streaksListView.setAdapter(streaksAdapter);
+                                }
+                            });
+                        }
+                    }).start();
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while (friendsLonelyTextView == null || friendsListView == null) {}
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     if (friends.size() == 0) {
-                                        lonelyTextView.setVisibility(View.VISIBLE);
+                                        friendsLonelyTextView.setVisibility(View.VISIBLE);
                                     } else {
-                                        lonelyTextView.setVisibility(View.INVISIBLE);
+                                        friendsLonelyTextView.setVisibility(View.INVISIBLE);
                                     }
+                                    friendsListView.setAdapter(friendsAdapter);
                                 }
                             });
                         }
                     }).start();
-
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            while (streaksListView == null) {}
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    streaksListView.setAdapter(streaksAdapter);
-                                }
-                            });
-
-                        }
-                    }).start();
-
                 }
             }
 

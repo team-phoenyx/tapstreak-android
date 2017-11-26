@@ -53,7 +53,7 @@ public class StreaksAdapter extends ArrayAdapter<Streak> {
             double timeElapsedMins = timeElapsedMillis / 60000.0;
             double timeElapsedHours = timeElapsedMins / 60.0;
 
-            if (timeElapsedHours > 8 && timeElapsedHours < 24) {
+            if (timeElapsedHours > 12 && timeElapsedHours < 24) {
                 streakTextView.setTextColor(getContext().getColor(R.color.colorPrimary));
                 timerImageView.setImageResource(R.drawable.timer_ready);
             } else if (timeElapsedHours >= 24) {

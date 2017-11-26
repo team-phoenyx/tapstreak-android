@@ -16,15 +16,15 @@ public class Friend {
 
     @SerializedName("last_seen_time")
     @Expose
-    private long lastSeenTime;
+    private String lastSeenTime;
 
     @SerializedName("last_seen_lat")
     @Expose
-    private double lat;
+    private String lat;
 
     @SerializedName("last_seen_lon")
     @Expose
-    private double lon;
+    private String lon;
 
     public String getUserId() {
         return userId;
@@ -42,27 +42,27 @@ public class Friend {
         this.username = username;
     }
 
-    public long getLastSeenTime() {
+    public String getLastSeenTime() {
         return lastSeenTime;
     }
 
-    public void setLastSeenTime(long lastSeenTime) {
+    public void setLastSeenTime(String lastSeenTime) {
         this.lastSeenTime = lastSeenTime;
     }
 
-    public double getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(double lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public double getLon() {
+    public String getLon() {
         return lon;
     }
 
-    public void setLon(double lon) {
+    public void setLon(String lon) {
         this.lon = lon;
     }
 }
