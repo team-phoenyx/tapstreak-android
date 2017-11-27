@@ -20,6 +20,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -81,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView qrImageView;
     ProgressBar qrNFCLoadingProgressCircle;
     ProgressBar qrRefreshProgressBar;
+    SwipeRefreshLayout streaksRefreshLayout;
+    SwipeRefreshLayout friendsRefreshLayout;
 
     private static final int NUM_PAGES = 3;
 
@@ -268,6 +271,15 @@ public class MainActivity extends AppCompatActivity {
     public void initFriendsView(View friendsView) {
         friendsListView = friendsView.findViewById(R.id.friends_listview);
         friendsLonelyTextView = friendsView.findViewById(R.id.lonely_textview);
+        friendsRefreshLayout = friendsView.findViewById(R.id.swipe_refresh_layout);
+
+        friendsRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (streaksRefreshLayout != null) streaksRefreshLayout.setRefreshing(true);
+                refreshFriendsAndStreaks();
+            }
+        });
 
         refreshFriendsAndStreaks();
     }
@@ -275,6 +287,16 @@ public class MainActivity extends AppCompatActivity {
     public void initStreaksView(View streaksView) {
         streaksListView = streaksView.findViewById(R.id.streaks_listview);
         streaksLonelyTextView = streaksView.findViewById(R.id.lonely_textview);
+        streaksRefreshLayout = streaksView.findViewById(R.id.swipe_refresh_layout);
+
+        streaksRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (friendsRefreshLayout != null) friendsRefreshLayout.setRefreshing(true);
+                refreshFriendsAndStreaks();
+            }
+        });
+
         FloatingActionButton cameraFAB = streaksView.findViewById(R.id.scanner_fab);
         ImageButton settingsButton = streaksView.findViewById(R.id.settings_button);
 
@@ -541,6 +563,7 @@ public class MainActivity extends AppCompatActivity {
                                         streaksLonelyTextView.setVisibility(View.INVISIBLE);
                                     }
                                     streaksListView.setAdapter(streaksAdapter);
+                                    streaksRefreshLayout.setRefreshing(false);
                                 }
                             });
                         }
@@ -559,6 +582,7 @@ public class MainActivity extends AppCompatActivity {
                                         friendsLonelyTextView.setVisibility(View.INVISIBLE);
                                     }
                                     friendsListView.setAdapter(friendsAdapter);
+                                    friendsRefreshLayout.setRefreshing(false);
                                 }
                             });
                         }
