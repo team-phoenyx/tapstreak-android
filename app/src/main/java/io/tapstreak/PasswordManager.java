@@ -15,8 +15,8 @@ import javax.crypto.spec.PBEKeySpec;
 public class PasswordManager {
 
     private static final Random RANDOM = new SecureRandom();
-    private static final int ITERATIONS = 10000;
-    private static final int KEY_LENGTH = 256;
+    private static final int ITERATIONS = 25000;
+    private static final int KEY_LENGTH = 512;
 
     /**
      * static utility class
@@ -29,7 +29,7 @@ public class PasswordManager {
      * @return a 32 bytes random salt
      */
     public static byte[] getNextSalt() {
-        byte[] salt = new byte[32];
+        byte[] salt = new byte[64];
         RANDOM.nextBytes(salt);
         return salt;
     }
@@ -48,7 +48,7 @@ public class PasswordManager {
         Arrays.fill(password, Character.MIN_VALUE);
         try {
             //SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            SecretKeyFactory skf = SecretKeyFactory.getInstance("PBEwithSHA256and256BITAES-CBC-BC");
+            SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2withHmacSHA1");
             return skf.generateSecret(spec).getEncoded();
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new AssertionError("Error while hashing a password: " + e.getMessage(), e);
