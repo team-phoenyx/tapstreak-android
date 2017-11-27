@@ -190,8 +190,8 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     });
-                    qrHandler.postDelayed(this, QR_INTERVAL);
                 }
+                qrHandler.postDelayed(this, QR_INTERVAL);
             }
         });
 

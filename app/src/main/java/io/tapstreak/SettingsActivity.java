@@ -534,6 +534,7 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putBoolean("location_enabled", true);
             } else {
                 editor.putBoolean("location_enabled", false);
+                locationSwitch.setChecked(false);
             }
             editor.apply();
         } else {

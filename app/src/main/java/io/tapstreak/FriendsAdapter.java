@@ -54,7 +54,7 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
             if (friend.getLastSeenTime() != null && friend.getLat() != null && friend.getLon() != null && location != null) {
                 double lastSeenDiffMinutes = (System.currentTimeMillis() - Double.parseDouble(friend.getLastSeenTime())) / 1000 / 60.0;
                 double distanceDiffMiles = distanceDiffMiles(Double.parseDouble(friend.getLat()), Double.parseDouble(friend.getLon()), location.getLatitude(), location.getLongitude());
-                if (lastSeenDiffMinutes > 10.0 && distanceDiffMiles > 10.0) {
+                if (lastSeenDiffMinutes > 10.0 || distanceDiffMiles > 10.0) {
                     distanceTextView.setVisibility(View.GONE);
                     timeTextView.setVisibility(View.GONE);
                 } else {
