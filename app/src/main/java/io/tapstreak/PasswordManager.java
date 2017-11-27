@@ -15,7 +15,7 @@ import javax.crypto.spec.PBEKeySpec;
 public class PasswordManager {
 
     private static final Random RANDOM = new SecureRandom();
-    private static final int ITERATIONS = 25000;
+    private static final int ITERATIONS = 15000;
     private static final int KEY_LENGTH = 512;
 
     /**
