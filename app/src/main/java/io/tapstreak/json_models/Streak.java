@@ -19,7 +19,7 @@ public class Streak {
     private Integer streakLength;
     @SerializedName("last_streak")
     @Expose
-    private Integer lastStreak;
+    private Long lastStreak;
     @SerializedName("_id")
     @Expose
     private String id;
@@ -48,11 +48,11 @@ public class Streak {
         this.streakLength = streakLength;
     }
 
-    public Integer getLastStreak() {
+    public Long getLastStreak() {
         return lastStreak;
     }
 
-    public void setLastStreak(Integer lastStreak) {
+    public void setLastStreak(Long lastStreak) {
         this.lastStreak = lastStreak;
     }
 

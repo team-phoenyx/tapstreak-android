@@ -55,17 +55,21 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
                 double lastSeenDiffMinutes = (System.currentTimeMillis() - Double.parseDouble(friend.getLastSeenTime())) / 1000 / 60.0;
                 double distanceDiffMiles = distanceDiffMiles(Double.parseDouble(friend.getLat()), Double.parseDouble(friend.getLon()), location.getLatitude(), location.getLongitude());
                 if (lastSeenDiffMinutes > 10.0 && distanceDiffMiles > 10.0) {
-                    distanceTextView.setVisibility(View.INVISIBLE);
-                    timeTextView.setVisibility(View.INVISIBLE);
+                    distanceTextView.setVisibility(View.GONE);
+                    timeTextView.setVisibility(View.GONE);
                 } else {
                     timeTextView.setVisibility(View.VISIBLE);
                     distanceTextView.setVisibility(View.VISIBLE);
-                    timeTextView.setText("as of " + Math.round(lastSeenDiffMinutes) + " minute(s) ago");
-                    distanceTextView.setText(distanceDiffMiles + " mile(s) from you");
+                    if (distanceDiffMiles < 0.1) distanceTextView.setText("at your location");
+                    else distanceTextView.setText(Math.round(distanceDiffMiles * 10.0) / 10.0 + " mile(s) from you");
+
+                    if (lastSeenDiffMinutes < 1.0) timeTextView.setText("as of now");
+                    else if (lastSeenDiffMinutes < 1.5) timeTextView.setText("as of 1 minute ago");
+                    else timeTextView.setText("as of " + Math.round(lastSeenDiffMinutes) + " minutes ago");
                 }
             } else {
-                distanceTextView.setVisibility(View.INVISIBLE);
-                timeTextView.setVisibility(View.INVISIBLE);
+                distanceTextView.setVisibility(View.GONE);
+                timeTextView.setVisibility(View.GONE);
             }
         }
 

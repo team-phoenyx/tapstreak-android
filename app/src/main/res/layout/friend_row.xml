@@ -8,6 +8,7 @@
     android:foregroundGravity="center_vertical"
     android:gravity="center_vertical"
     android:orientation="horizontal"
+    android:paddingBottom="8dp"
     android:weightSum="1">
 
     <TextView
@@ -29,7 +30,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="2dp"
         android:fontFamily="@font/montserrat"
         android:text="2 miles from you"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +39,7 @@
         android:id="@+id/time_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
         android:fontFamily="@font/montserrat"
         android:text="as of 5 minutes ago"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     List<Friend> friends;
     List<Streak> streaks;
     Handler qrHandler;
-    Thread generateQRThread;
+    Thread refreshQRLocationThread;
     Bitmap qrBitmap, lastQRBitmap;
     long lastRefreshTime;
     boolean isQRGenerationRunning = true;
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         qrHandler = new Handler();
 
-        generateQRThread = new Thread(new Runnable() {
+        refreshQRLocationThread = new Thread(new Runnable() {
 
             @Override
             public void run() {
@@ -177,11 +177,25 @@ public class MainActivity extends AppCompatActivity {
                         qrBitmap = createBarcodeBitmap(Long.toString(System.currentTimeMillis() + QR_INTERVAL, 16) + ":" + userID);
                     }
                 }).start();
-                qrHandler.postDelayed(this, QR_INTERVAL);
+
+                if (currentLocation != null) {
+                    service.setLocation(userID, accessToken, Long.toString(System.currentTimeMillis()), Double.toString(currentLocation.getLatitude()), Double.toString(currentLocation.getLongitude())).enqueue(new Callback<ResponseCode>() {
+                        @Override
+                        public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseCode> call, Throwable t) {
+
+                        }
+                    });
+                    qrHandler.postDelayed(this, QR_INTERVAL);
+                }
             }
         });
 
-        generateQRThread.start();
+        refreshQRLocationThread.start();
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -231,6 +245,8 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case FRIENDS_FRAGMENT_TAG:
+                        View friendsView = ((FriendsFragment) pagerAdapter.instantiateItem(viewPager, FRIENDS_FRAGMENT_TAG)).getView();
+                        initFriendsView(friendsView);
 
                         break;
                 }
@@ -366,7 +382,6 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                 }
-                //TODO ADD FRIEND
             }
         } else if (requestCode == SETTINGS_REQUEST_CODE) {
             accessToken = data.getStringExtra("access_token");
@@ -562,10 +577,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        isQRGenerationRunning = true; //Activate generateQRThread
+        isQRGenerationRunning = true; //Activate refreshQRLocationThread
         refreshFriendsAndStreaks(); //Update user streaks and friends
 
-        //If last QR code is expired, restart generateQRThread to generate a new one immediately
+        //If last QR code is expired, restart refreshQRLocationThread to generate a new one immediately
         if (QR_INTERVAL - (System.currentTimeMillis() - lastRefreshTime) < 1 && lastRefreshTime != 0) {
             //Reset qrBitmap, lastQRBitmap, and qrImageView
             qrBitmap = null;
@@ -573,16 +588,16 @@ public class MainActivity extends AppCompatActivity {
             qrImageView.setImageBitmap(null);
             qrNFCLoadingProgressCircle.setVisibility(View.VISIBLE);
 
-            //Restart generateQRThread, start new instance of generateQRThread without delay
-            qrHandler.removeCallbacks(generateQRThread);
-            qrHandler.post(generateQRThread);
+            //Restart refreshQRLocationThread, start new instance of refreshQRLocationThread without delay
+            qrHandler.removeCallbacks(refreshQRLocationThread);
+            qrHandler.post(refreshQRLocationThread);
         }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        isQRGenerationRunning = false; //Deactivate generateQRThread as to not waste system resources
+        isQRGenerationRunning = false; //Deactivate refreshQRLocationThread as to not waste system resources
     }
 
     /**
