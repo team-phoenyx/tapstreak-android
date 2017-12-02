@@ -50,6 +50,8 @@ public class SplashActivity extends AppCompatActivity {
                                     accessToken = authentication.getAccessToken();
                                     username = authentication.getUsername();
 
+                                    sharedPreferences.edit().putString("user_id", id).putString("access_token", accessToken).putString("username", username).apply();
+
                                     Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                                     mainIntent.putExtra("user_id", id);
                                     mainIntent.putExtra("access_token", accessToken);

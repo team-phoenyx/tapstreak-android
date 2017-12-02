@@ -12,6 +12,9 @@ public class Authentication {
     @SerializedName("resp_code")
     @Expose
     private String respCode;
+    @SerializedName("resp_msg")
+    @Expose
+    private String respMsg;
     @SerializedName("user_id")
     @Expose
     private String userId;
