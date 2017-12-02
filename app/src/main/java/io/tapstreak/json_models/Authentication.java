@@ -18,6 +18,9 @@ public class Authentication {
     @SerializedName("access_token")
     @Expose
     private String accessToken;
+    @SerializedName("username")
+    @Expose
+    private String username;
 
     public String getRespCode() {
         return respCode;
@@ -41,5 +44,13 @@ public class Authentication {
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

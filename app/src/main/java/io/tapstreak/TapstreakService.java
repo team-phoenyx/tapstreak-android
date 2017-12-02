@@ -1,6 +1,8 @@
 package io.tapstreak;
 
 
+import org.apache.http.auth.AUTH;
+
 import io.tapstreak.json_models.ResponseCode;
 import io.tapstreak.json_models.Salt;
 import io.tapstreak.json_models.User;
@@ -42,6 +44,11 @@ public interface TapstreakService {
     @POST("/api/user/login")
     Call<Authentication> loginUser(@Field("username") String username,
                                    @Field("pass_hashed") String passwordHashed);
+
+    @FormUrlEncoded
+    @POST("/api/user/reauth")
+    Call<Authentication> reauthenticate(@Field("user_id") String userID,
+                              @Field("access_token") String accessToken);
 
     @FormUrlEncoded
     @POST("/api/user/delete")

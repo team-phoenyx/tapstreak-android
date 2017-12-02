@@ -155,18 +155,19 @@ public class LoginActivity extends AppCompatActivity {
                 if (authentication.getRespCode().equals("100")) {
                     String id = authentication.getUserId();
                     String accessToken = authentication.getAccessToken();
+                    String newUsername = authentication.getUsername();
 
                     SharedPreferences.Editor editor = getSharedPreferences("io.tapstreak", Context.MODE_PRIVATE).edit();
                     editor.putString("user_id", id);
                     editor.putString("access_token", accessToken);
-                    editor.putString("username", username);
+                    editor.putString("username", newUsername);
                     editor.apply();
 
                     Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     mainIntent.putExtra("user_id", id);
                     mainIntent.putExtra("access_token", accessToken);
-                    mainIntent.putExtra("username", username);
+                    mainIntent.putExtra("username", newUsername);
                     startActivity(mainIntent);
                     finish();
                 } else {
