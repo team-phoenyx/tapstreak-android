@@ -426,6 +426,7 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.remove("access_token");
                 editor.remove("notifications_enabled");
                 editor.remove("nfc_enabled");
+                editor.remove("location_enabled");
                 editor.apply();
 
                 //Start login activity

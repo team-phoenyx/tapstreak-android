@@ -26,8 +26,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -262,6 +265,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private double distanceDiffMiles(double lat1, double lon1, double lat2, double lon2) {
+        int r = 6371; //radius of earth, in km
+        double dLat = toRad(lat2 - lat1);
+        double dLon = toRad(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return r * c / 1.609344; //returns miles
+
+    }
+
+    private double toRad(double value) {
+        return value * Math.PI / 180;
+    }
+
     public void initQRNFCView(View qrNFCView) {
         qrImageView = qrNFCView.findViewById(R.id.qr_imageview);
         qrNFCLoadingProgressCircle = qrNFCView.findViewById(R.id.qr_nfc_loading_progresscircle);
@@ -281,6 +300,82 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Friend friend = friends.get(position);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.dialog_view_friend, null);
+                builder.setView(dialogView);
+
+                final TextView usernameTextView = dialogView.findViewById(R.id.username_textview);
+                final TextView streakTimeTextView = dialogView.findViewById(R.id.streak_time_textview);
+                final TextView lastSeenTextView = dialogView.findViewById(R.id.last_seen_textview);
+                final ImageButton removeFriendButton = dialogView.findViewById(R.id.remove_friend_button);
+
+                usernameTextView.setText(friend.getUsername());
+                if (friend.getLastSeenTime() != null && friend.getLat() != null && friend.getLon() != null && currentLocation != null) {
+                    double lastSeenDiffMinutes = (System.currentTimeMillis() - Double.parseDouble(friend.getLastSeenTime())) / 1000 / 60.0;
+                    double distanceDiffMiles = distanceDiffMiles(Double.parseDouble(friend.getLat()), Double.parseDouble(friend.getLon()), currentLocation.getLatitude(), currentLocation.getLongitude());
+                    if (lastSeenDiffMinutes > 10.0 || distanceDiffMiles > 10.0) {
+                        lastSeenTextView.setVisibility(View.GONE);
+                    } else {
+                        lastSeenTextView.setVisibility(View.VISIBLE);
+                        String build = "last seen ";
+                        if (distanceDiffMiles < 0.1) build = "at your location ";
+                        else build += Math.round(distanceDiffMiles * 10.0) / 10.0 + " mile(s) from you ";
+
+                        if (lastSeenDiffMinutes < 1.0) build += "right now";
+                        else if (lastSeenDiffMinutes < 1.5) build += "a minute ago";
+                        else build += Math.round(lastSeenDiffMinutes) + " minutes ago";
+                        lastSeenTextView.setText(build);
+                    }
+                } else {
+                    lastSeenTextView.setVisibility(View.GONE);
+                }
+
+                streakTimeTextView.setVisibility(View.GONE);
+                for (Streak s : streaks) {
+                    if (s.getUserId().equals(friend.getUserId())) {
+                        long timeElapsedMillis = System.currentTimeMillis() - s.getLastStreak();
+                        long hoursLeft = Math.round(28.0 - timeElapsedMillis / 1000.0 / 60.0 / 60.0);
+                        if (hoursLeft == 0) {
+                            streakTimeTextView.setText("less than an hour left");
+                        } else {
+                            streakTimeTextView.setText(hoursLeft > 1 ? hoursLeft + " hours left" : "an hour left");
+                        }
+                        streakTimeTextView.setVisibility(View.VISIBLE);
+                    }
+                }
+
+                final AlertDialog dialog = builder.create();
+
+                removeFriendButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        service.removeFriend(userID, accessToken, friend.getUserId()).enqueue(new Callback<ResponseCode>() {
+                            @Override
+                            public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                                if (response != null && response.body() != null && "100".equals(response.body().getRespCode())) {
+                                    dialog.dismiss();
+                                    refreshFriendsAndStreaks();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseCode> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+
         refreshFriendsAndStreaks();
     }
 
@@ -288,6 +383,85 @@ public class MainActivity extends AppCompatActivity {
         streaksListView = streaksView.findViewById(R.id.streaks_listview);
         streaksLonelyTextView = streaksView.findViewById(R.id.lonely_textview);
         streaksRefreshLayout = streaksView.findViewById(R.id.swipe_refresh_layout);
+
+        streaksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Streak streak = streaks.get(position);
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.dialog_view_friend, null);
+                builder.setView(dialogView);
+
+                final TextView usernameTextView = dialogView.findViewById(R.id.username_textview);
+                final TextView streakTimeTextView = dialogView.findViewById(R.id.streak_time_textview);
+                final TextView lastSeenTextView = dialogView.findViewById(R.id.last_seen_textview);
+                final ImageButton removeFriendButton = dialogView.findViewById(R.id.remove_friend_button);
+
+                usernameTextView.setText(streak.getUsername());
+
+                if (streak.getLastStreak() != null) {
+                    long timeElapsedMillis = System.currentTimeMillis() - streak.getLastStreak();
+                    long hoursLeft = Math.round(28.0 - timeElapsedMillis / 1000.0 / 60.0 / 60.0);
+                    if (hoursLeft == 0) {
+                        streakTimeTextView.setText("less than an hour left");
+                    } else {
+                        streakTimeTextView.setText(hoursLeft > 1 ? hoursLeft + " hours left" : "an hour left");
+                    }
+                    streakTimeTextView.setVisibility(View.VISIBLE);
+                } else streakTimeTextView.setVisibility(View.GONE);
+
+                lastSeenTextView.setVisibility(View.GONE);
+                for (Friend friend : friends) {
+                    if (friend.getUserId().equals(streak.getUserId())) {
+                        if (friend.getLastSeenTime() != null && friend.getLat() != null && friend.getLon() != null && currentLocation != null) {
+                            double lastSeenDiffMinutes = (System.currentTimeMillis() - Double.parseDouble(friend.getLastSeenTime())) / 1000 / 60.0;
+                            double distanceDiffMiles = distanceDiffMiles(Double.parseDouble(friend.getLat()), Double.parseDouble(friend.getLon()), currentLocation.getLatitude(), currentLocation.getLongitude());
+                            if (lastSeenDiffMinutes > 10.0 || distanceDiffMiles > 10.0) {
+                                lastSeenTextView.setVisibility(View.GONE);
+                            } else {
+                                lastSeenTextView.setVisibility(View.VISIBLE);
+                                String build = "last seen ";
+                                if (distanceDiffMiles < 0.1) build = "at your location ";
+                                else build += Math.round(distanceDiffMiles * 10.0) / 10.0 + " mile(s) from you ";
+
+                                if (lastSeenDiffMinutes < 1.0) build += "right now";
+                                else if (lastSeenDiffMinutes < 1.5) build += "a minute ago";
+                                else build += Math.round(lastSeenDiffMinutes) + " minutes ago";
+                                lastSeenTextView.setText(build);
+                            }
+                        } else {
+                            lastSeenTextView.setVisibility(View.GONE);
+                        }
+                    }
+                }
+
+                final AlertDialog dialog = builder.create();
+
+                removeFriendButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        service.removeFriend(userID, accessToken, streak.getUserId()).enqueue(new Callback<ResponseCode>() {
+                            @Override
+                            public void onResponse(Call<ResponseCode> call, Response<ResponseCode> response) {
+                                if (response != null && response.body() != null && "100".equals(response.body().getRespCode())) {
+                                    dialog.dismiss();
+                                    refreshFriendsAndStreaks();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseCode> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
+
+                dialog.show();
+            }
+        });
 
         streaksRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

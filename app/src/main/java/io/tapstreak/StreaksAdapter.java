@@ -49,7 +49,7 @@ public class StreaksAdapter extends ArrayAdapter<Streak> {
             usernameTextView.setText(streak.getUsername());
             streakTextView.setText(String.valueOf(streak.getStreakLength()));
 
-            long timeElapsedMillis = Calendar.getInstance().getTimeInMillis() - streak.getLastStreak();
+            long timeElapsedMillis = System.currentTimeMillis() - streak.getLastStreak();
             double timeElapsedMins = timeElapsedMillis / 60000.0;
             double timeElapsedHours = timeElapsedMins / 60.0;
 
